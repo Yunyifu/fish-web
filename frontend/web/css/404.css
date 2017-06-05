@@ -1,0 +1,13 @@
+/*--------------------------*\
+    * base
+    * Date: 2016-09-26
+    * author: zlp
+    * © 2016 www.comaking.net
+	* 定义：404页面
+\*--------------------------*/
+
+
+/* 404页面 */
+.xiong-img4{ background:url(../images/xiong-4.png) no-repeat 0 center; width:191px; height:287px; position: absolute ; left:30px; top:50px; z-index:2}
+.finish-tip .finish-bg2{ background:#e8f3fe;border-radius: 3px; border:1px solid #99c3ee;height:260px;position:absolute; right:0; top:65px;width:455px;}
+

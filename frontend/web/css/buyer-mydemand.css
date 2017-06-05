@@ -1,0 +1,61 @@
+/*--------------------------*\
+    * buy-demandlist
+    * Date: 2017-03-28
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：需求列表样式
+\*--------------------------*/
+
+/* 需求列表 */
+.demand-tablelist{}
+.demand-tablelist td{ text-align:center;}
+.demand-tablelist td.action{ color:#c1bfbf;text-align:center}
+.demand-tablelist td.action a{ color:#3186dd; padding:0 6px;}
+
+
+/* 需求详情 */
+.req_tab_box{position:relative;overflow:hidden;}
+.req_tab_box .tabbtn{height:40px;background:#f8f8f8;  border:1px solid #ddd;position:relative;}
+.req_tab_box .tabbtn ul{ width:100%;position:relative;  top:1px; }
+.req_tab_box .tabbtn ul li{float:left;border-right:solid 1px #ddd;width:120px; font-size:14px;}
+.req_tab_box .tabbtn ul li a,.req_tab_box .tabbtn li span{display:block;float:left;height:38px;line-height:38px;overflow:hidden;width:120px;text-align:center;cursor:pointer; color:#666;border-top:solid 1px #f8f8f8; }
+.req_tab_box .tabbtn ul li.cur a,.req_tab_box .tabbtn ul li.cur span{border-top:solid 2px #3186dd;height:38px;line-height:38px;background:#fff;color:#3186dd;}
+
+.req_tab_box .req-order-con{   overflow:hidden; border-top:0; padding-top:15px;}
+.req_tab_box .req-order-con dl{ float: left; width:377px; padding:10px 15px; border:1px solid #ddd; margin-right:20px; margin-bottom:15px;min-height:111px}
+.req_tab_box .req-order-con dl dt{ float:left; margin-right:15px;}
+.req_tab_box .req-order-con dl dd {float:left; width:190px;}
+.req_tab_box .req-order-con dl dd h4{ font-variant:normal; font-size:14px; margin-top:10px; }
+.req_tab_box .req-order-con dl dd h4 a{ display:block;max-width:100%;}
+.req_tab_box .req-order-con dl dd p{ line-height:2; color:#666666; overflow:hidden;  }
+.req_tab_box .req-order-con dl dd p.price{ color:#E4393C;  font-size:16px; font-weight:700;}
+.req_tab_box .req-order-con dl dd p.tags{ color:#666; font-size:12px}
+.req_tab_box .req-order-con dl dd p.tags span{ padding-right:10px;}
+.req_tab_box .req-order-con dl .btn{ margin-top:3px; float: right;margin-top:2px;}
+.req_tab_box .req-order-con dl .btn a{ display: block; text-align:center; border:1px solid #dddddd; width:60px; background:#f4f4f4; font-size:12px; color:#666666; border-radius: 2px; height:24px; line-height:24px; margin-bottom:5px; }
+.req_tab_box .req-order-con dl .btn a.keybtn{  border:1px solid #fe6c0a;color:#fe6c0a;background:#fff;}
+
+/* 工程师列表 */
+.top-tlbtn{height:41px;background:#f8f8f8;border:solid 1px #ddd; margin-top:10px; }
+.top-tlbtn ul{ width:100%;position:relative; top:0px;}
+.top-tlbtn ul li{float:left;margin:0 0 0 -1px;border-right:solid 1px #ddd;}
+.top-tlbtn ul li a,.tlbtn li span{display:block;float:left;height:40px;line-height:40px;overflow:hidden;width:130px;text-align:center;cursor:pointer; color:#666;border-top:solid 2px #f8f8f8; z-index:22}
+.top-tlbtn ul li.cur{border-left:solid 1px #ddd;}
+.top-tlbtn ul li.cur a,.tlbtn ul li.cur span{border-top:solid 2px #3186dd;height:40px;line-height:40px;background:#fff;color:#000;}
+
+
+.workers-list{ border-top:0;}
+.workers-list dl{ padding:20px 0; border-bottom:1px dashed #ddd;  }
+.workers-list dt{ width:108px; height:108px; float:left; margin-right:20px;}
+.workers-list dd{ width:560px; float:left}
+.workers-list dd h1{}
+.workers-list dd h1 .name{ font-size:20px; margin-right:10px;}
+.workers-list dd h1 span.icon-title-big{}
+.workers-list dd p.txt{ color:#666; line-height:24px; height:48px; overflow:hidden; margin:5px 0 8px;}
+.workers-list dd p.location{color:#666; }
+.workers-list dd p.baseinfo{}
+.workers-list dd p.baseinfo span{ padding-right:10px;}
+.workers-list dd p.baseinfo span em{ color:#E4393C}
+.workers-list dd .icon-location{background: url(../images/icon-location-16.png);vertical-align:-3px; margin-right:3px;}
+.workers-list .focus-btn{ width:118px; float:right}
+.workers-list .focus-btn a{ display:block; margin:5px 0;}

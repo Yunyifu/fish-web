@@ -1,0 +1,62 @@
+/*--------------------------*\
+    * base
+    * Date: 2017-03-28
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：采购商首页样式
+\*--------------------------*/
+
+
+/*基本信息*/
+.userinfo{}
+.userinfo .set-head{ position:relative; margin-right:20px;}
+.userinfo .set-head a{width: 100px;height: 100px;border-radius: 50%; display:block;}
+.userinfo .set-head img{width: 100px;height: 100px;border-radius: 50%; position: absolute;}
+.userinfo .set-head span{ background:url(../images/header-cover.png); width:93px; height:30px; line-height:30px; text-align:center; color:#fff;position: absolute;bottom: 0;left: 3px;z-index: 1;opacity: .9; font-size:12px}
+.userinfo .info-detail{}
+.userinfo .info-detail h1 a{ font-size:18px;font-weight: bold; line-height:2;}
+.userinfo .info-detail p,.userinfo .info-detail p a{ line-height:2;}
+.userinfo .info-detail p span{ margin-right:20px;}
+.userinfo .info-detail p label{ float:left}
+.userinfo .info-detail p a.icon-userinfo-20{ background:url(../images/icon-userinfo-20.png) no-repeat 0 -20px; width:20px; height:20px; display:inline-block; margin-right:5px; margin-top:5px;float:left}
+
+.userinfo .info-detail p a.icon-userinfo-20.a2{ background-position:-20px -20px;}
+.userinfo .info-detail p a.icon-userinfo-20.a3{ background-position:-40px -20px;}
+.userinfo .info-detail p a.icon-userinfo-20.a4{ background-position:-60px -20px;}
+.userinfo .info-detail p a.icon-userinfo-20.a1.cur{ background-position:0 0;}
+.userinfo .info-detail p a.icon-userinfo-20.a2.cur{ background-position:-20px 0;}
+.userinfo .info-detail p a.icon-userinfo-20.a3.cur{ background-position:-40px 0;}
+.userinfo .info-detail p a.icon-userinfo-20.a4.cur{ background-position:-60px 0;}
+
+/*正在进行中的需求*/
+.demand-ing{}
+.demand-ing td{ }
+.demand-ing td img{ text-align:left; width:160px; height:110px; padding-right:20px;}
+.demand-ing td.info{ text-align:left; border-right: 1px #fff solid;}
+.demand-ing td.info h4{ font-size:16px; font-weight:normal; line-height:2; width:100%; margin-bottom:5px;}
+.demand-ing td.info h4 a{ display:block; max-width:295px;}
+.demand-ing td.info h4 a span{ margin-right:3px;}
+.demand-ing td.info p{ line-height:25px; height:50px; overflow:hidden;color:#666666;}
+.demand-ing td.stage{ text-align:center;border-right: 1px #fff solid; color:#999;}
+.demand-ing td.action{ color:#c1bfbf;text-align:center}
+.demand-ing td.action a{ color:#3186dd; padding:0 6px;}
+
+.no-order{ text-align:center; padding:20px 0;}
+.no-order p{ color:#666;}
+.no-order .btn{height: 40px;line-height: 40px;padding: 0 50px;font-size: 16px;background-color: #ff6600;display: inline-block;color: #fff;text-align: center;border-radius: 5px;}
+
+/*推荐供应商*/
+.co-demand{ overflow:hidden}
+.co-demand .overwidth{ width:110%;}
+.co-demand dl{ float: left; width:377px; padding:10px 15px; border:1px solid #ddd; margin-right:20px; }
+.co-demand dl dt{ float:left; margin-right:15px;}
+.co-demand dl dt div{ width:90px; height:90px;overflow:hidden;margin-right:15px;border-radius:50%;line-height: 0; text-align: center; vertical-align: middle; display: table-cell; background:#fff; border:2px solid #E1DCDC;}
+.co-demand dl dt img{ max-width:90px; max-height:90px; margin-top: expression( 90-this.height/2); *margin-top:expression(90-this.height/2)/*IE6,7*/;}
+.co-demand dl dd {float:left; width:190px;}
+.co-demand dl dd h4{ font-variant:normal; font-size:14px; margin-top:12px; }
+.co-demand dl dd h4 a{ display:block;max-width:100%;}
+.co-demand dl dd p{ line-height:2; color:#666666; overflow:hidden; font-size:12px}
+.co-demand dl dd p.tags{ color:#3186dd;}
+.co-demand dl dd p.tags span{ padding:0 5px;}
+.co-demand dl .btn{ margin-top:3px; float: right;margin-top:17px;}
+.co-demand dl .btn a{ display: block; text-align:center; border:1px solid #dddddd; width:60px; background:#f4f4f4; font-size:12px; color:#666666; border-radius: 2px; height:24px; line-height:24px; margin-bottom:5px; }

@@ -1,0 +1,57 @@
+/*--------------------------*\
+    * buy-myinfo
+    * Date: 2017-03-30
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：我的账户
+\*--------------------------*/
+
+/***** 邮箱上 *****/
+.infobox .infocon{ line-height:2;}
+.head-upload{position:relative;width:120px;height:120px}
+.head-upload img{width:120px;height:120px;position:absolute}
+.head-upload span{width:100%;height:30px;line-height:30px;text-align:center;color:#fff;position:absolute;bottom:0;left:0;z-index:2;opacity:.7;font-size:12px;background:#000}
+.head-upload input{width:120px;height:120px;position:absolute;z-index:3;filter:alpha(opacity=0);opacity:0;cursor:pointer}
+
+
+/*账号绑定*/
+.icon-account-40{background: url(../images/icon-account-40.png) no-repeat; width:40px; height:40px;display:inline-block;}
+.act-tel{background-position:0 0;}
+.act-mail{background-position:0 -40px;}
+.act-ge{background-position:0 -80px;}
+.act-qi{background-position:0 -120px;}
+
+.account-quick{}
+.account-quick dl{ padding:20px ; margin-bottom:15px;}
+.account-quick dl .icon-account-40{ float:left;}
+.account-quick dt{ margin-left:25px; width:450px; float:left}
+.account-quick dt h2{ line-height:1; margin-bottom:5px;}
+.account-quick dt h2 span{display:inline-block; margin-right:5px;}
+.account-quick dt h2 em{ background:  url(../images/icon-account-40.png) no-repeat; width:12px; height:12px;display:inline-block;background-position:0 -160px;  }
+.account-quick dt h2 em.no{background-position: -12px -160px;}
+.account-quick dt p{ color:#999999;}
+.account-quick dd{ float:right;}
+.account-quick dd a{ color:#3186dd; line-height:40px;}
+
+.icon-bind-30{background: url(../images/icon-bind.png) no-repeat; width:30px; height:30px;display:block;}
+.act-weibo{background-position:0 0;}
+.act-qq{background-position:-30px 0 ;}
+.act-weixin{background-position:-60px 0 ;}
+.cur.act-weibo{background-position:0 -30px;}
+.cur.act-qq{background-position:-30px -30px;}
+.cur.act-weixin{background-position:-60px -30px;}
+
+.third_bind{ padding:10px 0;}
+.third_bind label{ float: left; color:#555; width:120px; display:block; text-align:right; line-height:98px;}
+.third_bind ul{ float:left; padding:20px;}
+.third_bind ul li{ float: left; width:150px;}
+.third_bind ul li span{width:30px; height:30px; margin:0 auto;}
+.third_bind ul li p{ text-align:center; color:#3186dd; }
+
+.finish-tip-xiong3{ background:url(../images/xiong-3.png) no-repeat center center; height:330px; width:350px; margin:0 auto; }
+.finish-tip-xiong3 span{ color:#f60; font-size:18px; font-weight:700; position:relative; top:45px; left:170px; }
+
+.tabtab{}
+.tabtab ul{}
+.tabtab ul li{ width:33%; float:left; display:block;}
+.tabtab ul li lable{}

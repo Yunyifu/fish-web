@@ -1,0 +1,56 @@
+/*--------------------------*\
+    * wallet
+    * Date: 2017-03-30
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：我的钱包
+\*--------------------------*/
+.inlineform{display:inline-block}
+.money{ border:1px solid #ddd; padding:20px 20px; line-height:30px;}
+.money .txt em{ font-size:20px;color:#e4393c; padding-left:10px;}
+.money .btn a{ padding-left:10px;}
+.money .btn a.deposit{ color:#1ca5ec;}
+
+.mycard{width:100%;overflow:hidden}
+.mycard .tit{margin-bottom:15px}
+.mycard .tit strong{color:#323232;font-size:16px;padding-right:10px}
+.mycard .tit span{font-size:12px;color:#666}
+.mycard .tit span em{color:#f60; padding:0 3px;}
+.mycard ul{width:110%}
+.mycard ul li{border:1px solid #ddd;width:264px;margin:0 20px 25px 0;float:left}
+.mycard ul li:hover{border:1px solid #5b9fe2}
+.mycard ul li .mt{padding:15px;padding-bottom:0}
+.mycard ul li .mt .bank-logo{background:url(../images/icon-bank.png) no-repeat left center;display:block;height:28px;line-height:28px;padding-left:42px;font-weight:700}
+.mycard ul li .mt .type{background:#5b9fe2;font-family:"Times New Roman",serif;font-size:12px;text-align:center;padding:0 3px;color:#fff;text-align:center;height:18px;line-height:18px;margin-top:3px;float:right}
+.mycard ul li .mt .type.red{background:#ff7674!important}
+.mycard ul li .mc{height:60px;color:#525864;text-align:center;font-size:18px;line-height:60px}
+.mycard ul li .mc span{padding-right:8px;font:12px arial;vertical-align:20%}
+.mycard ul li .mb{padding:0 15px;border-top:1px solid #f1f1f1;line-height:36px;height:36px;font-size:12px}
+.mycard ul li .mb .quick{color:#ff9000}
+.mycard ul li:hover .mb .delete{display:block;padding-left:20px}
+.mycard ul li .mb .delete{color:#5b9fe2;display:none}
+.mycard ul li.quick-add{border:1px solid #e2eaf2}
+.mycard ul li.quick-add a{background:url(../images/icon_add.png) no-repeat center 40px;color:#5b9fe2;font-weight:700;display:block;width:100%;height:60px;text-align:center;padding-top:80px}
+
+.trade-record{}
+.trade-record .tit{}
+.trade-record .tit strong{ font-size:16px;}
+.trade-record .tit .tab{font-size:12px; margin-left:10px;}
+.trade-record .tit .tab a{ color:#1ca5ec; }
+.trade-record .tit .tab em{ color:#999; padding:0 8px; }
+.trade-record .tit a.more{ color:#3186dd;float:right;}
+.trade-record table{ border:1px solid #ddd; font-size:12px; color:#555;}
+.trade-record td{ text-align:center; padding:8px 10px; line-height:2; border-bottom:1px solid #ddd;}
+.trade-record td.action a{ color:#1ca5ec;}
+.trade-record td.name{ max-width:340px; color:#333; }
+
+.select-area { border:1px solid #ddd;background: #f7f7f7;}
+.select-area th,.select-area td{  height:42px;}
+.select-area th{ border-bottom:1px dotted #ddd;}
+.select-area td{ border-bottom:1px dotted #ddd;}
+.select-area td span{ font-weight:700;}
+.select-area td span a{ padding-right: 20px; color:#555;}
+.select-area td span a.cur{ color:#f60;}
+.select-area td .ipt30{ border:1px solid #dddddd; line-height:28px; height:28px; text-indent:10px;vertical-align: middle; margin-right: -4px;position: relative;}
+.select-area td .btn{ border:1px solid #dddddd; border-left:0; width:30px; height:30px; background:url(../images/icon-search-16.png) no-repeat center center #999999; display:inline-block;vertical-align: middle;}
+#myiframe{height:980px}

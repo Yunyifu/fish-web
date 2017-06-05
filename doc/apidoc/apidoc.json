@@ -1,0 +1,11 @@
+{
+    "name": "渔鱼网 API文档",
+    "version": "0.1.0",
+    "description": "Yii2 API Service",
+    "url" : "/v1",
+    "title": "渔鱼网项目API文档",
+    "header": {
+        "title": "General",
+        "filename": "header.md"
+    }
+}

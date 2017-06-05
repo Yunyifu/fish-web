@@ -1,0 +1,47 @@
+*{padding:0;margin:0;box-sizing:border-box!important;}
+li{list-style:none}
+img{border:0;display:block}
+input{border:0}
+a{text-decoration:none}
+table{border-collapse:collapse}
+html{background:#f5f5f5!important; background-repeat:repeat;}
+body{font-family:"微软雅黑",arial;margin:0 auto!important;max-width:15rem!important;}
+input,select{-webkit-appearance:none;border-radius:0;border:0;outline:0;font-family:"微软雅黑",arial}
+textarea{-webkit-appearance:none}
+
+.bg8{background-color: #f8f8f8; width:100%;}
+.calc-nav{ padding:0 15px;   }
+.calc-nav ul{ background:#fff; overflow:hidden;border-radius: 3px;}
+.calc-nav ul li{ float:left;height: 48px;line-height: 48px; overflow: hidden; width:50%;color: #666;    border-top: solid 2px #eee; text-align:center;background: #eee; font-size:16px}
+.calc-nav ul li a{color: #999;}
+.calc-nav ul li.cur,.calc-nav ul li.cur a{border-top: solid 2px #3186dd; background:#3186dd; color:#fff!important;}
+
+
+.calc-con{ padding:0 15px;}
+.calc-con ul{}
+.calc-con ul li{ position:relative;height: 50px; margin: 10px 0;}
+.calc-con ul li.shape{border: solid 1px #e1e1e1;background:#fff;}
+.calc-con ul li.shape div{ width:33%; position:relative; }
+.calc-con ul li.shape input{ display: block;height: 26px; line-height:26px;border: none;text-align: left;width: 100%;border-right: solid 1px #e3e3e3;padding-left: 10px; margin-top:12px;}
+.calc-con ul li.shape label{position: absolute;right: 12px;top: 14px;color: #333;}
+.calc-con ul li select{ width:48%;border: solid 1px #e1e1e1 ; height:50px; line-height:50px;background: url(../images/calculator/icon-dropdown.png) no-repeat 94% #fff; padding-left:10px; color:#666;}
+.calc-con ul li .ipt{border: solid 1px #e1e1e1 ; height:50px; line-height:50px;}
+.calc-con ul li.tel{border-top:1px dotted #e3e3e3;}
+.calc-con ul li.telcode input{ width:65%;}
+.calc-con ul li.telcode a{height:50px; line-height:50px;text-align:center;background-color:#eee;display:block;width:32%;}
+.calc-con ul li .submit-btn{border-radius:4px;background:#ff9c00;color:#fff;font-size:16px;text-align:center;line-height:46px;  margin-top: 15px;height: 46px;width: 100%; border-radius: 3px;}
+
+.calc-result {border:1px solid #e3e3e3; }
+.calc-result h2{ font-size:18px;background:#fff2e2; padding:10px 0;}
+.calc-result .num{ color:#f60; font-size:30px; margin:15px 0;}
+.calc-result .tip{ color:#666;border-top:1px dotted #e3e3e3; width:80%; margin:0 auto; padding-top:10px; margin-bottom:10px;}
+
+
+
+.phone-background-img{position: fixed;width: 18.7%;bottom: 10px;right: 15px;z-index: 5;}
+.calc-foot{ color:#666; margin:15px 0; font-size:12px}
+
+ 
+ 
+ 
+ 

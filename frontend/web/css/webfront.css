@@ -1,0 +1,145 @@
+/*--------------------------*\
+    * wallet
+    * Date: 2017-04-07
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：前台综合样式
+\*--------------------------*/
+html { background-color: #ffffff!important; }
+
+/* top-toolbar */
+.top-toolbar{background:#f8f8f8; line-height:34px; height:34px; border-bottom:1px solid #cccccc; width:100%; color:#666666; min-width:1200px;}
+.top-toolbar .top_l{ float:left; display:inline-block}
+.top-toolbar .top_r{float: right;display:inline-block;text-align:right;color:#aaaaaa;}
+.top-toolbar .top_r a{ padding:0 10px; color:#666666;}
+.top-toolbar .top_r .tel{ color:#666666; padding-left:25px; background:url(../images/icon-tel.png) no-repeat left center; margin-right:3px;}
+.top-toolbar .top_r .tel .red{ color:#e92231}
+.top-toolbar .top_r .number{ width:15px; height:15px; line-height:15px; background:url(../images/top-tips.png) 0 0; color:#ffffff; text-align:center; display: inline-block; margin-left:5px; font-size:12px}
+
+/* header */
+.header{ height:96px; background:#FFF;min-width:1200px;}
+.header .logo{ padding-top:20px; float:left; width:500px;}
+.header .logo a{display:block; float: left; background:url(../images/logo.png) no-repeat 0 0; width:200px; height:56px; text-indent:-9999px; border-right:1px solid #dddddd; padding-right:15px; margin-right:15px;}
+.header .txtlogo{ background:url(../images/logo-sologo.png) no-repeat 0 0; width:256px;height:56px;}
+.header .top_send{ margin-top:29px; margin-left:65px;}
+
+
+/* front_nav */
+.head-m1{ width:265px;}
+.sub-menu{ background:#3186dd;color:#ffffff;position: absolute; z-index:60;}
+.sub-menu .tit{ display:block; height:50px; line-height:50px; text-align:center; background:#2e7ac8; padding:0 20px;}
+.sub-menu .tit a{color:#ffffff; display:block; font-size:16px;}
+.sub-menu .tit ul{ display:block}
+.sub-menu .tit:hover ul{ display:block}
+.sub-menu:hover ul{  display:block;}
+.sub-menu ul{ padding:0 15px; display:none;}
+.sub-menu ul li{border-bottom:1px dotted #7bace7; padding:19px 0; font-size:14px}
+.sub-menu ul li.none{ border:0;}
+.sub-menu ul li a h2{ color:#fff;}
+.sub-menu ul li h2{ font-size:16px; line-height:20px; margin-bottom:13px;}
+.sub-menu ul li h2 span{ float:left}
+.sub-menu ul li h2 .icon-navbar-20{ background:url(../images/icon-in-subnav-20.png) no-repeat; width:20px; height:20px; display:inline-block;  float:left; margin-right:15px;}
+.sub-menu ul li h2 .icon-navbar-20.a2{ background-position:-20px 0;}
+.sub-menu ul li h2 .icon-navbar-20.a3{ background-position:-40px 0;}
+.sub-menu ul li p{ color:#c2dffd; line-height:30px;}
+.sub-menu ul li p .nav-tit{ font-weight:700; background:url(../images/icon-in-subnav-arrow.png) no-repeat right center; display:inline-block; padding-right:15px; margin-right:10px;}
+.sub-menu ul li p a{ color:#c2dffd; font-weight:normal;}
+.sub-menu ul li p em{ color:#56a9fe; padding:0 5px;}
+.sub-menu ul li h2 .icon-hot { width: 32px;height: 16px;display: inline-block;margin-left: 5px;background: url(../images/hot.png) no-repeat; margin-top:3px;}
+
+.menu{width:auto; font-size:16px;  color:#ddd; text-align:right; width:100%; border-bottom:2px solid #3186dd;height:50px; line-height:50px;min-width:1200px; overflow:hidden }
+.navmain{width:925px; margin-left:auto; margin-right:auto; position:relative; padding-left:275px;}
+.navmain li{ float:left;padding:17px 0; position:relative; }
+.navmain li a{ color: #333333; display: block; text-align: center; border-right:1px solid #d7d7d7; line-height:1; padding:0 35px;}
+.navmain li a:hover,.navmain li a.cur{   color:#3186dd!important; text-decoration:none; }
+.navmain li span { position: absolute; top:0px; right:5px}
+.navmain a.calucbtn { width:120px; height:40px; display:block; float:right; margin-top:5px;}
+.navmain a.calucbtn span.txt{font-size:14px; line-height:1.4!important; height:40px; float:left; text-align:left}
+
+/* icon */
+.icon-in.icon-caluc{ width:30px; height:30px;background-position:-80px -118px; float:left; margin-top:5px; margin-right:10px;}
+.icon-in.icon-arrow{ width:8px; height:15px;background-position:-110px -118px;float: right;margin-top:15px;}
+.icon-in.sub-tit-arrow{ width:12px; height:7px;background-position:-204px -90px;float: right;}
+
+
+
+/* footer */
+.footer{ background:#333333; padding-top:55px;min-width:1200px;}
+.foothelp {width: 500px;background: url(../images/footbgright.png) no-repeat right 10px;padding-right: 10px;}
+.foothelp dl{width:80px;float:left;padding-right:20px;font-size:12px}
+.foothelp dt{font-size:14px;line-height:40px}
+.foothelp dd{color:#fff;line-height:24px}
+.foothelp dt a{color:#fff}
+.foothelp dd a{color:#999}
+.foothelp dt a:hover{text-decoration:underline}
+.foothelp dd a:hover{color:#fff}
+
+
+
+/**************** 20170408新增 ****************  front_nav下面全部替换下以免出错 */
+
+.appbox{width:395px;height:120px;padding:15px 0 0 0;background:url(../images/footbgright.png) no-repeat right 10px}
+.appbox div{float:left;width:100px;margin-left:65px;color:#999}
+.appbox div p a{color:#999}
+.appbox div i{display:inline-block;width:100px;height:100px}
+.appbox div i.iapp{background:url(../images/code-wechat-100.jpg);background-size:100px auto}
+.appbox div i.iwap{background:url(../images/code-app-100.jpg);background-size:100%}
+
+.footservice{width:220px}
+.footservice .foottit,.footservice .foottit a{line-height:30px;padding-top:5px;font-size:14px;color:#fff}
+.footservice .foottel{font-size:22px;color:#fff}
+.footservice .foottime{font-size:12px;color:#999}
+.footservice .footicons{height:22px;padding-top:10px}
+.footservice .footicons>a{display:block;width:22px;height:22px;margin-right:7px;background:url(../images/indexIcon-22.png);float:left;-o-transition-property:background;-o-transition-duration:0.5s;-moz-transition-property:background;-moz-transition-duration:0.5s;transition-property:background;transition-duration:0.5s}
+.footservice .footicons a.sina{background-position:0 0}
+.footservice .footicons a.sina:hover{background-position:0 -22px;}
+.footservice .footicons a.tengxun{background-position:-22px 0px}
+.footservice .footicons a.tengxun:hover{background-position:-22px -22px;}
+.footservice .footicons a.email{background-position:-44px 0}
+.footservice .footicons a.email:hover{background-position:-44px -22px}
+
+.footbottom{ height:30px; line-height:28px; padding:15px 0; border-top:1px solid #444444; text-align: center;  color:#999999; margin-top:45px;}
+.footbottom a{color:#999999;}
+
+
+
+/*需求发布*/
+.re-header{ height:96px; background:#FFF}
+.re-header .logo{ padding-top:20px; float:left; width:450px;}
+.re-header .logo a{display:block; float: left; background:url(../images/logo.png) no-repeat 0 0; width:200px; height:56px; text-indent:-9999px; border-right:1px solid #dddddd; padding-right:15px; margin-right:15px;}
+.re-header .txt{ width:192px;height:56px; line-height:56px; font-size:18px; color:#666666;}
+.re-header .icon-app{ margin-top:40px;}
+
+.re-footer{ text-align:center; padding:20px 0;color:#666666; line-height:24px;background: #fff;}
+.re-footer a{color:#666666;}
+.re-footer a:hover{color:#3186dd;}
+
+.tips{border:1px solid #f2a81a;color:#ff8a00;background:#ffc;height:30px;line-height:30px;padding:0 20px}
+
+/********页码*******/
+.pagination{float: right;margin-top: 20px;}
+.pagination li{float: left;margin-left: 7px;width: 30px;height: 30px;line-height:30px;border:1px solid #eee;text-align:center;cursor:pointer;}
+.pagination>.prev,.pagination>.next{width:80px;}
+.pagination .active{background: #3186dd;}
+.pagination .active>a{color: #fff;}
+.pagination li.first,.pagination li.last{ padding:0 10px;}
+
+/*********左边前台页面公告*******/
+.notice-left{border:1px solid #eee; border-top:4px solid #3186dd; overflow:hidden; width:258px;}
+.notice-left-tl{ padding-left:20px; font-size:16px; line-height:50px; border-bottom:1px solid #eee; color:#3186dd;}
+.notice-left li{padding:15px; border-bottom:1px dotted #eee; width:230px; overflow:hidden}
+.notice-left li h1{font-size:14px; color:#333; float:left; line-height:24px; height:24px; font-weight:normal }
+.notice-left li p{width:230px; font-size:12px; color:#989898; line-height:20px;}
+
+
+/***********左边推荐*************/
+.Recommend{border:1px solid #eee;overflow:hidden; width:258px;}
+.Recommend-tl{ padding-left:20px; line-height:40px; font-size:16px; color:#333; height:40px;}
+.Recommend dl{padding:15px; border-bottom:1px dotted #eee;  overflow:hidden}
+.Recommend dl dt{ width:58px;}
+.Recommend dl dd{ width:160px;}
+.Recommend dl dd a{ color:#666; max-width:60%; display:inline-block}
+.Recommend dl dd em{ color:#f60; float:right}
+
+.s-banner{ width:100%; height:200px; overflow:hidden; background-position:center center; }
+.list-banner{background:url(../../images/s-banner1.jpg) no-repeat center center;}

@@ -1,0 +1,5 @@
+.idboxF,.idboxB,.idboxP{display: inline-block;height: 110px;}
+.idboxF>img,.idboxB>img,.idboxP>img{width: 148px;height: 148px;}
+.uploadPic{height: 30px;position: absolute;cursor: pointer;width: 124px;z-index: 100;opacity: 0;}
+.uploadPic-btn{height: 30px;line-height: 30px;padding: 0 10px;border-radius:3px;position: absolute;cursor: pointer;}.idcardName{width: 163px;line-height: 154px;}
+.agreePut{margin-left: 163px;margin:45px 0 45px 172px;}

@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+/*图片上传相关*/
+.uploader {
+	font-size: 100px;
+	color: #ccc;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.img-preview img {
+	max-width: 200px;
+	max-height: 150px;
+}
+
+.img-preview-sm img {
+	max-height: 50px;
+}
+
+.img-preview {
+	display: inline-block;
+	margin: 0 15px 15px 0;
+	position: relative;
+}
+
+.img-preview .close {
+	float: none;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+.img-preview .b-left, .img-preview .b-right {
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    background: none;
+    text-shadow: 0 1px 0 #fff;
+    cursor: pointer;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    color: #000;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+
+.img-preview .b-left:hover, .img-preview .b-right:hover {
+	filter: alpha(opacity=80);
+    opacity: .8;
+}
+
+.img-preview .b-left {
+	right: 30px;
+}
+
+.dz-preview {
+	display: none;
+}

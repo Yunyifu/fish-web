@@ -1,0 +1,54 @@
+/*--------------------------*\
+    * buy-myorderlist
+    * Date: 2017-03-28
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：订单管理表样式
+\*--------------------------*/
+
+
+
+/***** 订单管理 *****/
+.orderbox{position:relative;overflow:hidden;}
+.orderbox .tabbtn{height:50px;background:#f8f8f8;border:solid 1px #ddd; border-bottom:0;overflow:hidden;}
+.orderbox .tabbtn ul{ width:110%;}
+.orderbox .tabbtn ul li{float:left; margin:0 0 0 -1px;border-right:solid 1px #ddd;width:168px;}
+.orderbox .tabbtn ul li a,.orderbox .tabbtn li span{display:block;float:left;height:48px;line-height:48px;overflow:hidden;text-align:center;cursor:pointer; color:#666;border-top:solid 2px #f8f8f8; width:100%}
+.orderbox .tabbtn ul li.cur{border-left:solid 1px #ddd;}
+.orderbox .tabbtn ul li.cur a,.orderbox .tabbtn ul li.cur span{border-top:solid 2px #3186dd;height:48px;line-height:48px;background:#fff;color:#ff6600;}
+
+.orderbox .ordercon{ }
+.orderbox .ordercon dl{ margin-bottom:10px;border:1px solid #ddd;  }
+.orderbox .ordercon dl .tit{background:#f7f7f7; font-size:12px; padding:0 20px; height:38px; line-height:38px; border-bottom:1px solid #ddd;}
+.orderbox .ordercon dl .tit dt{}
+.orderbox .ordercon dl .tit dt span{ margin-right:15px;}
+.orderbox .ordercon dl .tit dd{}
+.orderbox .ordercon table{}
+.orderbox .ordercon table th{ text-align:left; font-weight:normal}
+.orderbox .ordercon table th a{ min-height:40px; overflow: hidden}
+.orderbox .ordercon table td{ text-align:center}
+
+/***** 订单详情 *****/
+.order-detail{ overflow:hidden;}
+.order-detail .order-left{  width:255px;}
+.order-detail .order-left .tit{ background:#f7f7f7; border-bottom:1px solid #ddd; padding-left:15px; font-weight:700; height:40px; line-height:40px}
+
+.order-detail p{ line-height:24px;max-height:96px; overflow:hidden}
+.order-detail p span{ color:#666; }
+.order-detail .order-right{width:510px; padding:40px 35px 0 35px; min-height:260px;border-left:1px solid #ddd;}
+.order-detail .order-right .order-state{ background: url(../images/icon-order-32.png) no-repeat 0 center; height:32px; line-height:32px; padding-left:45px; font-size:16px; font-weight:700; }
+.order-detail .order-right .order-state-s{ line-height:2; font-size:12px; margin:30px 0;}
+.order-detail .order-right .order-content{ padding:0 0 0 0;}
+.order-detail .order-right .order-content th{ text-align: right; width:15%; font-weight:normal}
+.order-detail .order-right .order-content .ipt{ height:30px; line-height:30px;}
+.order-detail .order-right .order-content .ipt-textarea{ height:100px;}
+.order-detail .order-right .order-content th,.order-detail .order-right .order-content td{ padding:5px 0;}
+
+.order-after{height:216px;padding-left:5px;overflow-y:auto;position:relative; font-size:12px}
+.order-after ul li{position:relative;padding:9px 0 0 25px;line-height:18px;border-left:1px solid #d9d9d9;color:#333}
+.order-after ul li i.node-icon{position:absolute;left:-6px;top:50%;width:11px;height:11px;background:url(../images/order-icons.png) no-repeat; background-position:0 -11px;}
+.order-after ul li .time{margin-right:20px;position:relative;top:4px;display:inline-block;vertical-align:middle}
+.order-after ul li .txt{max-width:640px;position:relative;top:4px;display:inline-block;vertical-align:middle}
+.order-after ul li.first{color:#f60;padding-top:0;border-left-color:#fff;font-size:14px;font-weight:600}
+.order-after ul li.first i.node-icon{background-position:0 0}
+

@@ -1,0 +1,98 @@
+/*--------------------------*\
+    * wallet
+    * Date: 2017-04-08
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：设计师、工厂、业务详情页面
+\*--------------------------*/
+
+.details-box{width:878px; border: 1px solid #eee; overflow: hidden; padding: 20px;}
+.details-info{border-bottom: 1px solid #eee; overflow: hidden; padding-bottom: 20px;}
+.details-info-main{width:530px; float:left;}
+.details-info-score{width:150px; float:right; border-left:1px solid #eee; height:98px; padding-top:35px;text-align:center}
+.details-info-numb{width: 132px;}
+.details-info-numb li{width: 44px;display: block; text-align: center;float: left}
+.introduce{ width: 100%; font-size: 14px; color: #666; line-height: 25px}
+.introduce p{margin-top: 20px; text-indent: 2em}
+.pic-show{ width:878px; height:140px;}
+.pic-show li{float: left; border: 1px solid #eee; width: 200px; height: 138px; margin: 0px 5px; font-size: 0px; line-height: 138px; text-align: center}
+.pic-show li img{max-height: 100%; max-width: 100%; vertical-align: middle;}
+
+.details-order{}
+.details-order li{float: left; width: 100%}
+.details-order li a{line-height: 30px; font-size: 14px; color: #666;}
+
+.details-evaluate{}
+.details-evaluate li{float: left; width: 100%; margin: 10px 0px;}
+.details-evaluate-con{float: left; padding-left: 20px;}
+
+.demand-info{width: 100%; overflow: hidden; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+.demand-info-left{width: 600px; float: left; overflow: hidden}
+.demand-info-right{width: 220px; float: right; overflow: hidden}
+.detail-tit{ font-size:18px;}
+.demand-text{}
+.demand-text p{ margin:1em 0; color:#666; font-size:14px; line-height:2;}
+.demand-pic{width:878px; height:522px;}
+.demand-pic li{float:left;font-size: 0px; width: 876px; height: 520px; line-height: 520px; text-align: center; border: 1px solid #eee}
+.demand-pic li img{max-height: 100%; max-width: 100%; vertical-align: middle;} /*代表60尺寸,如果需要其他尺寸请自行添加修改*/
+
+/*详情页面滚动定位*/
+.mt-54{ margin-top:54px !important;}
+
+/***********需求详情页滚动定位**************/
+.demand-show{ position:relative}
+.demand-show-left{position:absolute; top:246px; left:10px;}
+.demand-show-right{position:absolute; top:246px; right:10px;}
+
+
+
+/*企业展示*/
+.co-show_list {overflow:hidden;position: relative;z-index: 3; padding-left:3px;  padding:15px 0;}
+.co-show_list .link_prev,.co-show_list .link_next {float:left; width:12px; margin:0 5px; height:140px;overflow:hidden;text-indent:-999em;display:block;cursor:pointer;background:url(../images/arrow_lr.png) 0 center no-repeat;position: relative;z-index: 2;}
+.co-show_list .link_next {background-position:-12px center;}
+.co-show_list .link_prev:hover,.co-show_list .link_next:hover {opacity:0.8;filter:alpha(opacity=80);}
+#co-show {width:830px;height:142px;overflow:hidden;float:left; margin:5px auto;}
+#co-show ul { overflow:hidden;width:2000px; padding:0; margin:0;}
+#co-show li {float:left;width:200px; margin:0; padding:0;margin-right: 9px;}
+#co-show li a{width:200px;display:block; padding:0;margin:0;}
+#co-show img {display:block;overflow:hidden;}
+#co-show a:hover img {opacity:0.8;filter:alpha(opacity=80);}
+.slideContainer{position: relative;z-index:0;}
+#co-show li span{width: 200px; height: 140px; overflow: hidden;line-height: 0;text-align: center;vertical-align: middle;display: table-cell;background: #fff;border: 1px solid #E1DCDC;  }
+#co-show li img{max-width: 200px;max-height: 140px;margin-top: expression( 140-this.height/2); cursor:pointer; margin:0 auto;}
+
+
+#imgbox-loading{position:absolute;top:0;left:0;cursor:pointer;display:none;z-index:99}
+#imgbox-loading div{background:#FFF;width:100%;height:100%}
+#imgbox-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;display:none;z-index:80}
+.imgbox-wrap{position:absolute;top:0;left:0;background:#FFF;display:none;z-index:99}
+.imgbox-img{padding:0;margin:0;border:none;width:100%;height:100%;vertical-align:top;}
+.imgbox-title{padding-top:10px;font-size:11px;text-align:center;font-family:Arial;color:#333;display:none}
+.imgbox-bg-wrap{position:absolute;padding:0;margin:0;display:none}
+.imgbox-bg{position:absolute;width:20px;height:20px}
+
+/*相册展示*/
+.demand-album{width:810px; position:relative;background:#f7f7f7; border:1px solid #eee; margin:0 auto;}
+.demand-album .btn{position:absolute;width:15px;height:70px;top:505px;cursor:pointer;z-index:99;font-size:50px;font-weight:bold;}
+.demand-album .prev{left:0;background:url(../images/prevBtn.png) no-repeat;}
+.demand-album #prevTop,.demand-album #nextTop{top:213px;width:46px;height:48px;}
+.demand-album #prevTop{background:url(../images/prevBtnTop.png) 0 0 no-repeat;}
+.demand-album #nextTop{background:url(../images/nextBtnTop.png) 0 0 no-repeat;}
+.demand-album .next{right:0;background:url(../images/nextBtn.png) no-repeat;}
+.demand-album li{float:left;}
+.demand-album .cf li{position:relative;color:#fff;}
+.demand-album .cf a{display:block;width:100%; position:absolute;color:#fff;}
+.demand-album .cf li span{display:block;width:810px;position:absolute;left:0;bottom:0;padding:10px 20px;line-height:22px;text-align:left;background:rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = "#60000000",endColorstr = "#60000000");}
+.demand-album .picBox{height:500px;position:relative;overflow:hidden;}
+.demand-album .picBox ul{height:500px;position:absolute;}
+.demand-album .picBox li{}
+.demand-album .picBox li div{display:table-cell;vertical-align:middle;text-align:center;width:810px;height:500px;}
+.demand-album .picBox li img {max-width:100%;  max-height:500px;  display:inline !important; vertical-align:middle;  }
+.demand-album .listBox{width:100%;height:70px; position:relative;padding:6px 0 10px;overflow:hidden; width:775px; margin:0 20px;}
+.demand-album .listBox ul{position:absolute;  }
+.demand-album .listBox li{width:129px;height:70px;cursor:pointer;position:relative;}
+.demand-album .listBox li i{display:none;}
+.demand-album .listBox li a{display:block;width:124px;height:70px;}
+.demand-album .listBox li img{width:124px;height:70px;}
+.demand-album .listBox .on img{width:118px;height:64px;border:3px solid #ff6600;}
+.demand-album .listBox .on i{display:block;}

@@ -1,0 +1,6 @@
+.news_detail{}
+.news_detail .article-tit{font-size: 30px; font-weight: 700; ine-height: 48px; color: #333;}
+.news_detail .article-info{color: #777; margin-right: 2px; margin-top:10px;border-bottom: 1px #E7E7E7 solid; padding-bottom:10px; line-height:28px;}
+.news_detail .article-content{font-size: 14px; line-height: 2;  word-wrap: break-word;}
+.news_detail .article-content img{max-width: 100%;display: block;margin: 10px auto;}
+.news_detail .article-content p{ margin:1em 0;}

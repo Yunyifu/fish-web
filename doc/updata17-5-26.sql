@@ -1,0 +1,1 @@
+ALTER TABLE `order` DROP `goods_num`, DROP `time`, DROP `goods_head_imgs`, DROP `goods_desc`, DROP `goods_able_use_start`, DROP `goods_able_use_end`, DROP `deliver_time`;

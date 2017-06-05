@@ -1,0 +1,8 @@
+.maincontent label{display: inline-block;text-align: right;width: 165px;margin-right: 15px;}
+#cashSum,#payName,#payAccount{height: 36px;width: 278px;}
+#code{height: 36px;width: 186px;vertical-align: middle}
+.btn-action-big{margin-left: 174px;}
+.explain{margin-top: 50px;}
+.explain>h1{font-size: 14px;font-weight: 800;}
+.pointCash,.pointName{margin-left:179px;}
+.msgs1{background: #ccc;}

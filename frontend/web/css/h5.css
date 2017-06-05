@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	-overflow-y: scroll;
+	background: #000000;
+	font-size: 30px;
+}
+
+body {
+	-webkit-text-size-adjust: none;
+	color: #000;
+	line-height: 1.666;
+}
+
+body, input, textarea {
+	font-family: arial;
+}
+
+header, footer, section, aside, article, nav, hgroup, figure, figcaption,
+	body, h1, h2, h3, h4, h5, h6, ul, ol, li, form, p, dl, dt, dd,
+	blockquote, legend, table, th, td, fieldset, menu, pre {
+	margin: 0;
+	padding: 5px;
+}
+
+table, th, td, img, fieldset {
+	border: 0;
+}
+
+time, mark, output, meter, address, cite, em, code, var, dfn, ins, i, th,
+	caption {
+	font-style: normal;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, th {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+input, select, button, textarea, table {
+	margin: 0;
+	font-family: inherit;
+	font-size: 100%;
+}
+
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+
+q:before, q:after {
+	content: "";
+}
+
+ul, ol {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th, caption {
+	text-align: left;
+}
+
+header, footer, section, aside, article, nav, hgroup, figure, figcaption
+	{
+	display: block;
+}
+
+a {
+	color: #000000;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+input {
+	-webkit-appearance: none;
+}
+
+.hide {
+	display: none;
+}
+
+.row {
+	overflow: hidden;
+}
+
+.col-20 {
+	width: 20%;
+	float: left;
+}
+
+.col-25 {
+	width: 25%;
+	float: left;
+}
+
+.col-30 {
+	width: 30%;
+	float: left;
+}
+
+.col-35 {
+	width: 35%;
+	float: left;
+}
+
+.col-40 {
+	width: 40%;
+	float: left;
+}
+
+.col-50 {
+	width: 50%;
+	float: left;
+}
+
+.col-60 {
+	width: 60%;
+	float: left;
+}
+
+.col-65 {
+	width: 65%;
+	float: left;
+}
+
+.col-70 {
+	width: 70%;
+	float: left;
+}
+
+.col-75 {
+	width: 75%;
+	float: left;
+}
+
+.col-80 {
+	width: 80%;
+	float: left;
+}
+
+/*step组件*/
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/*全局tip*/
+.g-tipctn {
+	position: fixed;
+	top: 40%;
+	width: 100%;
+	z-index: 100000;
+}
+
+.g-tip {
+	width: 320px;
+	text-align: center;
+	margin: 0 auto;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.g-tip-info {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.g-tip-error {
+	background: rgba(255, 0, 0, 0.5);
+}

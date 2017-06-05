@@ -1,0 +1,238 @@
+/*--------------------------*\
+    * base
+    * Date: 2016-11-01
+    * author: zlp
+    * © 2016 www.comaking.net
+	* 定义：关于我们页面
+\*--------------------------*/
+
+
+/*****关于我们*****/
+.cjgcs-header{z-index: 20; width:100%; padding-bottom:10px; position:fixed}
+.ab-header{height: 88px; box-shadow: 0 5px 5px rgba(0,0,0,.2);border: 1px solid #cecece\9; background:#FFF; width:100%;}
+.ab-header .logo{padding-top:15px; float:left; width: auto;}
+.ab-header .logo a{display:block; float: left; background:url(../images/logo.png) no-repeat 0 0; width:200px; height:56px; text-indent:-9999px; border-right:1px solid #dddddd; padding-right:15px; margin-right:15px;}
+.ab-header .ab-header-ul{width:824px}
+.ab-header .ab-header-ul li{float:left;list-style: none;cursor: pointer;}
+.ab-header .ab-header-ul li a{font-size: 18px; font-weight: 700; color: #999; display: inline-block; line-height: 88px; width: 160px; text-decoration: none; text-align:center}
+.ab-header .ab-header-ul li a:hover,.ab-header .ab-header-ul li a.cur{color:#3488dd;}.ab-header .ab-header-ul span{display: inline-block; float: left; width: 1px; height: 10px; background-color: #cacaca; margin-top: 40px;}
+.ab-header-height{height:122px;}
+
+.intro-banner{background: url(../images/about/banner1.jpg) center no-repeat; height: 440px; background-position: center; margin-top:-10px;}
+
+.w1050{ width:1050px; margin-left:auto; margin-right:auto;}
+.ab-main-tit{ font-size:30px; text-align:center; font-weight:700; color:#555555;}
+.ab-content{}
+.ab-content p{ margin:0.5em 0; line-height:1.8}
+
+.flash{ width:600px; height:360px; margin:0 auto}
+
+.ab-team-bg{ background:#f5f5f5; padding:10px 0 40px; margin-top:60px}
+.ab-team{}
+.ab-team dl{ padding:20px 0;}
+.ab-team dl dt{ width:160px; height:160px; float:left;}
+.ab-team dl dt img{ width:160px; height:160px;}
+.ab-team dl dd { float:right; width:850px; margin-top:5px;}
+.ab-team dl dd h1{ font-size:18px; color:#999999; margin-bottom:20px;}
+.ab-team dl dd span{ color:#333333; font-size:30px; padding-right:30px; color:#333333}
+.ab-team dl dd p{ font-size:16px; line-height:30px;}
+
+.ab-foot-ad{ margin:40px auto;}
+
+/*****发展历程*****/
+.main_history .history_bg{position:relative;overflow:hidden}
+.main_history .history_bg .bg{position:absolute;width:8px;height:100%;background-color:#99c3ee;border-radius:4px;top:0;left:50%;margin-left:-4px}
+.main_history .history_list{margin:20px 0}
+.main_history .history_list li{overflow:hidden;margin-bottom:20px}
+.main_history .history_list li .intro{position:relative;float:left;text-align:right;width:350px;padding:10px 150px 10px 43px}
+.main_history .history_list li.img_b{margin-bottom:70px;margin-top:70px}
+.main_history .history_list li img{margin-left:80px;border:1px solid #ddd;padding:10px;width:300px;height:180px}
+.main_history .history_list li i{display:block;width:135px;height:36px;position:absolute;top:10px;right:0;background:url(../images/about/history-bg.png) no-repeat 1px -17px}
+.main_history .history_list li.right .intro{text-align:left;padding:10px 43px 10px 150px;float:right}
+.main_history .history_list li.right img{margin-left:100px;border:1px solid #ddd;padding:10px;width:300px;height:180px}
+.main_history .history_list li.right i{left:0;background:url(../images/about/history-bg.png) no-repeat -100px -17px}
+.main_history .data{color:#3488dd;font-size:18px}
+.main_history .event{font-size:16px;color:#666}
+.history_page{text-align:center;margin-top:20px}
+.history_page a{display:inline-block;width:118px;height:48px;line-height:48px;text-align:center;border:1px solid #e6e6e6;color:#333;font-size:16px;margin:0 20px}
+.history_page a:hover{border:1px solid #3488dd;color:#3488dd;text-decoration:none}
+
+
+/*****人才招聘*****/
+.join-believe{overflow:hidden;margin:auto;padding-bottom:5pc}
+.join-believe ul li,.join-work ul li{float:left;list-style:none}
+.join-believe ul{background:url(../images/about/join-bg.png) repeat-x 0 59px}
+.join-believe ul li{margin:0 20px;padding-top:85px;width:222px;background:url(../images/about/jion_03.png) top center no-repeat;color:#666;text-align:center;font-size:14px}
+.join-believe ul li p{color:#333;font-size:20px;line-height:40px}
+
+.join-work{overflow:hidden;padding:10px 0 40px;width:100%;background:#f5f5f5}
+.join-work ul{width:110%}
+.join-work ul li{float:left;margin-right:30px;margin-bottom:30px;height:300px;border:2px solid #fff;border-width:2px 0 0;background:#fff;text-align:center;width:330px}
+.join-work ul li a{display:block;padding:30px 20px;}
+.join-work ul li a:hover{text-decoration:none}
+.join-work ul li a h1{margin-bottom:15px;text-align:center;font-size:26px}
+.join-work ul li a p{height:125px;color:#666;text-align:left;font-size:14px;line-height:1.8}
+.join-work ul li a em.link{display:inline-block;margin-top:25px;padding:4px 15px 4px 10px;border:1px solid #cdcdcd;border-radius:75pt;background:url(../images/about/icon-arrow.png) 70px center no-repeat;color:#333;font-size:14px}
+.join-work ul li a:hover em.link{border:none;background:#f60;background:url(../images/about/icon-arrow-hover.png) 70px center no-repeat #f60;color:#fff}
+.join-work ul li.j1{border-color:#f96b2d}
+.join-work ul li.j2{border-color:#45b035}
+.join-work ul li.j3{border-color:#8154f1}
+.join-work ul li.j4{border-color:#c9c}
+.join-work ul li.j5{border-color:#54c3f1}
+.join-work ul li.j6{border-color:#f9c}
+
+.job-tips{text-align:center;padding:100px 30px 50px;background:url(../images/about/job-bg.png) no-repeat center center;width:800px;margin:0 auto}
+.job-tips p{color:#6f6f6f;font-size:14px}
+
+.jobbox{position:relative;overflow:hidden;}
+.jobbox .tabbtn{height:60px;background:#f8f8f8;border:solid 1px #ddd; overflow:hidden; font-size:16px}
+.jobbox .tabbtn ul{ width:110%;}
+.jobbox .tabbtn ul li{float:left;position:relative;margin:0 0 0 -1px;border-right:solid 1px #ddd;}
+.jobbox .tabbtn ul li a,.jobbox .tabbtn li span{display:block;float:left;height:68px;line-height:60px;overflow:hidden;width:175px;text-align:center;cursor:pointer; color:#666; }
+.jobbox .tabbtn ul li.cur{border-left:solid 1px #ddd;}
+.jobbox .tabbtn ul li.cur a,.jobbox .tabbtn ul li.cur span{ height:60px;line-height:60px;background:#3488dd;color:#fff;}
+
+.jobbox .jobcon{ border:1px solid #ddd; padding:0 30px 30px; margin-bottom:15px;}
+.jobbox .jobcon .tit{ font-size:22px; color:#3488dd; margin:30px 0 20px; border-bottom:1px solid #ddd;}
+.jobbox .jobcon .tit-s{ margin:15px 0 10px; font-weight:700 }
+.jobbox .jobcon p{ line-height:1.8;}
+.jobbox .job-hr{ background: url(../images/about/join-hr-bg.png) no-repeat left center; padding-left:80px; height:62px; width:170px; margin: auto;}
+.jobbox .job-hr h1{ font-size:18px; color:#3488dd; padding-top:10px;}
+.jobbox .job-hr p{ font-size:16px}
+
+
+/*****联系我们*****/
+.mp{border:1px solid #ddd;    height:430px;}
+.mp-left{ float:left;  width:748px; height:430px;}
+.mp-right{float:right; width:240px; height:360px; background:url(../images/about/contact.png); color:#fff; font-size:14px; line-height:2; padding:35px 30px}
+.mp-right h3{font-size:18px; color:#Fff; font-family:"微软雅黑"; font-weight:normal}
+.mp-right p{padding-left:20px;}
+.mp-right p a{color:#fff; }
+
+.ab-tel{overflow:hidden;}
+.ab-tel-left{float:left; width:430px; border-right:1px dotted #CCC;}
+.ab-tel-left img{width:152px; height:152px; float:left; padding-right:55px; float:left}
+.ab-tel-left p{width:152px; line-height:30px; font-size:14px; text-align:center; color:#333;padding-right:55px; float:left}
+.ab-tel-right{ width:590px; float:right; padding-top:40px;}
+.ab-tel-right-tl{background:url(../images/about/icon-tel.png) center left no-repeat; padding-left:45px; height:39px; font-size:18px; color:#827e7e; float:left; margin-left:55px; width:195px; line-height:39px;}
+.ab-tel-right p{font-size:30px; padding-left:60px; float:left; font-weight:bold; color:#595656; line-height:50px;}
+.ab-tel-right span{float:left; margin-left:45px; font-size:14px; color:#827e7e; line-height:50px;}
+
+
+/*****工程中心*****/
+.eng-banner{background: url(../images/about/eng-banner-bg.jpg) center no-repeat #3492ec; height: 460px; background-position: center; margin-top:-10px;}
+.eng-banner .w1200{ position:relative}
+.eng-banner .intro{ width:570px; padding:35px 40px; background:#499dee; color:#ffffff; margin-top:35px;}
+.eng-banner .intro h2{ font-size:36px;}
+.eng-banner .intro p{ font-size:14px; line-height:1.8; margin:10px 0;}
+.eng-banner .intro .banner-safe{ border-top:1px solid #6db1f1; padding-top:20px; margin-top:20px; }
+.eng-banner .banner-img{ background:url(../images/about/engneer.png) no-repeat; width:420px; height:436px; display:block; position:absolute; right:0; bottom:-80px;}
+
+.eng-list{}
+.eng-list dl{ background:url(../images/about/bg-line.png) repeat-y; padding-bottom:40px;}
+.eng-list dl dt{ float:left; width:123px; height:142px;}
+.eng-list dl dd{ float:right; width:880px;}
+.eng-list dl dd .name{ margin-top:25px;}
+.eng-list dl dd .name h2{ font-size:28px;display:inline-block; margin-right:20px}
+.eng-list dl dd .name span{ font-size:14px; color: #666666; border:1px solid #888888; padding:1px 8px; display:inline-block; margin:0 3px;}
+.eng-list dl dd h3{ font-weight:700; margin-top:30px;}
+.eng-list dl dd p{ line-height:2;}
+.eng-list dl dd h4{ color:#3186dd; text-decoration:underline; padding-top:10px; display:block; cursor:pointer}
+/* top-toolbar */
+.top-toolbar{background:#f8f8f8; line-height:34px; height:34px; border-bottom:1px solid #cccccc; width:100%; color:#666666; min-width:1200px;}
+.top-toolbar .top_l{ float:left; display:inline-block}
+.top-toolbar .top_r{float: right;display:inline-block;text-align:right;color:#aaaaaa;}
+.top-toolbar .top_r a{ padding:0 10px; color:#666666;}
+.top-toolbar .top_r .tel{ color:#666666; padding-left:25px; background:url(../images/icon-tel.png) no-repeat left center; margin-right:3px;}
+.top-toolbar .top_r .tel .red{ color:#e92231}
+.top-toolbar .top_r .number{ width:15px; height:15px; line-height:15px; background:url(../images/top-tips.png) 0 0; color:#ffffff; text-align:center; display: inline-block; margin-left:5px; font-size:12px}
+
+/* header */
+.header{ height:96px; background:#FFF;min-width:1200px;}
+.header .logo{ padding-top:20px; float:left; width:450px;}
+.header .logo a{display:block; float: left; background:url(../images/logo.png) no-repeat 0 0; width:200px; height:56px; text-indent:-9999px; border-right:1px solid #dddddd; padding-right:15px; margin-right:15px;}
+.header .txtlogo{ background:url(../images/logo-sologo.png) no-repeat 0 0; width:192px;height:56px;}
+.header .top_send{ margin-top:29px; margin-left:77px;}
+/*footer*/
+.footer{ background:#333333; padding-top:55px;min-width:1200px;}
+.footer{ text-align:center; padding:20px 0;color:#666666; line-height:24px;}
+.footer a{color:#666666;}
+.footer a:hover{color:#3186dd;}
+.foothelp {width: 500px;background: url(../images/footbgright.png) no-repeat right 10px;padding-right: 10px;}
+.foothelp dl{width:80px;float:left;padding-right:20px;font-size:12px}
+.foothelp dt{font-size:14px;line-height:40px}
+.foothelp dd{color:#fff;line-height:24px}
+.foothelp dt a{color:#fff}
+.foothelp dd a{color:#999}
+.foothelp dt a:hover{text-decoration:underline}
+.foothelp dd a:hover{color:#fff}
+.appbox{width:395px;height:120px;padding:15px 0 0 0;background:url(../images/footbgright.png) no-repeat right 10px}
+.appbox div{float:left;width:100px;margin-left:65px;color:#999}
+.appbox div p a{color:#999}
+.appbox div i{display:inline-block;width:100px;height:100px}
+.appbox div i.iapp{background:url(../images/code-wechat-100.jpg);background-size:100px auto}
+.appbox div i.iwap{background:url(../images/code-app-100.jpg);background-size:100%}
+.footservice .foottit,.footservice .foottit a{line-height:30px;padding-top:5px;font-size:14px;color:#fff}
+.footservice .foottel{font-size:22px;color:#fff}
+.footservice .foottime{font-size:12px;color:#999}
+.footservice .footicons{height:22px;padding-top:10px}
+.footservice .footicons>a{display:block;width:22px;height:22px;margin-right:7px;background:url(../images/indexIcon-22.png);float:left;-o-transition-property:background;-o-transition-duration:0.5s;-moz-transition-property:background;-moz-transition-duration:0.5s;transition-property:background;transition-duration:0.5s}
+.footservice .footicons a.sina{background-position:0 0}
+.footservice .footicons a.sina:hover{background-position:0 -22px;}
+.footservice .footicons a.tengxun{background-position:-22px 0px}
+.footservice .footicons a.tengxun:hover{background-position:-22px -22px;}
+.footservice .footicons a.email{background-position:-44px 0}
+.footservice .footicons a.email:hover{background-position:-44px -22px}
+
+.footbottom{ height:30px; line-height:28px; padding:15px 0; border-top:1px solid #444444; text-align: center;  color:#999999; margin-top:45px;}
+.footbottom a{color:#999999;}
+
+#lowie{
+    display: none;
+    position: absolute;
+    z-index: 1000001;
+    margin-top:-156px;
+    top:50%;
+    width: 647px;
+    left: 50%;
+    margin-left: -323px;
+
+}
+#suggest-form{
+    display: none;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000001;
+    top: 160px;
+    left: 50%;
+    margin-left: -300px;
+    background-color: #FFF;
+    border-radius: 6px;
+}
+#suggest-form textarea{
+    width: 540px;
+    padding: 10px;
+}
+.suggest-btn-area{
+    float: right;
+    padding-top: 10px;
+}
+
+.prompt-message{
+    display: none;
+    position: fixed;
+    bottom: 300px;
+    left: 0;
+    z-index: 1000003;
+    width: 100%;
+}
+.prompt-message p{
+    color: #FFFFFF;
+    text-align: center;
+}
+/**新加**/
+.gotop{display:none;}
+.gotop li{position: relative}
+.gotop li div{position: absolute;top:0px;right: 47px;display: none;background: #fff;height: 110px;}
+.triangle{position: absolute; width: 0px;  height: 0px;  line-height: 0px;border: 8px solid ; border-color:transparent transparent transparent #fff;  top: 15px;  right: -15px;}
+html { color: #333; background-color: #f5f5f5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}

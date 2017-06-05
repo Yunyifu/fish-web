@@ -1,0 +1,9 @@
+.identity{width:640px; margin:70px auto;}
+.identity p{ margin:0 40px  ;}
+.identity ul{ }
+.identity ul li{ width:240px; float:left;border-radius: 5px; margin:0 40px;}
+.identity ul li.bg-1{ background:url(../images/choice1.png) no-repeat  center 24px #e9f6ff;}
+.identity ul li.bg-2{ background:url(../images/choice2.png) no-repeat  center 24px #e9f6ff;}
+.identity ul li p{ text-align:center; font-size:18px; margin-top:175px;}
+.identity ul li .btn{background:#3186dd; padding:25px 0; margin-top:20px;border-radius:0px 0px 5px 5px;}
+.identity ul li .btn a{background:#fff; color:#3186dd; text-align:center; width:155px; height:40px; line-height:40px; font-size:16px;border-radius: 3px; display:block; margin:0 auto;}

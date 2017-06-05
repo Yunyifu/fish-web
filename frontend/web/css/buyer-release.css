@@ -1,0 +1,73 @@
+/*--------------------------*\
+    * buy-release
+    * Date: 2017-03-28
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：后台发布样式
+\*--------------------------*/
+
+
+/* 蓝色流程图 */
+.process-blue{ width:100%; overflow:hidden;height:40px; }
+.process-blue ul{ margin:0 auto; width:101%; }
+.process-blue ul li{ width:33%; text-align:center; float:left; background:url(../images/process-bg-blue.png) no-repeat 0 -80px #eeeeee; line-height:40px; color:; font-size:16px; position:relative;}
+.process-blue ul li.cur{ background:#3488dd; height:40px; color:#FFF;}
+i.icon-blue{background:url(../images/process-bg-blue.png) no-repeat; height:40px; width:25px; position: absolute; right:-25px; display:inline-block; z-index:99;}
+i.icon-blue1{ background-position:0 0;}
+i.icon-blue2{ background-position:0 -40px;}
+i.icon-blue3{ background-position:0 -80px;}
+i.icon-blue4{ background-position:0 -120px;}
+.process-blue ul li span{ font-size:20px; font-weight:700;}
+em.icon-blue{background:url(../images/process-bg-blue.png) no-repeat 0 80px; height:40px; line-height:40px; width:25px; position: absolute; left:0px; display:inline-block; z-index:99;}
+.process-blue ul li.cur i.icon-blue3{background-position:0 0;}
+.process-blue ul li.cur em.icon-blue1{background-position:0 -120px;}
+.process-blue ul li.cur em.icon-blue3{background-position:0 -120px;}
+
+
+/* 蓝色流程图2 */
+.process-blue-2{ width:100%; overflow:hidden;height:40px; }
+.process-blue-2 ul{ margin:0 auto; }
+.process-blue-2 ul li{ width:33%; text-align:center; float:left; background: #eeeeee; line-height:40px; color:; font-size:16px; position:relative;}
+.process-blue-2 ul li.cur{ background:#3488dd; height:40px; color:#FFF;}
+i.icon-blue{background:url(../images/process-bg-blue.png) no-repeat; height:40px; width:25px; position: absolute; right:-25px; display:inline-block; z-index:99;}
+i.icon-blue1{ background-position:0 0;}
+i.icon-blue2{ background-position:0 -40px;}
+i.icon-blue3{ background-position:0 -80px;}
+i.icon-blue4{ background-position:0 -120px;}
+.process-blue-2 ul li span{ font-size:20px; font-weight:700;}
+em.icon-blue{background:url(../images/process-bg-blue.png) no-repeat 0 80px; height:40px; line-height:40px; width:25px; position: absolute; left:0px; display:inline-block; z-index:99;}
+.process-blue-2 ul li.cur i.icon-blue3{background-position:0 0;}
+.process-blue-2 ul li.cur em.icon-blue1{background-position:0 -40px;}
+.process-blue-2 ul li.cur em.icon-blue3{background-position:0 -40px;}
+
+ /*分类选择*/
+.category{ margin-bottom:40px;}
+.category p{border-bottom:1px solid #ddd; font-size:16px; color:#333; }
+.category p span{border-left:3px solid #3186dd; padding-left:10px;}
+.category ul{padding-top:20px; overflow:hidden}
+.category ul li{float:left; list-style:none}
+.category li {width:150px; padding-left:20px;}
+.category li a{font-size:14px; color:#333;}
+.category li a:hover{color:#3186dd;}
+
+/*基本信息*/
+.relese-form{}
+.relese-form th,.relese-form td{}
+.relese-form th{ width:190px;}
+.relese-form td{}
+.relese-form th span{ color:#ff6600; margin:0 5px;}
+.relese-form td span.tip{ color:#f00; line-height:2;}
+.relese-form td .file-btn{ position:relative;width:112px; height:42px; display:inline-block; }
+.relese-form td .file-btn .file{}
+.relese-form td .file-btn input{ width:112px; height:42px; position:absolute; z-index:2;filter:alpha(opacity=0);opacity:0; cursor:pointer}
+.relese-form td p{ line-height:40px;}
+.relese-form .border{ border-top:1px solid #ddd;}
+.btn_submit{}
+.btn_submit .pre_btn{height: 40px;line-height: 40px;padding: 0 50px;font-size: 18px;display: inline-block;color: #999;text-align: center;border-radius: 3px;background-color: #f2f2f2;}
+.btn_submit .next-btn{height: 40px;line-height: 40px;padding: 0 50px;font-size: 18px;display: inline-block;color: #fff;text-align: center;border-radius: 3px;background-color: #3488dd; border:0;}
+ 
+.mold-area{ background:#ecf4fa;  padding:20px 0 20px 90px;}
+.mold-area select{ padding-left:5px;}
+
+ 
+ 

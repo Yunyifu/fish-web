@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+/*图片上传相关*/
+.glyphicon-plus:before{
+	content: "";
+	opacity: 0;
+	display: inline-block;
+	width: 110px;
+	height: 110px;
+}
+#head_imgs{
+	float:left;
+}
+.need-pic{
+
+}
+.uploader {
+	color: #ccc;
+	cursor: pointer;
+	background: url("../images/upload_03.png");
+	/*	display: inline-block;
+        vertical-align: middle;
+    */
+	width:110px;
+	height: 110px;
+	display: inline-block;
+	position: relative;
+}
+
+.uploader input[type="file"] {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.img-preview img {
+	max-width: 200px;
+	max-height: 150px;
+}
+
+.img-preview {
+	display: inline-block;
+	margin: 0 15px 15px 0;
+	position: relative;
+	display: inline-block;
+}
+
+.img-preview .close {
+	float: none;
+	position: absolute;
+	right: 0px;
+	top: -7px;
+	color: #ccc;
+}
+
+.dz-preview {
+	display: none;
+}

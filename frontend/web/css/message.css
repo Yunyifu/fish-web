@@ -1,0 +1,31 @@
+/*--------------------------*\
+    * message
+    * Date: 2017-03-30
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：
+\*--------------------------*/
+
+/*****消息页面*****/
+.msg{}   
+.msg ul{}     
+.msg ul li{ padding:12px 15px; line-height:1.8; background:url(../images/icon-msg-tip.png) no-repeat 98% center;} 
+.msg ul li i{ width:30px; padding-top:12px;}
+.msg ul li .msg_info{ width: 770px;}  
+.msg ul li:hover{background:url(../images/icon-msg-tip.png) no-repeat 98% center #f5f5f5;}
+.msg ul li h1{ font-size:14px; color:#999; }  
+.msg ul li h1 span{ font-size:16px;font-weight:700; margin-right:10px; font-weight:normal;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:#333;}
+.msg ul li p { color:#666;padding-right:30px;}   
+.msg ul li p a{ color:#3186dd;display: inline-block;}
+.msg ul li.cur,.msg ul li.cur p,.msg ul li.cur span,.msg ul li.cur a{ color:#999!important;background:none;}
+.msg ul li:hover.cur{background:#f5f5f5;}
+.msg .msg_bar{ background:#f5f5f5; padding:10px 15px;}
+
+.msg-detail{}
+.msg-detail h1{line-height: 30px; text-align:center;font-size: 24px;}
+.msg-detail .msg-time{border-top: solid 1px #e8e8e8;
+border-bottom: solid 1px #e8e8e8;font-size: 12px; padding: 5px;color: #939393; text-align:center}
+.msg-detail .content-box{ line-height:1.8}
+.msg-detail .content-box p{ margin:10px 0;}
+ul.tab li span{background:transparent !important;}
+.sub_left{max-height: 550px};

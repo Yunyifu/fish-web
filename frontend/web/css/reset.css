@@ -1,0 +1,337 @@
+/*--------------------------*\
+    * reset
+    * Date: 2016-09-26
+    * author: zlp
+    * © 2016 www.comaking.net
+	* 定义：重置内容,字体（大小，颜色，行高，对齐方式，padding和margin）背景,边框,常用宽度
+\*--------------------------*/
+
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html { color: #333; background-color: #f5f5f5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { margin: 0; padding: 0; }
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+body, button, input, select, textarea { font: 14px/1.5 "Microsoft Yahei",tahoma, arial , "Hiragino Sans GB", \5b8b\4f53; }
+input, select, textarea { font-size: 100%; }
+textarea { resize: none; }
+input,select{vertical-align:middle;}
+
+/* 去掉各Table  cell 的边距并让其边重合 */
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* IE bug fixed: th 不继承 text-align*/
+th { text-align: inherit; }
+
+/* 去除默认边框 */
+fieldset, img { border: 0; }
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe { display: block; }
+
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym { border: 0; font-variant: normal; }
+
+/* 一致的 del 样式 */
+del { text-decoration: line-through; }
+address, caption, cite, code, dfn, em, i, th, var { font-style: normal; font-weight: 500; }
+
+/* 去掉列表前的标识, li 会继承 */
+ol, ul { list-style: none; }
+
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 500; }
+q:before, q:after { content: ''; }
+
+/* 统一上标和下标 */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+/* 正常链接 未访问 */
+a { color: #333; cursor: pointer; }
+
+/* 鼠标悬停 */
+a:hover { color: #3186dd; text-decoration: underline; }
+:focus { outline: none; }
+
+/* 默认不显示下划线，保持页面简洁 */
+ins, a { text-decoration: none; }
+
+/* 代码字体 */
+code, kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+.font-simsun { font-family: SimSun; }
+
+/* 清理浮动 */
+.clearfix{*zoom:1;}
+.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
+
+.clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clear { *zoom: 1; /* for IE6 IE7 */ }
+.ow-clear{ overflow:hidden; zoom:1;}
+
+
+/* 隐藏, 通常用来与 JS 配合 */
+.fn-hide { display: none;}
+.fn-block { display: block;}
+
+/* 设置内联, 减少浮动带来的bug */
+.fl, .fr { _display: inline; /* for IE6 */ }
+.fl{ float: left; }
+.fr{ float: right; }
+
+/* 单行文字溢出时出现省略号，需设定宽度 */
+.text-overflow { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* chrome 下字体过小的问题 */
+.webkit-adjust { -webkit-text-size-adjust: none; }
+
+/* 文字设置 */
+.text-indent { text-indent: 2em; }
+.ft-14b { font-size: 14px; ft-weight: bold; vertical-align: middle; }
+.ft-b {  font-weight: bold; }
+.ft-n {  font-weight: normal; }
+.ft-i {  font-style: italic; }
+.ft-12 {  font-size: 12px!important; }
+.ft-14 {  font-size: 14px!important; }
+.ft-16 {  font-size: 16px!important; }
+.ft-18 {  font-size: 18px!important; }
+.ft-20 {  font-size: 20px!important; }
+.ft-22 {  font-size: 22px!important; }
+.ft-24 { font-size: 24px!important; }
+.ft-26 { font-size: 26px!important; }
+.ft-28 { font-size: 28px!important; }
+
+/* 对齐方式 */
+.tal { text-align: left !important; }
+.tac { text-align: center !important; }
+.tar { text-align: right !important; }
+.vat { vertical-align: top; }
+.vam { vertical-align: middle; }
+.vab { vertical-align: bottom; }
+.vaba { vertical-align: baseline; }
+.v-hide { visibility: hidden; }
+
+/* 定位 */
+.fn-pr { position: relative; }
+.fn-pa { position: absolute; }
+
+/* 内填充 */
+.pt-5 { padding-top: 5px !important; }
+.pr-5 { padding-right: 5px !important; }
+.pb-5 { padding-bottom: 5px !important; }
+.pl-5 { padding-left: 5px !important; }
+.p-5 { padding: 5px !important; }
+.pt-10 { padding-top: 10px !important; }
+.pr-10 { padding-right: 10px !important; }
+.pb-10 { padding-bottom: 10px !important; }
+.pl-10 { padding-left: 10px !important; }
+.p-10 { padding: 10px !important; }
+.p0-10 { padding: 0 10px !important; }
+.pt-15 { padding-top: 15px !important; }
+.pr-15 { padding-right: 15px !important; }
+.pb-15 { padding-bottom: 15px !important; }
+.pl-15 { padding-left: 15px !important; }
+.p-15 { padding: 15px !important; }
+.p0-15 { padding:0 15px !important; }
+.pt-20 { padding-top: 20px !important; }
+.pr-20 { padding-right: 20px !important; }
+.pb-20 { padding-bottom: 20px !important; }
+.pl-20 { padding-left: 20px !important; }
+.p-20 { padding: 20px !important; }
+.p0-20 { padding: 0 20px !important; }
+.pt-25 { padding-top: 25px !important; }
+.pr-25 { padding-right: 25px !important; }
+.pb-25 { padding-bottom: 25px !important; }
+.pl-25 { padding-left: 25px !important; }
+.p-25 { padding: 25px !important; }
+.pt-30 { padding-top: 30px !important; }
+.pr-30 { padding-right: 30px !important; }
+.pb-30 { padding-bottom: 30px !important; }
+.pl-30 { padding-left: 30px !important; }
+.p-30 { padding: 30px !important; }
+.p0-30 { padding:0 30px !important; }
+.pb-50 { padding-bottom: 50px !important; }
+
+/* 外边距 */
+.mt-5 { margin-top: 5px !important; }
+.mr-5 { margin-right: 5px !important; }
+.mb-5 { margin-bottom: 5px !important; }
+.ml-5 { margin-left: 5px !important; }
+.m-5 { margin: 5px !important; }
+.mt-10 { margin-top: 10px !important; }
+.mr-10 { margin-right: 10px !important; }
+.mb-10 { margin-bottom: 10px !important; }
+.ml-10 { margin-left: 10px !important; }
+.m-10 { margin: 10px !important; }
+.mt-15 { margin-top: 15px !important; }
+.mr-15 { margin-right: 15px !important; }
+.mb-15 { margin-bottom: 15px !important; }
+.ml-15 { margin-left: 15px !important; }
+.m-15 { margin: 15px !important; }
+.mt-20 { margin-top: 20px !important; }
+.mr-20 { margin-right: 20px !important; }
+.mb-20 { margin-bottom: 20px !important; }
+.ml-20 { margin-left: 20px !important; }
+.m-20 { margin: 20px !important; }
+.mt-25 { margin-top: 25px !important; }
+.mr-25 { margin-right: 25px !important; }
+.mb-25 { margin-bottom: 25px !important; }
+.ml-25 { margin-left: 25px !important; }
+.m-25 { margin: 25px !important; }
+.mt-30 { margin-top: 30px !important; }
+.mr-30 { margin-right: 30px !important; }
+.mb-30 { margin-bottom: 30px !important; }
+.ml-30 { margin-left: 30px !important; }
+.m-30 { margin: 30px !important; }
+
+.ml-35 { margin-left: 35px !important; }
+.ml-50 { margin-left: 50px !important; }
+.mr-150 { margin-right: 150px !important; }
+.mr-160 { margin-right: 160px !important; }
+.m-0{margin:auto; }
+
+/* 字体颜色 */
+.text-white { color: #fff!important; }
+.text-gray-9 { color: #999!important; }
+.text-gray-6 { color: #666!important; }
+.text-gray-5 { color: #555!important; }
+.text-gray-c1 { color: #c1bfbf!important; }
+.text-gray-a { color: #aaaaaa!important; }
+.text-orange { color: #ff6600!important; }
+.text-orange-1 { color: #f0430e!important; }
+.text-orange-2 { color: #ffa113!important; }
+.text-orange-3 { color: #ff8a00!important; }
+.text-orange-4 { color: #ff944c!important; }
+.text-orange-5 { color: #fe6c0a!important; }
+.text-green { color: #029a18!important; }
+.text-green-2 { color: #44b549!important; }
+.text-blue { color: #3186dd!important; }
+.text-blue-light { color: #009ee6!important; }
+.text-blue-dark { color: #3d74ac!important; }
+.text-black { color: #000!important; }
+.text-black-3 { color: #333!important; }
+.text-red{ color:#F00!important; }
+
+
+/* 背景颜色 */
+.bg-white { background-color: #fff; }
+.bg-gray { background-color: #f7f7f7; }
+.bg-gray-d { background-color: #dddddd; }
+.bg-gray-8 { background-color: #888888; }
+.bg-gray-6 { background-color: #666666; }
+.bg-gray-a { background-color: #aaaaaa; }
+.bg-yellow { background-color: #ffffcc; }
+.bg-green { background-color: #44b549; }
+.bg-blue { background-color: #3488dd; }
+.bg-blue-2 { background-color: #e7f2fc; }
+.bg-blue-3 { background-color: #1ca5ec; }
+.bg-org { background-color: #ff6600; }
+.bg-org-2 { background-color: #ff944c; }
+.bg-red { background-color: #fc3d24; }
+
+
+/* 字的行高 */
+.le-ht20 { line-height: 20px; }
+.le-ht22 { line-height: 22px; }
+.le-ht24 { line-height: 24px; }
+.le-ht26 { line-height: 26px; }
+.le-ht30 { line-height: 30px; }
+.le-ht35 { line-height: 35px; }
+.le-ht40 { line-height: 40px; }
+
+/* 组件 全局宽度 */
+.w15 { width: 15px !important; }
+.w20 { width: 20px !important; }
+.w30 { width: 30px !important; }
+.w35 { width: 35px !important; }
+.w40 { width: 40px !important; }
+.w50 { width: 50px !important; }
+.w60 { width: 60px !important; }
+.w70 { width: 70px !important; }
+.w80 { width: 80px !important; }
+.w90 { width: 90px !important; }
+.w100 { width: 100px !important; }
+.w105 { width: 105px !important; }
+.w110 { width: 110px !important; }
+.w115 { width: 115px !important; }
+.w120 { width: 120px !important; }
+.w125 { width: 125px !important; }
+.w130 { width: 130px !important; }
+.w140 { width: 140px !important; }
+.w150 { width: 150px !important; }
+.w160 { width: 160px !important; }
+.w170 { width: 170px !important; }
+.w180 { width: 180px !important; }
+.w190 { width: 190px !important; }
+.w200 { width: 200px !important; }
+.w220 { width: 220px !important; }
+.w230 { width: 230px !important; }
+.w250 { width: 250px !important; }
+.w260 { width: 260px !important; }
+.w270 { width: 270px !important; }
+.w290 { width: 290px !important; }
+.w300 { width: 300px !important; }
+.w350 { width: 350px !important; }
+.w450 { width: 450px !important; }
+.w600 { width: 600px !important; }
+.w650 { width: 650px !important; }
+.w700 { width: 700px !important; }
+.w920 { width: 920px !important; }
+.w918 { width: 918px !important; }
+.w878 { width: 878px !important; }
+
+
+
+
+.wb10 { width: 10%; }
+.wb15 { width: 15%; }
+.wb20 { width: 20%; }
+.wb30 { width: 30%; }
+.wb40 { width: 40%; }
+.wb50 { width: 50%; }
+.wb60 { width: 60%; }
+.wb70 { width: 70%; }
+.wb80 { width: 80%; }
+.wb90 { width: 90%; }
+.wb98 { width: 98%; }
+.wb100 { width: 100%; }
+.wb110 { width: 110%; }
+
+/* 手型*/
+.label-pointer, .label-pointer input { cursor: pointer; }
+.label-pointer input { vertical-align: middle; margin-right: 3px; }
+
+/* 边框*/
+.border-t-gary { border-top: 1px solid #ddd; }
+.border-l-gary { border-left: 1px solid #ddd; }
+.border-r-gary { border-right: 1px solid #ddd; }
+.border-b-gary { border-bottom: 1px solid #ddd; }
+.border-b-blue { border-bottom: 2px solid #3186dd; }
+.border-gary { border: 1px solid #ddd; }
+.border-t-eee { border-top: 1px solid #eee; }
+.border-l-eee { border-left: 1px solid #eee; }
+.border-r-eee { border-right: 1px solid #eee; }
+.border-b-eee { border-bottom: 1px solid #eee; }
+.border-b-dotted-eee { border-bottom: 1px dotted #eee; }
+.border-eee { border: 1px solid #eee; }
+.border-gary-a { border: 1px solid #aaa; }
+.border-blue { border: 1px solid #3186dd; }
+.border-org { border: 1px solid #f2a81a; }
+.border-org-2 { border: 1px solid #ff6600; }
+.border-org-3 { border: 1px solid #ff944c; }
+.border-green { border: 1px solid #44b549; }
+.br-l0 { border-left: 0 !important; }
+.br-r0 { border-right: 0 !important; }
+.br-t0 { border-top: 0 !important; }
+.br-b0 { border-bottom: 0 !important; }
+.br-3{ border-radius: 3px; }
+.border-gary-e { border: 1px solid #eee; }

@@ -1,0 +1,64 @@
+/*--------------------------*\
+    * wallet
+    * Date: 2017-04-08
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：设计师和工厂列表页面
+\*--------------------------*/
+/*list*/
+/*******分类筛选******/
+.list-nav{width:878px; padding:0px 20px; border:1px solid #eee; overflow:hidden}
+.list-nav-tl{ width:80px; float:left; padding-left:10px; line-height:40px; font:14px #666; text-align: left;}
+.list-menu{width:770px; float:right;}
+.list-menu li{float:left}
+.list-menu li a{line-height:24px; height:24px; font:12px #808080; padding:0px 10px; display:block; margin:8px 15px; float:left}
+.list-menu li a:hover ,.list-menu li a.cur{ background-color:#3186dd; color:#fff}
+
+/****列表排序****/
+.mainsrp{width:918px; height:38px; background-color:#f8f8f8;}
+.mainsrp-left{width:500px; float:left}
+.mainsrp-left li{float:left;}
+.mainsrp-left li a{width:150px; float:left; display:block; height:38px; font:14px #333; text-align:center; line-height:38px;}
+.mainsrp-left li a.cur ,.mainsrp-left li a:hover{background-color:#fff; color:#3186dd;}
+.mainsrp-search{width:205px; margin:6px 20px; float:right}
+.mainsrp-search input{height:24px; width:160px; border:1px solid #eee; float:left}
+.mainsrp-search a{width:42px; height:26px; line-height:26px; display:block; float:left; color:#fff; background-color:#6f7071; text-align:center}
+
+
+/******设计师列表*****/
+.service-show{width:918px; border:1px solid #eee; border-bottom:none; overflow:hidden;}
+.service-show li{padding:20px;  border-bottom:1px solid #eee}
+.service-show li.cur{filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:url(desaturate.svg#grayscale);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter:grayscale(1);position:relative;}
+.service-show li.cur .icon-circle{background-position:-98px -239px;}
+
+.service-show-main{width:550px; float:left;}
+.service-show-main-left{width:122px; float:left; padding-right:10px;}
+.service-show-main-right{ width:378px; padding:0px 20px; float:left}
+.service-show-main-right p.name{ margin-top:5px;}
+.service-show-main-right p.name a{ display:block; max-width:70%; font-size:16px; font-weight:700;}
+.service-show-main-right p.name span{ margin-left:10px;}
+.service-show-main-right p.text{max-width:100%; margin-top:10px; color:#666;}
+
+.service-show-score{width:150px; float:left; border-left:1px solid #eee; height:98px; padding-top:35px;text-align:center}
+.service-show-contact{width:143px; padding:28px 0px 28px 30px; float:left; border-left:1px solid #eee; height:77px;}
+
+
+/**********业务大厅列表************/
+.demand-con{width: 740px; float: right}
+.demand-con h2 a{ display: block; max-width:70%; font-size:16px;}
+.demand-con p.text{ line-height:24px; padding-top:10px; height:48px; overflow:hidden; }
+ul.location li:nth-child(1){margin-left:14px}
+ul.location li{margin-top:7px}
+
+
+/****************咨询中心******************/
+.news-menu{width: 100%; border-bottom: 1px solid #eee; overflow: hidden; padding-bottom: 20px;}
+.news-menu li a{float: left; margin-right: 10px; height: 33px; line-height: 33px; display: block; background-color: #eee; font-size: 14px; text-align: center; color: #666; width: 100px;}
+.news-menu li a:hover ,.news-menu li a.cur{background-color: #3186dd; color: #fff;}
+.news-con{ overflow: hidden; clear: both}
+.news-con li{width: 880px; overflow: hidden; border-bottom: 1px dotted #eee; padding: 20px; float: left}
+.news-con-pic{font-size: 0px; width: 200px; height: 140px; line-height: 140px; text-align: center; border: 1px solid #eee; float: left}
+.news-con-pic img{ width: 100%; height: 100%; vertical-align: middle}
+.news-con-right{width: 650px; float: right; overflow: hidden}
+.news-con-right p.des{height: 80px;}
+.s-banner{background:url(../../images/s-banner1.jpg) no-repeat center center;}

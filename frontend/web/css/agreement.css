@@ -1,0 +1,38 @@
+/*--------------------------*\
+    * agreement
+    * Date: 2017-04-08
+    * author: comaking-zlp
+    * © 2017 www.comaking.net
+	* 定义：协议样式
+\*--------------------------*/
+
+html,body{ background:#fff; line-height:1.8;}
+.mt-50{ margin-top:50px;}.mb-50{ margin-bottom:50px;}
+.contract{  padding:10px; font-size:12px}
+.contract .top-page{ margin-bottom:10px; height:24px; border-bottom:1px solid #ddd; overflow:hidden; color:#666;}
+.contract .top-page .fl{ line-height:20px;}
+.contract .contract-para{ }
+.contract .contract-para .table{ border:1px solid #999;}
+.contract .contract-para .table th,.table td{ border:1px solid #999;; padding:0.5em 10px;}
+.contract .contract-para .table-2 th,.contract .contract-para .table-2 td{ padding:0.3em 0px;}
+.contract .contract-para .table td { }
+.contract .contract-para .table th{ background:#f7f7f7; text-align:right;}
+.contract .contract-para .title{font-size:22px; font-weight:700; line-height:2;}
+.contract .contract-para label{ display:inline-block; text-align:left}
+.contract .contract-para .select-30 {height: 26px; line-height: 26px; border: 1px solid #ddd;}
+.contract .contract-para p{ margin:0.6em 0;}
+.contract .contract-para .txt-line{ border-bottom:1px solid #333; padding:0 5px; line-height:2;}
+.contract .contract-para h2{ font-weight:700; font-size:14px; line-height:1.8; margin:1.5em 0 0.7em;}
+.contract .contract-para h3{ font-weight:normal; margin:1em 0 0.5em;}
+.co_ipt{ border:0;border-bottom:1px solid #333; height:23px; line-height:23px; background:none;   padding:0 10px; display:inline-block}
+.co_ipt-textarea{ border:1px solid #999; }
+.co_ipt:focus,.co_ipt:hover{  border-bottom:1px solid #f60;}
+.co_ipt-textarea:focus,.co_ipt-textarea:hover{border:1px solid #f60}
+.co_ipt2{height:22px; line-height:22px; border:1px solid #fff; width:100%; }
+.co_ipt2:focus { border:1px solid #ccc;}
+.checkbox-list{}
+.checkbox-list li{ width:19%; display:inline-block}
+.contract .contract-para p.bigp{ margin:1em 0; line-height:2;}
+
+.pop{display: none; position: fixed; background: #fff;width: 381px;min-height: 220px;border-radius: 5px;z-index: 999999;box-shadow:0 0 2px #ccc}
+

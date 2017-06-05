@@ -1,0 +1,34 @@
+.page1{margin-top: 50px}
+.maincontent label{display: inline-block;text-align: right;width: 235px;margin-right: 10px;}
+.page2{display: none;}
+#phoneNum,#NewPhoneNum{height: 36px;width: 273px;}
+#code,#code2{height: 36px;width: 179px;vertical-align: middle}
+.phoneTitle div{width: 257px;height:40px;line-height:40px;background: #ccc;text-align: center;display: inline-block}
+.get-code{margin-left: 4px;height: 36px;width: 181px;line-height: 38px;border: 1px solid #cdcbcb;text-indent: 10px;}
+.btn-action-big{margin-top: 55px;}
+.active{background: #3399cc!important;color: #fff;}
+.active .toLeft{border-color:transparent transparent transparent #3399cc;}
+.success{text-align:center;font-size: 18px;font-weight: 700;background: url("../../images/xiong-3.png") no-repeat; width: 344px;height: 330px;margin: 90px 0 150px 225px;}
+.place{position: relative;top: 44px;left: 75px;}
+.code,.code2{width: 70px;}
+.ipt{width:275px}
+.msgs1{pointer-events: none;background: #ccc;}
+/****导航三角形的样式****/
+.triangle-border{
+    position:relative;
+}
+.triangle-border-right{
+    display:block;
+    width:0;
+    height:0;
+    border-width:20px 0 20px 20px;
+    border-style:solid;
+    border-color:transparent transparent transparent #fff;/*透明 透明 透明 黄*/
+    position:absolute;
+    top:0px;
+}
+.toLeft{
+    border-color:transparent transparent transparent #ccc;
+    right: -19px;
+    z-index: 10;
+}

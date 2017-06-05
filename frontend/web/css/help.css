@@ -1,0 +1,105 @@
+/*--------------------------*\
+    * base
+    * Date: 2016-10-28
+    * author: zlp
+    * © 2016 www.comaking.net
+	* 定义：帮助中心页面
+\*--------------------------*/
+
+
+/*****帮助中心*****/
+.help_left{float:left;width:240px;}
+.help_right{float:right;width:940px;border:1px solid #ddd;background-color:#fff; min-height:540px;}
+.help_nav{border:1px solid #ddd;width:240px;background-color:#fff;}
+.help_nav .tit{height:60px;background-color:#3186dd;color:#fff;text-align:center;font-size:18px;line-height:60px;}
+.help_nav dl{padding:0px 20px;font-size:14px;}
+.help_nav dd,.help_nav dt{height:48px;border-top:1px solid #e6e6e6;line-height:48px;}
+.help_nav dt{background:url(../images/icon_arrow_bottom.png) no-repeat 173px 24px;color:#333;font-size:16px;cursor:pointer;}
+.help_nav .cur dt{background:url(../images/icon_arrow_top.png) no-repeat 173px 24px;}
+.help_nav dd{display:none;}
+.help_nav .cur dd{display:block;}
+.help_nav dd a{display:block;padding-left:10px;height:48px;color:#666;line-height:48px;}
+.help_nav .cur dd a:hover,.help_nav .cur dd.on a,.choose-cur{position:relative;top:-1px;left:-40px;padding-left:46px;width:190px;border-top:1px solid #fff;border-bottom:1px solid #fff;border-left:4px solid #3186dd;background-color:#f8f8f8;color:#3186dd;text-decoration:none;}
+.help_tit{ font-size:24px; border-bottom:2px solid #ddd; line-height:2.2}
+.help_content{ line-height:1.8;}
+.help_content p{ margin:0.8em 0;}
+.help_content img,.help_content p img { margin-left:auto; margin-right:auto;
+ max-width:900px; max-height:1100px;
+ scale:expression((this.offsetWidth > this.offsetHeight)?(this.style.width = this.offsetWidth >= 900 ? "900px" : "auto"):(this.style.height = this.offsetHeight >= 1100 ? "1100px" : "auto")); display:inline !important;  margin:0 auto;
+}
+
+
+.FQA_link{ color:#0b73bb; text-decoration:underline}
+
+.safe-list{ width:100%}
+.safe-list dl{ width:50%; float:left; margin:10px 0; height:100px;}
+.safe-list dl dt{width:75px; height:75px; float:left; margin-left:20px;}
+.safe-list dl dd{ padding-right:20px; float:right; width:320px;}
+.safe-list dl dd h1{ font-size:16px; color:# ; font-weight:700}
+.safe-list dl dd p{ color:#666; margin:0;}
+
+.icon-safe-75{ background: url(../images/help/icon-safe-75.png) no-repeat; width:75px; height:75px;display:inline-block;}
+.safe-a1{ background-position:0 0;}
+.safe-a2{ background-position:-75px 0;}
+.safe-a3{ background-position:-150px 0;}
+.safe-a4{ background-position:-225px 0;}
+.safe-a5{ background-position:-300px 0;}
+.safe-a6{ background-position:-375px 0;}
+.safe-a7{ background-position:-450px 0;}
+
+/* top-toolbar */
+.top-toolbar{background:#f8f8f8; line-height:34px; height:34px; border-bottom:1px solid #cccccc; width:100%; color:#666666;}
+.top-toolbar .top_l{ float:left; display:inline-block}
+.top-toolbar .top_r{float: right;display:inline-block;text-align:right;color:#aaaaaa;}
+.top-toolbar .top_r a{ padding:0 10px; color:#666666;}
+.top-toolbar .top_r .tel .red{ color:#e92231}
+.top-toolbar .top_r .number{ width:15px; height:15px; line-height:15px; background:url(../images/top-tips.png) 0 0; color:#ffffff; text-align:center; display: inline-block; margin-left:5px; font-size:12px}
+/* foot */
+.maincontent{min-height:400px; position:relative; }
+.main-tit{ border-bottom:1px solid #dddddd; position: relative;line-height:40px; height:40px;}
+.main-tit span{ border-bottom:1px solid #3186dd; left:0; bottom:0; font-size:18px; line-height:40px; height:40px; display:inline-block; font-weight:700}
+
+.footer{ text-align:center; padding:20px 0;color:#666666; line-height:24px;}
+.footer a{color:#666666;}
+.footer a:hover{color:#3186dd;}
+.footer{ background:#333333; padding-top:55px;min-width:1200px;}
+.foothelp {width: 500px;background: url(../images/footbgright.png) no-repeat right 10px;padding-right: 10px;}
+.foothelp dl{width:80px;float:left;padding-right:20px;font-size:12px}
+.foothelp dt{font-size:14px;line-height:40px}
+.foothelp dd{color:#fff;line-height:24px}
+.foothelp dt a{color:#fff}
+.foothelp dd a{color:#999}
+.foothelp dt a:hover{text-decoration:underline}
+.foothelp dd a:hover{color:#fff}
+.appbox{width:395px;height:120px;padding:15px 0 0 0;background:url(../images/footbgright.png) no-repeat right 10px}
+.appbox div{float:left;width:100px;margin-left:65px;color:#999}
+.appbox div p a{color:#999}
+.appbox div i{display:inline-block;width:100px;height:100px}
+.appbox div i.iapp{background:url(../images/code-wechat-100.jpg);background-size:100px auto}
+.appbox div i.iwap{background:url(../images/code-app-100.jpg);background-size:100%}
+#lowie{
+ display: none;
+ position: absolute;
+ z-index: 1000001;
+ margin-top:-156px;
+ top:50%;
+ width: 647px;
+ left: 50%;
+ margin-left: -323px;
+}
+#suggest-form{
+ display: none;
+ padding: 20px;
+ position: fixed;
+ z-index: 1000001;
+ top: 160px;
+ left: 50%;
+ margin-left: -300px;
+ background-color: #FFF;
+ border-radius: 6px;
+}
+.gotop{display:none;}
+.gotop li{position: relative}
+.gotop li div{position: absolute;top:0px;right: 47px;display: none;background: #fff;height: 110px;}
+.triangle{position: absolute; width: 0px;  height: 0px;  line-height: 0px;border: 8px solid ; border-color:transparent transparent transparent #fff;  top: 15px;  right: -15px;}
+

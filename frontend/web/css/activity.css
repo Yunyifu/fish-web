@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+.activity-header{background:url(../images/bg_01.jpg) center top; height:748px;}
+.activity-con{background:url(../images/bg_02.jpg) center top; height:1052px;}
+.activity-coner{width:1200px; margin:auto; overflow:hidden}
+.activity-fly{width:416px; height:240px; margin:auto; padding-top:75px;}
+.activity-content{border:1px solid #960bce; background-color:#62028a; margin-top:45px; padding:20px; color:#fff; overflow:hidden; font-family:"微软雅黑"; font-size:16px; line-height:25px; margin-bottom:20px;}
+
+.activity-left{border:1px solid #960bce; background-color:#62028a; padding:20px; height:300px; width:570px; color:#fff; font-family:"微软雅黑"; font-size:16px; line-height:38px; float:left}
+
+.activity-right{border:1px solid #960bce; background-color:#62028a; padding:20px; height:300px; width:520px; color:#fff; font-family:"微软雅黑"; font-size:16px; line-height:35px; float:right}
+.activity-right span{color:#ffff00; padding:0px 60px;}
+.activity-left img ,.activity-right img{padding-bottom:20px; float:left; padding-top:10px;}
+
+
+.content{width:80%;margin:200px auto;}
+.hide_box{z-index:999;filter:alpha(opacity=50);background:#000;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+.plane_box{ width:400px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-200px;margin-top:-200px;display:none;box-shadow: 3px 3px 10px #333; }
+.plane_box .tit{font-size:18px;font-weight:700;text-align:center}
+.plane_box .closepBox{width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    box-shadow: 0 0 2px rgba(0,0,0,.5);
+    border-radius: 50%;
+    position: absolute;
+    top:15px;
+    right: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    display:block;
+    z-index:99;
+}
+.plane_box .pBox{ padding:30px ;}
+.plane_box li{line-height:38px;position:relative;padding-left:90px;margin-top:10px}
+.plane_box li .input{width:100%;border:none;height:38px;line-height:38px}
+.plane_box li .name{width:80px;position:absolute;left:0;top:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+.plane_box li .name:before{content:'';display:block;position:absolute;right:0;top:8px;background:#ddd;width:1px;height:22px}
+.plane_box li.code{padding:0}
+.plane_box li.code .border{padding-left:90px;float:left}
+.plane_box li.code .input{width:148px}
+.plane_box li.code .btn{width:125px;font-size:12px;line-height:42px;height:42px}
+.plane_box li .ver-code{ display:block;position:absolute; right:3px;top:5px;text-align:center; color:#fff; background:#dddddd; width:90px; height:32px; line-height:32px;}
+.plane_box .border{border:1px solid #ddd}
+.plane_box .btn{line-height:40px;height:40px;padding: 0;background:#3898ec;color:#fff;text-align:center;display:block;border:none;width:100%;cursor:pointer;font-size:16px;letter-spacing: 10px;}
+.plane_box .login-icon{width:24px;height: 24px; display: inline-block;margin: 0 10px; }
+.plane_box .login-icon img{width:100%; }
+.plane_box .btn:hover{filter:alpha(opacity=70);opacity:.7}
+.plane_box .btn{line-height:40px;height:40px;padding: 0;background:#ff6600;color:#fff;text-align:center;display:block;border:none;width:100%;cursor:pointer;font-size:16px;letter-spacing: 2px; margin-top:20px;}
+
+
+.activity-phone-header{width:100%; background:url(../images/phoneactivity_01.png) no-repeat; background-size:100%}
+.activity-phone-header img{width:100%}
+.activity-phone-con{overflow:hidden; width:100%; background:url(../images/phoneactivity_02.png);background-size:100%; }
+.activity-phone-fly{ margin:auto; padding-top:20%; text-align:center}
+.activity-phone-fly img{width:52%}
+.activity-phone-cont{border:1px solid #960bce; background-color:#62028a; width:83%; overflow:hidden; padding:20px; font-size:0.8em; line-height:2em; color:#fff; margin:auto; margin-top:50px; margin-bottom:70px;}
