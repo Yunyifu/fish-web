@@ -537,15 +537,15 @@ class UserController extends BaseController {
     {
         $userId = $this->getUser()->getId();
         $goods_id = $this->getParam('goods_id');
-        $page = $this->getParam('page');
-        $pageSize = $this->getParam('pageSize');
+        $page = $this->getParam('page',0);
+        $pageSize = $this->getParam('pageSize',20);
         if(empty($goods_id))
         {
             //$result = Goods::findAll(['user_id' => $userId]);
             $query = Goods::find()->where(['user_id'=>$userId])->andWhere(['status' => 1]);
-            $count = $query->count();
-            $pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
-            $query = $query->offset($pager->offset)->limit($pager->limit)->orderBy('updated_at DESC')->all();
+            //$count = $query->count();
+            //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+            $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('updated_at DESC')->all();
             return $query;
         }elseif($goods_id)
         {
@@ -613,11 +613,10 @@ class UserController extends BaseController {
         $pageSize = $this->getParam('pageSize');
         if(empty($demand_id))
         {
-            //$result = Goods::findAll(['user_id' => $userId]);
             $query = Demand::find()->where(['user_id'=>$userId])->andWhere(['status' => 1]);
-            $count = $query->count();
-            $pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
-            $query = $query->offset($pager->offset)->limit($pager->limit)->orderBy('updated_at DESC')->all();
+            //$count = $query->count();
+            //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+            $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('updated_at DESC')->all();
             return $query;
         }elseif($demand_id)
         {
@@ -666,13 +665,15 @@ class UserController extends BaseController {
         $page = $this->getParam('page');
         $pageSize = $this->getParam('pageSize');
         if(empty($orderId)){
-            $query = Demand::find()->where(['seller_id'=>$userId])->andWhere(['status' => 1]);
-            $count = $query->count();
-            $pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
-            $query = $query->offset($pager->offset)->limit($pager->limit)->orderBy('updated_at DESC')->all();
+            $query = Order::find()->where(['seller_id'=>$userId]);
+            //$count = $query->count();
+            //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+            $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('updated_at DESC')->all();
+
             return $query;
         }elseif($orderId){
             return $result = Order::find()->where('seller_id = :sid and id = :oid',[':sid' => $userId,':oid' => $orderId])->all();
+
         }else{
             return [];
         }
@@ -734,10 +735,10 @@ class UserController extends BaseController {
         $page = $this->getParam('page');
         $pageSize = $this->getParam('pageSize');
         if(empty($orderId)){
-            $query = Demand::find()->where(['buyer_id'=>$userId])->andWhere(['status' => 1]);
-            $count = $query->count();
-            $pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
-            $query = $query->offset($pager->offset)->limit($pager->limit)->orderBy('updated_at DESC')->all();
+            $query = Order::find()->where(['buyer_id'=>$userId])->andWhere(['!=','status',Constants::ORDER_STATUS_DELETE]);
+            //$count = $query->count();
+            //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+            $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('updated_at DESC')->all();
             return $query;
         }elseif($orderId){
             return $result = Order::find()->where('buyer_id = :sid and id = :oid',[':sid' => $userId,':oid' => $orderId])->all();

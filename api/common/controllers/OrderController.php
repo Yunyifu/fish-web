@@ -123,6 +123,49 @@ class OrderController extends BaseController
 
     }
 
+    /**
+     * @api {post} /order/delete 删除订单
+     * @apiVersion 0.1.0
+     * @apiParam {int} order_id 商品ID（必填）
+     * @apiGroup order
+     * @apiSuccessExample 返回订单id,提示消息
+     *
+     * {
+    "order_id": 5,
+    "success": "订单已删除",
+    "api_code": 200
+    }
+     *
+     */
+    public function actionDelete()
+    {
+        try{
+            $order_id = $this->getParam('order_id');
+            $user_id = Yii::$app->getUser()->getId();
+            $order = Order::find()->where('id = :oid and buyer_id = :uid',[':oid' => $order_id,':uid' => $user_id])->one();
+            if(empty($order)){
+                throw new BadRequestHttpException('不能删除不是自己的订单！');
+            }
+            $data = [];
+            $data['status'] = Constants::ORDER_STATUS_DELETE;
+            $orderlog = new OrderLog();
+            $orderlog->order_id = $order_id;
+            $orderlog->status = $data['status'];
+            if(!$orderlog->save())
+            {
+                throw new BadRequestHttpException('订单日志保存失败！');
+            }
+            if($order->load($data,'')&&$order->update($data))
+            {
+                return ['order_id' => $order_id,'success'=>'订单删除成功'];
+            }else{
+                throw new BadRequestHttpException('订单已删除，请勿重复操作！');
+            }
+        }catch (\Exception $e){
+            throw $e;
+        }
+    }
+
 
 
 }
