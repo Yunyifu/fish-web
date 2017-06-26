@@ -26,7 +26,8 @@ use mdm\admin\components\MenuHelper;
                         'icon' => 'fa fa-deal',
                         'url' => '#',
                         'items' => [
-                            ['label' => '商品管理', 'icon' => 'fa fa-deal ', 'url' => ['/deal/index'], 'active' => Yii::$app->controller->id === 'deal'],
+                            ['label' => '供应管理', 'icon' => 'fa fa-deal ', 'url' => ['/goods/index'], 'active' => Yii::$app->controller->id === 'goods'],
+                            ['label' => '需求管理', 'icon' => 'fa fa-deal ', 'url' => ['/demand/index'], 'active' => Yii::$app->controller->id === 'demand'],
                             ['label' => '分类管理', 'icon' => 'fa fa-category ', 'url' => ['/category/index'], 'active' => Yii::$app->controller->id === 'category'],
                             ['label' => '订单管理', 'icon' => 'fa fa-order ', 'url' => ['/order/index'], 'active' => Yii::$app->controller->id === 'order'],
                         ]
@@ -49,6 +50,15 @@ use mdm\admin\components\MenuHelper;
                             ['label' => 'banner管理', 'icon' => 'fa fa-circle-o', 'url' => ['/banner/index'], 'active' => Yii::$app->controller->id === 'banner'],
                         ]
                     ],
+                    [
+                            'label'=>'认证管理',
+                            'icon' => 'fa fa-cog',
+                            'url' => '#',
+                        'items' => [
+                            ['label' => '渔民认证', 'icon' => 'fa fa-circle-o', 'url' => ['/auth/index'], 'active' => Yii::$app->controller->id === 'auth'],
+                            ['label' => '工场认证', 'icon' => 'fa fa-file-o', 'url' => ['/companyauth/index'], 'active' => Yii::$app->controller->id === 'companyauth'],
+                        ]
+                    ]
                 ],
             ]
         ) ?>

@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Category */
+/* @var $model common\models\category */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => '分类列表', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '确定要删除吗?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,9 +29,39 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'catename',
-            'status',
-            'parentid',
+            'name',
+            [
+                'attribute'=>'status',
+                'label'=>'状态',
+                'filter'=>\common\util\Constants::$cateStatus,
+                'value'=>function($model){
+                    return \common\util\Constants::$cateStatus[$model->status];
+                }
+            ],
+            [
+                'attribute' => 'parent_id',
+                'value'=>function($model){
+                    $parentCate = \common\models\Category::findOne($model->parent_id);
+                    if(!empty($parentCate)){
+                        return $parentCate->name;
+                    }
+                }
+
+            ],
+            [
+                'attribute'=>'created_at',
+                'label'=>'创建于',
+                'value'=>function($model){
+                    return date('Y-m-d h:m:s',$model->created_at);
+                }
+            ],
+            [
+                'attribute'=>'updated_at',
+                'label'=>'创建于',
+                'value'=>function($model){
+                    return date('Y-m-d h:m:s',$model->updated_at);
+                }
+            ],
         ],
     ]) ?>
 

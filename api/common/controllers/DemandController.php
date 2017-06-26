@@ -131,17 +131,12 @@ class DemandController extends BaseController
 
         if($keyword)
         {
-            $query = Demand::find()->where(['demand.status' => 1])->andWhere(['like','title',$keyword]);
-            //$count = $query->count();
-            //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+            $query = Demand::find()->where(['demand.status' => 1])->andWhere(['like','title',$keyword])->orWhere(['like','desc',$keyword])->orWhere(['like','area',$keyword])->orWhere(['like','position',$keyword]);
             $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('created_at DESC');
 
         }else{
             $query = Demand::find()->where(['demand.status' => 1])/*->joinWith('user')*/;
-            //$count = $query->count();
-            //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
             $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('created_at DESC');
-
         }
         if(!empty($categoryId))
         {
@@ -231,7 +226,6 @@ class DemandController extends BaseController
         {
             return '恭喜，更新成功，等待管理员审核！';
         }else{
-            //return $model->getErrors();
             throw new BadRequestHttpException('更新失败，请重试！');
         }
 

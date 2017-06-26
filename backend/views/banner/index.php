@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Banners';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="banner-index">
+<div class="banner-index" style="overflow-x:auto">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -32,11 +32,11 @@ use Yii;
  */
 class UserController extends BaseController {
 
-    public $needLoginActions = [ 
+    public $needLoginActions = [
         'index',
         'bind',
         'update',
-        'logout' 
+        'logout'
     ];
 
     /**
@@ -63,9 +63,9 @@ class UserController extends BaseController {
         if( empty( $mobile ) ) {
             throw new UnauthorizedHttpException();
         }
-        $count = UserOauth::find()->where( [ 
+        $count = UserOauth::find()->where( [
             'type' => Constants::OAUTH_MOBILE,
-            'external_uid' => $mobile 
+            'external_uid' => $mobile
         ] )->count();
         if( $count > 0 ) {
             return 1;
@@ -106,13 +106,13 @@ class UserController extends BaseController {
         if( empty( $mobile ) ) {
             throw new UnauthorizedHttpException();
         }
-        $code = 8888;
-        // $code = rand( 1000, 9999 );
-        CacheUtil::setCache( Constants::CACHE_USER_MOBILE_CODE, $code, [ 
-            'mobile' => $mobile 
+        //$code = 8888;
+        $code = rand( 1000, 9999 );
+        CacheUtil::setCache( Constants::CACHE_USER_MOBILE_CODE, $code, [
+            'mobile' => $mobile
         ] );
-        $rtn = true;
-        // $rtn = YunPianManager::sendSMS( $mobile, $code );
+        //$rtn = true;
+        $rtn = YunPianManager::sendSMS( $mobile, $code );
         if( $rtn === true ) {
             return "验证码发送成功，请注意查收";
         } else {
@@ -125,7 +125,7 @@ class UserController extends BaseController {
      */
     private function loginDevice($user) {
         $device = \Yii::$app->getRequest()->getHeaders()->get( 'Device' );
-        
+
         $userDevice = UserService::loginDevice($user, $device);
         $this->userDevice = $userDevice;
         \Yii::$app->user->login( $user);
@@ -191,9 +191,9 @@ class UserController extends BaseController {
             throw new UnauthorizedHttpException();
         }
         // $user = User::findByUsername( $username );
-        $oauth = UserOauth::findOne( [ 
+        $oauth = UserOauth::findOne( [
             'external_uid' => $username,
-            'type' => Constants::OAUTH_MOBILE 
+            'type' => Constants::OAUTH_MOBILE
         ] );
         if( !empty( $oauth ) ) {
             /* @var $user User */
@@ -270,10 +270,10 @@ class UserController extends BaseController {
             //'nickname' => $this->getParam( 'nickname' ),
             'token' => $this->getParam( 'token' ),
             'other' => $this->getParam( 'other' ),
-            
+
             'password' => $this->getParam( 'password' ),
             'gender' => $this->getParam( 'gender', 0 ),
-            'avatar' => $this->getParam( 'avatar' ),
+            'avatar' => $this->getParam('avatar','http://dev.image.alimmdn.com/1/default.jpg@294w_196h_1l'),
             'referee' => $referee,
         ];
 
@@ -303,9 +303,9 @@ class UserController extends BaseController {
         $mobile = $this->getParam( 'mobile' );
         $code = $this->getParam( 'code' );
         $pwd = $this->getParam( 'password' );
-        
-        $ocode = CacheUtil::getCache( Constants::CACHE_USER_MOBILE_CODE, [ 
-            'mobile' => $mobile 
+
+        $ocode = CacheUtil::getCache( Constants::CACHE_USER_MOBILE_CODE, [
+            'mobile' => $mobile
         ] );
         if( empty( $ocode ) || $ocode != $code ) {
             throw new UserException( '验证码错误' );
@@ -358,7 +358,7 @@ class UserController extends BaseController {
      * @apiPermission token
      *
      * @apiSuccessExample 范例
-     * 同第三方登录里的user
+     * 同第三方登录里的user,注意！新增两个字段fisher-渔民认证和factory-商家认证，0代表未认证，1代表认证中，2代表已认证，4代表认证失败
      */
     /**
      * 获取基本个人信息
@@ -390,7 +390,7 @@ class UserController extends BaseController {
     public function actionBind() {
         /* @var User $user */
         $user = \Yii::$app->getUser()->identity;
-        
+
         $datas = [
             'type' => $this->getParam( 'type', Constants::OAUTH_MOBILE ),
             'externalUid' => $this->getParam( 'external_uid' ),
@@ -665,7 +665,7 @@ class UserController extends BaseController {
         $page = $this->getParam('page');
         $pageSize = $this->getParam('pageSize');
         if(empty($orderId)){
-            $query = Order::find()->where(['seller_id'=>$userId]);
+            $query = Order::find()->where(['seller_id'=>$userId])->andWhere(['=','sellersee',1]);
             //$count = $query->count();
             //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
             $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('updated_at DESC')->all();
@@ -730,12 +730,13 @@ class UserController extends BaseController {
 
     public function actionBuy()
     {
+
         $userId = $this->getUser()->getId();
         $orderId = $this->getParam('order_id');
         $page = $this->getParam('page');
         $pageSize = $this->getParam('pageSize');
         if(empty($orderId)){
-            $query = Order::find()->where(['buyer_id'=>$userId])->andWhere(['!=','status',Constants::ORDER_STATUS_DELETE]);
+            $query = Order::find()->where(['buyer_id'=>$userId])->andWhere(['=','buyersee',1]);
             //$count = $query->count();
             //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
             $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('updated_at DESC')->all();

@@ -38,6 +38,8 @@ class DealController extends Controller
         $searchModel = new DealSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider->models;
+        $dataProvider->models[0]->id;
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

@@ -81,5 +81,32 @@ class CategoryController extends BaseController
         $model = Category::find()->where(['parent_id' => $cateId])->all();
         return $model;
     }
+    /**
+     * @api {get} /category/secondall 获取所有二级分类（6-13新需求）
+     * @apiVersion 0.1.0
+     *
+     * @apiGroup Category
+     *
+     * @apiSuccessExample 例子：
+     *
+     * {
+        {
+            "id": 4,
+            "name": "罗非鱼",
+            "status": 1,
+            "parent_id": 1,
+            "created_at": null,
+            "updated_at": null
+        }
+        ],
+        "api_code": 200
+        }
+     *
+     **/
+    public function actionSecondall()
+    {
+        $model = Category::find()->where(['status' => 1])->andWhere(['not',['parent_id'=>NULL]])->all();
+        return $model;
+    }
 
 }

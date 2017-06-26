@@ -83,15 +83,11 @@ class GoodsController extends BaseController
          $orderTime = $this->getParam('orderTime',1);
          if($keyword)
          {
-             $query = Goods::find()->where(['goods.status' =>1])->andWhere(['like','title',$keyword]);
-             //$count = $query->count();
-             //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+             $query = Goods::find()->where(['like','title',$keyword])->andWhere(['goods.status' =>1])->orWhere(['like','desc',$keyword])->orWhere(['like','area',$keyword])->orWhere(['like','position',$keyword]);
              $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('created_at DESC');
 
          }else{
-             $query = Goods::find()->where(['goods.status' => 1])/*->joinWith('user')->joinWith('category')*/;
-             //$count = $query->count();
-             //$pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
+             $query = Goods::find()->where(['goods.status' => 1]);
              $query = $query->offset($page*$pageSize)->limit($pageSize)->orderBy('created_at DESC');
          }
          if(!empty($categoryId))

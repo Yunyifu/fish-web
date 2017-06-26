@@ -20,6 +20,25 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/category/secondall",
+    "title": "获取所有二级分类（6-13新需求）",
+    "version": "0.1.0",
+    "group": "Category",
+    "success": {
+      "examples": [
+        {
+          "title": "例子：",
+          "content": "\n{\n        {\n            \"id\": 4,\n            \"name\": \"罗非鱼\",\n            \"status\": 1,\n            \"parent_id\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        }\n        ],\n        \"api_code\": 200\n        }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "../../api/common/controllers/CategoryController.php",
+    "groupTitle": "Category",
+    "name": "GetCategorySecondall"
+  },
+  {
+    "type": "get",
     "url": "/category/secondcate",
     "title": "获取二级分类",
     "version": "0.1.0",
@@ -390,7 +409,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "varchar",
             "optional": false,
-            "field": "ship-auth_pic",
+            "field": "ship_auth_pic",
             "description": "<p>船舶证书照片</p>"
           },
           {
@@ -861,6 +880,90 @@ define({ "api": [
     "name": "PostOrderConfirm"
   },
   {
+    "type": "post",
+    "url": "/order/deletebuy",
+    "title": "删除已购买订单",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "order_id",
+            "description": "<p>商品ID（必填）</p>"
+          }
+        ]
+      }
+    },
+    "group": "order",
+    "success": {
+      "examples": [
+        {
+          "title": "{",
+          "content": "\n{\n    \"order_id\": 5,\n    \"success\": \"订单已删除\",\n    \"api_code\": 200\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "../../api/common/controllers/OrderController.php",
+    "groupTitle": "order",
+    "name": "PostOrderDeletebuy"
+  },
+  {
+    "type": "post",
+    "url": "/order/deletesell",
+    "title": "删除已卖出订单",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "order_id",
+            "description": "<p>商品ID（必填）</p>"
+          }
+        ]
+      }
+    },
+    "group": "order",
+    "success": {
+      "examples": [
+        {
+          "title": "{",
+          "content": "\n{\n    \"order_id\": 5,\n    \"success\": \"订单已删除\",\n    \"api_code\": 200\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "../../api/common/controllers/OrderController.php",
+    "groupTitle": "order",
+    "name": "PostOrderDeletesell"
+  },
+  {
+    "type": "get",
+    "url": "/pay/charge",
+    "title": "充值",
+    "version": "0.1.0",
+    "group": "pay",
+    "filename": "../../api/common/controllers/PayController.php",
+    "groupTitle": "pay",
+    "name": "GetPayCharge"
+  },
+  {
+    "type": "get",
+    "url": "/pay/pay",
+    "title": "支付",
+    "version": "0.1.0",
+    "group": "pay",
+    "filename": "../../api/common/controllers/PayController.php",
+    "groupTitle": "pay",
+    "name": "GetPayPay"
+  },
+  {
     "type": "get",
     "url": "/region/cities",
     "title": "获取省份下面的城市",
@@ -1038,7 +1141,7 @@ define({ "api": [
       "examples": [
         {
           "title": "范例",
-          "content": "同第三方登录里的user",
+          "content": "同第三方登录里的user,注意！新增两个字段fisher-渔民认证和factory-商家认证，0代表未认证，1代表认证中，2代表已认证，4代表认证失败",
           "type": "json"
         }
       ]

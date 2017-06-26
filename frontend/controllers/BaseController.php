@@ -37,13 +37,13 @@ class BaseController extends Controller {
     }
 
     private function autoLoginByToken($token) {
-        \Yii::$app->response->cookies->add( 
-                new Cookie( 
-                        [ 
+        \Yii::$app->response->cookies->add(
+                new Cookie(
+                        [
                             'name' => 'auth',
                             'value' => $token,
                             // 30 days
-                            'expire' => time() + 30 * 24 * 3600 
+                            'expire' => time() + 30 * 24 * 3600
                         ] ) );
         \Yii::$app->user->loginByAccessToken( $token );
     }
@@ -72,18 +72,18 @@ class BaseController extends Controller {
         $apiUrl = \Yii::$app->params ['apiUrl'] . '/' . $version . '/' . $api;
         //var_dump($apiUrl);exit;
         $ch = curl_init();
-        curl_setopt_array( $ch, 
-                [ 
+        curl_setopt_array( $ch,
+                [
                     CURLOPT_URL => $apiUrl,
                     CURLOPT_RETURNTRANSFER => true,
                     // 为了抓取跳转url（可能是微信web支付之类的）
                     CURLOPT_HEADER => true,
-                    CURLOPT_HTTPHEADER => [ 
+                    CURLOPT_HTTPHEADER => [
                         'JOKE: ' . Constants::APP_JOKE,
-                        'Device: ' . Constants::DEVICE_INNER_CALL,
+                        'Device: ' . 123,//Constants::DEVICE_INNER_CALL,
                         'Authorization: ' . $auth,
-                        'Content-Type: application/json' 
-                    ] 
+                        'Content-Type: application/json'
+                    ]
                 ] );
         switch ($method) {
             case 'post' :
@@ -117,7 +117,7 @@ class BaseController extends Controller {
                 // $location = curl_getinfo( $ch, CURLINFO_EFFECTIVE_URL );
                 return \Yii::$app->response->redirect( $location, $httpCode );
             }
-            return [ 
+            return [
                 'api_code' => $httpCode,
                 'api_msg' => $httpCode == 404 ? "api不存在" : ('服务器错误' . $httpCode),
             ];

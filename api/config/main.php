@@ -81,6 +81,8 @@ return [
                 'GET v1/deal/index' => 'v1/deal/index',
                 //添加分类
                 'POST V1/category/add' => 'v1/category/add',
+                //获取所有二级分类
+                'get V1/category/secondall' => 'v1/category/secondall',
                 //获取商品首页信息列表
                 'GET v1/goods/index' => 'v1/goods/index',
                 //'POST v1/goods/index' => 'v1/goods/index',
@@ -126,6 +128,14 @@ return [
                 'POST v1/order/add' => 'v1/order/add',
                 //点击第二个支付确认订单
                 'POST v1/order/confirm' => 'v1/order/confirm',
+                //删除已购买订单
+                'POST v1/order/deletebuy' => 'v1/order/deletebuy',
+                //删除已卖出订单
+                'POST v1/order/deletesell' => 'v1/order/deletesell',
+                //支付充值
+                'POST v1/pay/charge' => 'v1/pay/charge',
+                //支付
+                'GET v1/pay/pay' => 'v1/pay/pay',
 
             ] 
         ] 

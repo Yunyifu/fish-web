@@ -1,3 +1,61 @@
-.footer{ text-align:center; padding:20px 0;color:#666666; line-height:24px;}
-.footer a{color:#666666;}
-.footer a:hover{color:#3186dd;}
+div.navi-bar{
+  margin: 0;
+}
+label.control-label{
+  display: none;
+}
+.login-container{
+  height: 566px;
+  background: url("../images/login_background.png");
+  background-size: 100%;
+}
+.login-form{
+  position: relative;
+  margin-left: 900px;
+  padding: 30px;
+  /*opacity:0.2;*/
+  width: 340px;
+  height: 566px;
+  background-color:rgba(0, 0, 0, 0.3)
+}
+.login-form h6{
+  font-size: 20px;
+  color: #ffffff;
+}
+.login-form input{
+  margin-bottom: 30px;
+  padding-left: 50px;
+  width: 280px;
+  height: 46px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  background: none;
+  /*background-color:rgba(0, 0, 0, 0.2)*/
+}
+.login-form .btn{
+  width: 280px;
+  height: 46px;
+  background-color: #5fbff9;
+  color: #ffffff;
+  border: 0;
+}
+.field-registerform-validation{
+  display: inline-block;
+  width: 200px;
+}
+input#registerform-validation{
+  width: 195px;
+}
+#validation-btn{
+  position: absolute;
+  line-height: 46px;
+  color: #5fbff9;
+  background: none;
+  border: 0;
+}
+#countDown{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}

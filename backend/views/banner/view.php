@@ -29,7 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'file_path',
+            //'file_path:image',
+            ['attribute'=>'file_path', 'format' => ['image',['width' => 300,]],'value'=>function($data){
+                return 'http://dev.image.alimmdn.com'.$data->file_path;
+            }],
             'link_path',
             'created_at',
             'updated_at',

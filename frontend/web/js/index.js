@@ -1,0 +1,1 @@
+$("#slider").unslider({dots:true})

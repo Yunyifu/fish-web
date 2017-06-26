@@ -1,9 +1,16 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Banner;
+use common\models\Category;
+use common\models\Demand;
+use common\models\FileUploadForm;
+use common\models\Goods;
+use common\models\Order;
 use common\models\User;
 use Yii;
 use common\models\LoginForm;
+use common\models\RegisterForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -14,7 +21,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\controllers\BaseController;
-
+use yii\web\UploadedFile;
 
 
 /**
@@ -26,12 +33,14 @@ class SiteController extends BaseController
     /**
      * @inheritdoc
      */
+
+
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup','publish-need','publish-supply'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -39,7 +48,7 @@ class SiteController extends BaseController
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','publish-need','publish-supply'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -77,37 +86,211 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //Yii::$app->response->format = Yii\web\Response::FORMAT_JSON;
+        //取出所有鱼类的分类
+        $categoryModel = new Category();
+        $categoryData = $categoryModel->find()->where(['parent_id' =>1])->all();
+        //取出最新的4条大banner
+        $bannerModel = new Banner();
+        $bannerData = $bannerModel->find()->limit(4)->orderBy('rank DESC')->andWhere(['type' => 0])->all();
+        $gallery = $bannerModel->find()->limit(10)->orderBy('rank DESC')->andWhere(['type' => 1])->all();
+        //取出最新的8条需求信息
+        $demandModel = new Demand();
+        $demandData = $demandModel->find()->limit(8)->orderBy('created_at DESC')->all();
+        //取出最新的8条供应信息
+        $goodsModel = new Goods();
+        $goodsData = $goodsModel->find()->limit(8)->orderBy('created_at DESC')->all();
+        //取出最新成交的订单3条
+        $lastOrders = Order::find()->limit(3)->orderBy('created_at DESC')->all();
+        //var_dump($lastOrders[0]->test);exit;
+        $buyerMobile = [];
+        $sellerMobile = [];
+        return $this->render('index',[
+            'categoryData' => $categoryData,
+            'bannerData' => $bannerData,
+            'demandData' => $demandData,
+            'lastOrders' => $lastOrders,
+            'goodsData' => $goodsData,
+            'gallery' => $gallery
+        ]);
     }
-
     /**
-     * Logs in a user.
+     * 发布页
+     *
+     * @return mixed
+     */
+
+    public function actionPublish()
+    {
+        $dataArray = Category::find()->where(['status' => 1])->andWhere(['not',['parent_id'=>NULL]])->all();
+        return $this->render('publish',[
+            'dataArray' => $dataArray,
+        ]);
+    }
+    /**
+     * 发布需求
+     *
+     * @return mixed
+     */
+
+    public function actionPublishNeed()
+    {
+        $demand = new Demand();
+        $demand->user_id = Yii::$app->user->id;
+        if(Yii::$app->request->get()){
+            $id = Yii::$app->request->get('id');
+            if(Demand::findOne(['id' => $id,'user_id' => $demand->user_id])){
+                $demand = Demand::findOne($id);
+            }
+        }
+        if(Yii::$app->request->post()){
+            $demand->category_id = Yii::$app->request->get('cataid',1);
+            $demand->load(Yii::$app->request->post());
+            if ($demand->save()) {
+                echo "<script>alert('发布成功！')</script>";
+                return $this->redirect('/user-center/demand');
+            }
+        }
+        return $this->render('publish-need', ['demand' => $demand]);
+    }
+    /**
+     * 发布供应
+     *
+     * @return mixed
+     */
+
+    public function actionPublishSupply()
+    {
+        $goods = new Goods();
+        $goods->user_id = Yii::$app->getUser()->getId();
+        if(Yii::$app->request->get()){
+            $id = Yii::$app->request->get('id');
+            if(Goods::findOne(['id' => $id,'user_id' => $goods->user_id])){
+                $goods = Goods::findOne($id);
+            }
+        }
+        if(Yii::$app->request->post()){
+            $goods->load(Yii::$app->request->post());
+            $goods->pic = $this->actionUpload('Goods[pic]');
+            $goods->category_id = Yii::$app->request->get('cataid',1);
+            return var_dump(UploadedFile::getInstancesByName('Goods[pic]'));
+            if ($goods->save()) {
+                echo "<script>alert('发布成功！')</script>";
+                return $this->redirect('/user-center/goods');
+            }
+        }
+        return $this->render('publish-supply', ['goods'=> $goods]);
+    }
+    /**
+     * 资讯列表
+     *
+     * @return mixed
+     */
+
+    public function actionNews()
+    {
+        /*$searchModel = new NewsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);*/
+
+        return $this->render('news');
+    }
+    /**
+     * 资讯详情
+     *
+     * @return mixed
+     */
+
+    public function actionNewsDetail()
+    {
+
+        return $this->render('/news/detail');
+    }
+    /**
+     * 需求列表
+     *
+     * @return mixed
+     */
+    public function actionNeed()
+    {
+        /*$searchModel = new DemandSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);*/
+        return $this->render('need');
+    }
+    /**
+     * 需求详情
+     *
+     * @return mixed
+     */
+    public function actionNeedDetail()
+    {
+        return $this->render('need-detail');
+    }
+    /**
+     * Register a user.
      *
      * @return mixed
      */
     public function actionReg(){
-        //var_dump('123');exit;
-        $post = Yii::$app->request->post();
-
-        $apiLogin = $this->callApi('user/o-auth-login',$post,"post","v1");
-        if($apiLogin){
-            var_dump($apiLogin);
-        }else{
-            var_dump('注册失败');
+        $model = new RegisterForm();
+        if (Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            if ($model->check()) {
+                $data = ['type'=>1, 'external_uid'=>$model->username, 'external_name'=>$model->username, 'token'=>$model->validation, 'password'=>$model->password];
+                $register = $this->callApi('users/oauth', $data, 'post', 'v1');
+                if ($register['api_code'] == 500) {
+                    $model->addError('username', $register['api_msg']);
+                }
+                elseif ($register['api_code'] == 401){
+                    $model->addError('username',$register['api_msg']);
+                }
+                //return var_dump($register);
+                elseif (Yii::$app->user->login( User::findOne($register['user']['id']),  3600 * 24 * 30 )) {
+                    $this->redirect('/site/index');
+                }
+            }
         }
+        return $this->render('reg', ['model'=>$model]);
+    }
+    public function actionResetPassword(){
+        //var_dump('123');exit;
+        $model = new RegisterForm();
+        if (Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            $data = ['mobile'=>$model->username, 'code'=>$model->validation, 'password'=>$model->password];
+            if ($reset = $this->callApi('user/reset-pwd', $data, 'post', 'v1')) {
+
+                if ($reset['api_code'] == 500) {
+                    $model->addError('username', $reset['api_msg']);
+                }elseif($reset['api_code' == 401]){
+                $model->addError('username', $reset['api_msg']);
+                }elseif( Yii::$app->user->login( User::findOne($reset['user']['id']),  3600 * 24 * 30 )){
+                    return $this->redirect('/site/index');
+                }
+            }
+        }
+        return $this->render('reset', ['model'=>$model]);
+
     }
 
     public function actionLogin2()
     {
-
-
         $post = Yii::$app->request->post();
         //$post = json_encode($post);
         //var_dump($post);exit;
         $apiLogin = $this->callApi('users/login',$post,"post","v1");
         if($apiLogin){
-            //$user = \Yii::$app->getUser()->getIdentity();
-            Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+            //$user = Yii::$app->getUser()->getIdentity();
+            Yii::$app->response->format = Yii\web\Response::FORMAT_XML;
 
             return $apiLogin;
             //var_dump(Yii::$app->user->identity);exit;
@@ -118,31 +301,29 @@ class SiteController extends BaseController
 
     public function actionTest2()
     {
-        $user = \Yii::$app->getUser()->getIdentity();
-        Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+        $user = Yii::$app->getUser()->getIdentity();
+        Yii::$app->response->format = Yii\web\Response::FORMAT_XML;
         return $user;
     }
 
     public function actionTest(){
         $user = $this->callApi('deal/index',[]);
-        Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+        Yii::$app->response->format = Yii\web\Response::FORMAT_XML;
         return $user;
     }
 
     public function actionLogin()
     {
-        $this->layout = "login";
-        if (!\Yii::$app->user->isGuest) {
+
+
+        if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
         $post = Yii::$app->request->post();
 
-        if ($model->login($post)) {
-            //var_dump($post);exit;
+        if ($model->load($post)&&$model->login()) {
             return $this->redirect(['site/index']);
-
         } else {
             //var_dump('登录失败！');exit;
             return $this->render('login', [
@@ -166,11 +347,11 @@ class SiteController extends BaseController
     }*/
 
     public function actionLogout() {
-        \Yii::$app->user->logout();
-        \Yii::$app->response->cookies->remove( 'auth' );
-         //return $this->goHome();
+        Yii::$app->user->logout();
+        Yii::$app->response->cookies->remove( 'auth' );
+        //return $this->goHome();
         return $this->redirect( [
-            'index','id'=>'yifu'
+            'index',//'id'=>'yifu'
         ] );
     }
 
@@ -260,7 +441,7 @@ class SiteController extends BaseController
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public function actionResetPassword0($token)
     {
         try {
             $model = new ResetPasswordForm($token);
@@ -277,5 +458,27 @@ class SiteController extends BaseController
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUpload($name){
+        $type = 2;
+        $imgs = UploadedFile::getInstancesByName($name);
+        $path = [];
+        foreach($imgs as $img)
+        {
+        $fileForm = new FileUploadForm();
+        $fileForm->file = $img;
+        $fileForm->type = $type;
+        $savePath = $fileForm->save();
+        if($savePath) {
+            $path[] = $savePath;
+        }
+        else {
+            //删除已存储图片
+            //FileUploadForm::deleteUploadedFile($savePath);
+            return '保存失败';
+            }
+        }
+        return $path;
     }
 }

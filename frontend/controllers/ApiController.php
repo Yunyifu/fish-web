@@ -24,16 +24,16 @@ class ApiController extends BaseController {
     public $layout = false;
 
     public function behaviors() {
-        return [ 
-            'verbs' => [ 
+        return [
+            'verbs' => [
                 'class' => VerbFilter::className(),
-                'actions' => [ 
-                    'call' => [ 
+                'actions' => [
+                    'call' => [
                         'post',
-                        'options' 
-                    ] 
-                ] 
-            ] 
+                        'options'
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -52,7 +52,7 @@ class ApiController extends BaseController {
         // api method
         $api = $request->post( 'api' );
         $version = $request->post( 'version', 'v1' );
-        $method = $request->post( 'method' );
+        $method = $request->post( 'method', 'post' );
         $data = $request->post( 'data', [ ] );
         if( empty( $api ) ) {
             throw new UnauthorizedHttpException( 'api不能为空' );

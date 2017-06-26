@@ -31,7 +31,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
     $this->registerJs("var imgUrl='" . Utils::getImgUrlPrefix() . "';", View::POS_HEAD);
     ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-seastart sidebar-mini">
 <?php $this->beginBody() ?>
 <div class="wrapper">
 

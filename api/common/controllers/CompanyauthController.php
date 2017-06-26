@@ -37,11 +37,19 @@ class CompanyauthController extends BaseController
         $post = Yii::$app->request->post();
         $post['user_id'] = \Yii::$app->getUser()->getId();
         $model = new Companyauth();
-        $userid = $model->find()->where(['user_id' => $post['user_id']])->count();
-        if($userid > 0 ){
-            throw new BadRequestHttpException('您已提交过认证信息，请勿重复提交');
+        $result = $model->find()->where(['user_id' => $post['user_id']])->one();
+        if($result){
+            try{
+                $post['status'] = 1;
+                $result->load($post,'');
+                $result->update($post);
+                return '您提交的信息已更新，请等待审核！';
+            }catch(\Exception $e){
+                throw new BadRequestHttpException('提交更新失败，请重试！');
+            }
         }
         try{
+            $post['status'] = 1;
             $model->load($post,'')&&$model->save($post);
             return '您的认证信息已提交，等待管理员审核！';
         }catch(\Exception $e){
