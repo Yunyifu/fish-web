@@ -1,0 +1,42 @@
+input.span12,
+textarea.span12,
+.uneditable-input.span12 {
+    width: 926px;
+}
+.table td.span12,
+.table th.span12 {
+    float: none;
+    width: 924px;
+    margin-left: 0;
+}
+.span12 {
+    width: 940px;
+}
+.row-fluid .span12 {
+    width: 100%;
+    *width: 99.94680851063829%;
+}
+.form-page .form-wrapper .field-box {
+    margin-bottom: 30px;
+    margin-left: 0;
+    float: left;
+    width: 100%; }
+.field-box {
+    margin-bottom: 25px;
+    margin-left: 0;
+    float: left;
+    width: 100%; }
+.form-wrapper .field-box {
+    /* error */
+    /* success */ }
+.form-wrapper .field-box.error label,
+.form-wrapper .field-box.error .alert-msg {
+    color: #c73939; }
+.form-wrapper .field-box.error input {
+    border-color: #c73939; }
+.form-wrapper .field-box.success label,
+.form-wrapper .field-box.success .alert-msg {
+    color: #379e48; }
+.form-wrapper .field-box.success input {
+    border-color: #379e48; }
+

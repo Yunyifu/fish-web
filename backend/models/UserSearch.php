@@ -73,6 +73,7 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key])
             ->andFilterWhere(['like', 'avatar', $this->avatar]);
+        $query->orderBy('id desc');
 
         return $dataProvider;
     }

@@ -131,6 +131,7 @@ class AdminUserController extends Controller
     {
         $user = $this->findModel($id);
         $user->status = AdminUser::STATUS_DELETED;
+        $user->update();
 
         return $this->redirect(['index']);
     }
