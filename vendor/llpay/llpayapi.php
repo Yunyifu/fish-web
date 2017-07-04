@@ -17,7 +17,7 @@
 require_once ("llpay.config.php");
 require_once ("lib/llpay_submit.class.php");
 
-/**************************请求参数**************************/
+/**************************请求参数*************************6
 
 //商户用户唯一编号
 $user_id = $_POST['user_id'];

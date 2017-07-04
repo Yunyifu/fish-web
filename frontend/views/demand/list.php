@@ -3,27 +3,36 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 $this->title = '需求信息';
+$isSecond = \Yii::$app->request->get('category_parent', false);
 ?>
-
+<?= $this->render('/layouts/search-demand')?>
 <?= $this->render('/layouts/navi-bar')?>
 
 <h6 class="notice">您当前的位置：<a href="/">首页</a>>需求信息</h6>
 <div class="container content">
   <ul class="tab goods">
     <li class="type" >
-      <img src="" alt="icon">
+      <?= Html::img('/images/kind.png') ?>
       <span>产品分类 >></span>
       <?= Html::a('全部', ['list','category_parent'=>null]) ?>
       <?php foreach ($categoryParent as $key => $category): ?>
-        <?= Html::a($category->name, ['list','category_parent'=>$category->id]) ?>
+        <!-- 输出一级分类，并判断是否选中，加特定样式 -->
+        <?=
+          Html::a(
+          $category->name . ($category->id == \Yii::$app->request->get('category_parent') ? Html::img('/images/down.png') : Html::img('/images/downgrey.png')),
+          ['list','category_parent'=>$category->id],
+          ['class' => $category->id == \Yii::$app->request->get('category_parent') ? 'selected' : ''])
+        ?>
       <?php endforeach; ?>
     </li>
-    <li class="fish items">
-      <?= Html::a('全部', ['list', 'category_parent'=>\Yii::$app->request->get('category_parent')], ['class'=>'children']) ?>
-      <?php foreach ($categoryData as $key => $category): ?>
-        <?= Html::a($category->name, ['list','DemandSearch[category_id]'=>$category->id], ['class'=>'children']) ?>
-      <?php endforeach; ?>
-    </li>
+    <?php if ($isSecond): ?>
+      <li class="fish items">
+        <?= Html::a('全部', ['list', 'category_parent'=>\Yii::$app->request->get('category_parent')], ['class'=>'children']) ?>
+        <?php foreach ($categoryData as $key => $category): ?>
+          <?= Html::a($category->name, ['list', 'category_parent'=>\Yii::$app->request->get('category_parent'), 'DemandSearch[category_id]'=>$category->id], ['class'=>\Yii::$app->request->get('DemandSearch')['category_id'] == $category->id ? 'children selected' : 'children']) ?>
+        <?php endforeach; ?>
+      </li>
+    <?php endif; ?>
   </ul>
 
   <br class="clear">
@@ -42,28 +51,18 @@ $this->title = '需求信息';
     <li class="left-shade"> </li>
     <?php foreach ($dataProvider->models as $key => $demand): ?>
       <li class="item <?= ($key+1)==count($dataProvider->models)? 'last':''?>">
-        <span><?= $demand->title?></span>
-        <span><?= $demand->price?></span>
-        <span><?= $demand->num?></span>
-        <span>新鲜</span>
-        <span title="<?= $demand->desc?>" class="no-warp"><?= $demand->desc?></span>
-        <span><?= $demand->position?></span>
-        <span><?= date('Y.m.d', $demand->updated_at)?></span>
+        <span class="no-warp"><?= $demand->title?></span>
+        <span class="no-warp"><?= $demand->price?></span>
+        <span class="no-warp"><?= $demand->num?></span>
+        <span class="no-warp"><?= $demand->demandstatus?></span>
+        <span title="<?= $demand->desc?>" class="no-warp"><?= $demand->otherstatus?></span>
+        <span class="no-warp"><?= $demand->position?></span>
+        <span class="no-warp"><?= date('Y.m.d', $demand->updated_at)?></span>
       </li>
     <?php endforeach; ?>
   </ul>
   <br>
-  <div class="pager">
-    <a href="#">《</a>
-    <a href="#"><</a>
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <span>...</span>
-    <a href="#">10</a>
-    <a href="#">11</a>
-    <a href="#">></a>
-    <a href="#">》</a>
-  </div>
+  <?= $this->render('/layouts/pager', ['pageCount' => $pageCount]);?>
   <br><br>
 </div>
 

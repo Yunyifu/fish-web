@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\AdminUser;
 use common\util\Constants;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -31,6 +32,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class Goods extends \yii\db\ActiveRecord
 {
+
+    public $dealers;
+
     public function behaviors()
     {
         return [
@@ -51,7 +55,7 @@ class Goods extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
+            [['user_id','title','category_id','desc'], 'required'],
             [['user_id', 'category_id', 'num', 'status', 'created_at', 'updated_at','rank'], 'integer'],
             [['price'], 'number'],
             [['desc'], 'string'],
@@ -70,21 +74,24 @@ class Goods extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'thumb' => 'Thumb',
-            'user_id' => 'User ID',
-            'category_id' => 'Category ID',
-            'num' => 'Num',
-            'price' => 'Price',
-            'area' => 'Area',
-            'position' => 'Position',
-            'status' => 'Status',
-            'desc' => 'Desc',
-            'pic' => 'Pic',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'rank' => '排序号(从小到大 默认9999)'
+            'id' => 'id',
+            'title' => '标题',
+            'thumb' => '缩略图',
+            'user_id' => '用户id',
+            'category_id' => '分类id',
+            'num' => '数量',
+            'price' => '价格',
+            'area' => '产地',
+            'position' => '货物所在地',
+            'status' => '状态',
+            'desc' => '描述',
+            'pic' => '图片',
+            'created_at' => '创建于',
+            'updated_at' => '更新于',
+            'rank' => '排序号(从小到大 默认9999)',
+            'dealers' => '交易员',
+
+
         ];
     }
 
@@ -131,13 +138,18 @@ class Goods extends \yii\db\ActiveRecord
             },
             'rank'=>function(){
                 return $this->rank;
-            }
+            },
+            'dealer' => function(){
+                return $this->dealer;
+
+        }
         ];
     }
 
+
     public function setStatus($good_id){
         $goods = $this->findOne($good_id);
-        $goods->status = 0;
+        $goods->status = $goods->status ? 0 : 1;
         return $goods->update($goods);
     }
 
@@ -156,6 +168,11 @@ class Goods extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+    public function getDealer(){
+        $dealer_id = $this->user->dealer_id;
+        $dealer = AdminUser::find()->where(['id' => $dealer_id])->select('nickname')->one();
+        return $dealer->nickname;
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -164,4 +181,19 @@ class Goods extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Order::className(), ['goods_id' => 'id']);
     }
+    public function getPubtime(){
+      if ($this->updated_at) {
+        if (time() - $this->updated_at < 3600) {
+          $minute = floor( (time() - $this->updated_at)/60 );
+          return  $minute . '分钟前发布';
+        }
+        if (time() - $this->updated_at < 86400) {
+          $hour = floor( (time() - $this->updated_at)/3600 );
+          return  $hour . '小时前发布';
+        }
+        $day = floor( (time() - $this->updated_at)/86400 );
+        return $day . '天前发布';
+      }
+    }
+
 }

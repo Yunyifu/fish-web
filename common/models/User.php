@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use backend\models\AdminUser;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -31,6 +32,8 @@ use common\util\Constants;
  * @property string $mobile
  * @property UserDevice $lastActiveDevice
  * @property UserOauth[] $userOauths
+ * @property Auth[] $auth
+ * @property Companyauth[] $companyauth
  * @property UserDevice[] $userDevices
  * @property User $referee
  * @property User[] $subUsers
@@ -119,8 +122,16 @@ class User extends ActiveRecord implements IdentityInterface
             return $this->id;//Utils::encryptId($this->id, Constants::ENC_TYPE_USER);
         }, 'nickname', 'avatar' => function() {
             return $this->avatar ? $this->avatar : Constants::DEFAULT_AVATAR;
-        }, 'gender', 'birthday', 'reg_time' => 'created_at'];
-        return array_merge($commonInfo, $selfInfo);
+        }, 'gender', 'birthday', 'reg_time' => 'created_at',
+            'fisher' =>function(){
+            return empty($this->auth)?0:$this->auth->status;
+        }, 'factory' => function(){
+            return empty($this->companyauth)?0:$this->companyauth->status;
+        }];
+        $avatar = ['avatar' => function(){
+            return empty($this->avatar)?$this->avatar: "/1/default.jpg@294w_196h_1l";
+        }];
+        return array_merge($commonInfo, $selfInfo,$avatar);
     }
     
     /**
@@ -175,6 +186,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function getSubUsers()
     {
         return $this->hasMany(User::className(), ['referee_id' => 'id']);
+    }
+
+    public function getAuth()
+    {
+        return $this->hasOne(Auth::className(), ['user_id' => 'id']);
+    }
+    public function getCompanyauth()
+    {
+        return $this->hasOne(Companyauth::className(), ['user_id' => 'id']);
     }
     
     /**
@@ -332,4 +352,16 @@ class User extends ActiveRecord implements IdentityInterface
     public static function generateAccessToken() {
         return uniqid() . '_' . time();
     }
+
+    /**
+     * 获取交易员
+     */
+    public function getDealer(){
+        //return 3333;
+        //$dealer = $this->hasOne(AdminUser::className(), ['dealer_id' => 'id']);
+        //return $this->dealer_id;
+        return $this->hasOne(AdminUser::className(), ['id' => 'dealer_id']);
+
+    }
+
 }

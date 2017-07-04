@@ -19,7 +19,7 @@ class AuthSearch extends Auth
     {
         return [
             [['id', 'user_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'gender', 'telphone', 'id_hand_pic', 'ship_auth_pic', 'ship_pic'], 'safe'],
+            [['name', 'gender', 'saler', 'telphone', 'id_hand_pic', 'ship_auth_pic', 'ship_pic'], 'safe'],
         ];
     }
 
@@ -71,7 +71,8 @@ class AuthSearch extends Auth
             ->andFilterWhere(['like', 'telphone', $this->telphone])
             ->andFilterWhere(['like', 'id_hand_pic', $this->id_hand_pic])
             ->andFilterWhere(['like', 'ship_auth_pic', $this->ship_auth_pic])
-            ->andFilterWhere(['like', 'ship_pic', $this->ship_pic]);
+            ->andFilterWhere(['like', 'ship_pic', $this->ship_pic])
+            ->andFilterWhere(['like', 'saler', $this->saler]);
 
         return $dataProvider;
     }

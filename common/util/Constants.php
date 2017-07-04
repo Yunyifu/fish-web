@@ -25,7 +25,8 @@ class Constants {
     const ID_CRYPT_KEY = "y11twoa99_k3y_";
     // id加密类型：用户
     const ENC_TYPE_USER = "user";
-
+    // charge加密
+    const ENC_TYPE_CHARGE = "charge";
     
     // api data加密
     const DATA_ENCRYPT_IV = "y11twoa99_iv_";
@@ -89,7 +90,6 @@ class Constants {
     const ORDER_STATUS_FINISHED = 5;
     // 退货
     const ORDER_STATUS_REFUND = 6;
-
     //全部订单
     const ORDER_STATUS_ALL = 10;
 
@@ -102,6 +102,10 @@ class Constants {
         self::ORDER_STATUS_FINISHED => '已完成',
         self::ORDER_STATUS_REFUND => '退货'
     ];
+    //订单退款状态
+    const ORDER_REFUND_APPLY = 0;
+    const ORDER_REFUND_REFUNDING = 1;
+    const ORDER_REFUND_REFUNDED =2 ;
     // 平台类型
     const PLATFORM_WEB = 1;
     const PLATFORM_IOS = 2;
@@ -137,7 +141,11 @@ class Constants {
     //性别男女
     const GENDER_FEMALE = 0;
     const GENDER_MALE = 1;
-    
+
+    //认证模块性别
+    const MALE = 1;
+    const FEMALE = 2;
+
     //默认头像
     const DEFAULT_AVATAR = "/img/avatar.png";
     const BIG_BANNER = 0;
@@ -145,5 +153,44 @@ class Constants {
     public static $banner = [
         self::BIG_BANNER => '大banner图',
         self::SMALL_BANNER => '小banner图',
+    ];
+    const AUTH_NO_CHECK = 0;
+    const AUTH_CHECKING = 1;
+    const AUTH_CHECKED = 2;
+    const AUTH_CHECK_REFUSED = 4;
+    public static  $checkStatus =[
+        self::AUTH_NO_CHECK =>"未认证",
+        self::AUTH_CHECKING =>"待审核",
+        self::AUTH_CHECKED =>"已认证",
+        self::AUTH_CHECK_REFUSED =>"认证拒绝",
+    ];
+    //商品状态
+    const GOODS_DOWN = 0;
+    const GOODS_SELLING = 1;
+    const GOODS_DEAL = 2;
+    const GOODS_INQUIRY =3;
+    const GOODS_UNREVIEW =4;
+    public static $goodsStatus = [
+        self::GOODS_DOWN => '已下架',
+        self::GOODS_SELLING =>'上架',
+        self::GOODS_DEAL =>'成交',
+        self::GOODS_INQUIRY => '询价中',
+        self::GOODS_UNREVIEW => '未审核'
+    ];
+    //分类状态
+    const CATE_DOWN = 0;
+    const CATE_SHOW = 1;
+    public static $cateStatus = [
+        self::CATE_DOWN=>'下架',
+        self::CATE_SHOW=>'上架',
+    ];
+    // 充值状态
+    const CHARGE_STATUS_NOT_PAY = 0;
+
+    const CHARGE_STATUS_PAID = 1;
+
+    public static $CHARGE_STATUSES = [
+        self::CHARGE_STATUS_NOT_PAY => '待支付',
+        self::CHARGE_STATUS_PAID => '充值成功'
     ];
 }

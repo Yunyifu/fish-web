@@ -8,6 +8,8 @@ use common\models\Category;
 /* @var $model common\models\Goods */
 /* @var $form yii\widgets\ActiveForm */
 $category=Category::find()->select('name')->indexBy('id')->column();
+$dealers = \backend\models\AdminUser::find()->where(['like','nickname','交易员'])->select('nickname')->indexBy('id')->column();
+//return var_dump($dealers);exit;
 $this->registerJsFile("@web/js/goods.js", ['depends' => ['backend\assets\AppAsset'], 'position' => \yii\web\View::POS_END]);
 ?>
 
@@ -51,6 +53,11 @@ $this->registerJsFile("@web/js/goods.js", ['depends' => ['backend\assets\AppAsse
 
 
     <?= $form->field($model, 'rank')->textInput() ?>
+
+    <?= $form->field($model, 'dealers')->dropDownList($dealers) ?>
+
+
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

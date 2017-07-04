@@ -73,6 +73,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
             ],
             'rank',
+            [
+                    'attribute'=>'dealers',
+                    'value' => $model->dealer,
+
+            ],
         ],
     ]) ?>
 

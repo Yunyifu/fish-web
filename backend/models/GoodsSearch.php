@@ -87,7 +87,7 @@ class GoodsSearch extends Goods
             ->andFilterWhere(['like', 'desc', $this->desc])
             ->andFilterWhere(['like', 'pic', $this->pic]);
         $query->orderBy('created_at DESC');
-        $query->andWhere(['status'=>1]);
+        //$query->andWhere(['status'=> 1]);
 
         return $dataProvider;
     }

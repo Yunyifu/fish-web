@@ -4,6 +4,7 @@
 use yii\helpers\Html;
 $this->title = '资讯中心';
 ?>
+<?= $this->render('/layouts/search')?>
 <?php
   echo $this->render('/layouts/navi-bar');
 ?>
@@ -13,8 +14,8 @@ $this->title = '资讯中心';
 
     <?php foreach ($dataProvider->models as $key => $news): ?>
       <li>
-        <h6><?= $news->title ?></h6>
-        <img src="<?= $news->thumb ?>" alt="新闻图片">
+        <?= Html::a('<h6>'.$news->title.'</h6>', ['detail', 'id'=>$news->id]) ?> 
+        <img src="http://dev.image.alimmdn.com<?= $news->thumb ?>" alt="新闻图片">
         <span class="created_at"><?= date('Y-m-d', $news->created_at) ?></span>
         <p><?= $news->abs ?></p>
         <br class="clear">
@@ -23,17 +24,7 @@ $this->title = '资讯中心';
     <?php endforeach; ?>
   </ul>
   <br>
-  <div class="pager">
-    <a href="#">《</a>
-    <a href="#"><</a>
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <span>...</span>
-    <a href="#">10</a>
-    <a href="#">11</a>
-    <a href="#">></a>
-    <a href="#">》</a>
-  </div>
+  <?= $this->render('/layouts/pager', ['pageCount' => $pageCount]);?>
   <br><br>
 </div>
 

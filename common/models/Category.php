@@ -1,7 +1,7 @@
 <?php
 
 namespace common\models;
-
+use yii\behaviors\TimestampBehavior;
 use Yii;
 
 /**
@@ -28,6 +28,12 @@ class Category extends \yii\db\ActiveRecord
     {
         return 'category';
     }
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -49,11 +55,20 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'status' => 'Status',
-            'parent_id' => 'Parent ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => '分类名',
+            'status' => '状态',
+            'parent_id' => '父类ID',
+            'created_at' => '创建于',
+            'updated_at' => '更新于',
+        ];
+    }
+    public function fields()
+    {
+
+        return [
+            'id',
+            'name' ,
+            'parent_id'
         ];
     }
 

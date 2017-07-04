@@ -16,7 +16,7 @@ use backend\util\Utils;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gender')->dropDownList([ 1 => '1', 2 => '2', '' => '', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'gender')->dropDownList([ 1 => '1', 2 => '2' ]) ?>
 
     <?= $form->field($model, 'telphone')->textInput(['maxlength' => true]) ?>
 
@@ -28,6 +28,7 @@ use backend\util\Utils;
 
     <?= $form->field($model, 'status')->dropDownList(\common\util\Constants::$checkStatus) ?>
 
+    <?= $form->field($model, 'saler')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
