@@ -29,11 +29,7 @@ if (true) {
 
   <?= $form->field($goods, 'desc')->textInput(['placeholder' => '详细地描述您的产品（产地／数量／价格）']) ?>
   <label class="file-upload-btn background-plus upload-btn" for="goods-pic">
-    <?php if ($goods->pic): ?>
-      <?= Html::img("http://dev.image.alimmdn.com/" . $goods->pic, ['id'=>"preview", 'style'=> 'width:135px; height:135px']) ?>
-      <?php else: ?>
-        <img class="preview"  id="preview" src="../images/plus.png" alt="">
-    <?php endif; ?>
+    <img class="preview"  id="preview" src="../images/plus.png" alt="">
   </label>
 
   <?= $form->field($goods, 'pic')->fileInput(['class'=>'hidden', 'multiple' => 'multiple']) ?>

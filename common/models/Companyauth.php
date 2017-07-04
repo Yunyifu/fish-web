@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "companyauth".
  *
@@ -16,7 +16,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $company_pic
  * @property string $factory_pic
  * @property integer $status
- * @property string $saler
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -29,12 +28,6 @@ class Companyauth extends \yii\db\ActiveRecord
     {
         return 'companyauth';
     }
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
 
     /**
      * @inheritdoc
@@ -44,7 +37,7 @@ class Companyauth extends \yii\db\ActiveRecord
         return [
             [['user_id', 'name', 'gender', 'telphone', 'id_hand_pic', 'company_pic', 'factory_pic'], 'required'],
             [['user_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['gender','saler'], 'string'],
+            [['gender'], 'string'],
             [['name', 'telphone', 'id_hand_pic', 'company_pic', 'factory_pic'], 'string', 'max' => 100],
             [['user_id'], 'unique'],
         ];
@@ -57,17 +50,16 @@ class Companyauth extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => '用户ID',
-            'name' => '名称',
-            'gender' => '性别',
-            'telphone' => '联系方式',
-            'id_hand_pic' => '手持身份证照片',
-            'company_pic' => '公司照片',
-            'factory_pic' => '工场照片',
-            'status' => '认证状态',
-            'saler' => '业务员',
-            'created_at' => '生成于',
-            'updated_at' => '更新于',
+            'user_id' => 'User ID',
+            'name' => 'Name',
+            'gender' => 'Gender',
+            'telphone' => 'Telphone',
+            'id_hand_pic' => 'Id Hand Pic',
+            'company_pic' => 'Company Pic',
+            'factory_pic' => 'Factory Pic',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 }

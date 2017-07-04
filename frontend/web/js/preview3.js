@@ -47,8 +47,8 @@ $("#companyauth-company_pic").change(
       return alert('请上传图片文件')
     }
     reader.onload=function(e){
-      $("#preview2").css({width: "135px",height: "135px", margin: 0})
-      $("#preview2").attr('src', this.result)
+      $("#preview1").css({width: "135px",height: "135px", margin: 0})
+      $("#preview1").attr('src', this.result)
     }
   }
 )
@@ -60,8 +60,8 @@ $("#companyauth-id_hand_pic").change(
       return alert('请上传图片文件')
     }
     reader.onload=function(e){
-      $("#preview1").css({width: "135px",height: "135px", margin: 0})
-      $("#preview1").attr('src', this.result)
+      $("#preview2").css({width: "135px",height: "135px", margin: 0})
+      $("#preview2").attr('src', this.result)
     }
   }
 )

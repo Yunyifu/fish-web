@@ -229,37 +229,3 @@ create table if not exists banner (
 	primary key(id)
 )engine=InnoDB default charset=utf8;
 
-/*
-  充值记录表
- */
-create table if not exists user_charge_log (
-	id int unsigned not null auto_increment,	-- log id
-	user_id int unsigned not null,	-- 用户id
-	user_balance int unsigned not null,
-	amount decimal(15,2) not null default 0,	-- 金额
-	`status` tinyint unsigned not null default 0,	-- 支付状态
-	pay_type tinyint unsigned not null,	-- 支付类型
-	pay_platform tinyint unsigned not null,	-- 支付发起平台
-	pay_trade_no varchar(100),	-- 第三方流水号
-	remark varchar(500),	-- 备注
-	remark_imgs varchar(1000),
-	created_at int unsigned,	-- 创建时间
-	updated_at int unsigned,	-- 最后修改时间
-	primary key(id),
-	foreign key(user_id) references user(id) on delete cascade on update cascade
-)engine=InnoDB default charset=utf8;
-
-/*
- Rbac权限菜单
- */
-CREATE TABLE `menu` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`name` varchar(128) NOT NULL,
-`parent` int(11) DEFAULT NULL,
-`route` varchar(256) DEFAULT NULL,
-`order` int(11) DEFAULT NULL,
-`data` text,
-PRIMARY KEY (`id`),
-KEY `parent` (`parent`),
-CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8

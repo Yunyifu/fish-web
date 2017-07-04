@@ -13,6 +13,9 @@ $parents = \common\models\Category::find()->where(['parent_id'=>null])->select('
 ?>
 <div class="category-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <p>
         <?= Html::a('创建一个分类', ['create'], ['class' => 'btn btn-success']) ?>
     </p>

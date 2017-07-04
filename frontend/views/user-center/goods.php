@@ -19,7 +19,6 @@ $this->registerJsFile("@web/js/delete.js", ['depends' => ['frontend\assets\AppAs
     <span class="pull-right">发布时间：<?= date('Y-m-d', $goods->created_at)?></span>
   </li>
 <?php endforeach; ?>
-<li><?= $this->render('/layouts/pager', ['pageCount' => $pageCount]);?></li>
 <script type="text/javascript">
   var url = '/goods/ajax-delete/'
 </script>

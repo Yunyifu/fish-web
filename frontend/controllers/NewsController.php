@@ -32,7 +32,7 @@ class NewsController extends BaseController
      * Lists all News models.
      * @return mixed
      */
-    public function actionWhatever()
+    public function actionList()
     {
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -56,13 +56,13 @@ class NewsController extends BaseController
      * Lists all News models.
      * @return mixed
      */
-    public function actionList()
+    public function actionIndex()
     {
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $pageSize = 18;
         $pageCount = (News::find()->count())/$pageSize;
-        return $this->render('list', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'pageSize' => $pageSize,

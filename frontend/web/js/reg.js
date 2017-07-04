@@ -9,7 +9,7 @@ $("#validation-btn").click(function() {
       dataType: 'json',
       headers: {'JOKE': 'yifu!', device: 123},
       data:{
-        api: 'users/code',
+        api: 'user/code',
         data: {
           'mobile': $("#registerform-username").val(),
           'type': codeType

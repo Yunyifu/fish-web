@@ -139,7 +139,7 @@ class AuthController extends BaseController
 
     protected function findModel($id)
     {
-        if (($model = Auth::findOne($id)) !== null) {
+        if (($model = News::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

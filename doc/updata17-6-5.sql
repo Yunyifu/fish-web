@@ -1,2 +1,0 @@
-ALTER TABLE `order` ADD `buyersee` TINYINT(3) NOT NULL DEFAULT '1' COMMENT '买家可见（用于订单删除）' AFTER `updated_at`, ADD `sellersee` TINYINT(3) NOT NULL DEFAULT '1' COMMENT '卖家可见（用于订单删除）' AFTER `buyersee`;
-ALTER TABLE `user` ADD `fisher` TINYINT UNSIGNED NOT NULL DEFAULT '0' AFTER `rank`, ADD `factory` TINYINT UNSIGNED NOT NULL DEFAULT '0' AFTER `fisher`;

@@ -53,9 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute' =>'saler',
-            ],
-            [
                     'attribute' =>'created_at',
                     'label' => '生成于',
                     'value'=>function($model){

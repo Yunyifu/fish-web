@@ -50,7 +50,6 @@ class Demand extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id','title'], 'required'],
             [['category_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['price'], 'string'],
             [['num'], 'string'],
@@ -73,20 +72,18 @@ class Demand extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => '采购的海鲜种类',
+            'title' => 'Title',
             'thumb' => 'Thumb',
             'user_id' => 'User ID',
             'category_id' => 'Category ID',
-            'num' => '采购数量',
-            'price' => '意向采购价格',
-            'area' => '地理位置',
-            'demandstatus' => '状态要求',
-            'otherstatus' => '其他要求',
+            'num' => 'Num',
+            'price' => 'Price',
+            'area' => 'Area',
             'position' => 'Position',
             'status' => 'Status',
-            'desc' => '描述',
+            'desc' => 'Desc',
             'pic' => 'Pic',
-            'created_at' => '发布时间',
+            'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
@@ -148,20 +145,5 @@ class Demand extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }
-
-    public function getPubtime(){
-      if ($this->updated_at) {
-        if (time() - $this->updated_at < 3600) {
-          $minute = floor( (time() - $this->updated_at)/60 );
-          return  $minute . '分钟前发布';
-        }
-        if (time() - $this->updated_at < 86400) {
-          $hour = floor( (time() - $this->updated_at)/3600 );
-          return  $hour . '小时前发布';
-        }
-        $day = floor( (time() - $this->updated_at)/86400 );
-        return $day . '天前发布';
-      }
     }
 }

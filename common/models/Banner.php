@@ -62,14 +62,4 @@ class Banner extends \yii\db\ActiveRecord
             'type' => '种类',
         ];
     }
-
-    public function fields()
-    {
-        return [
-            'id',
-            'file_path',
-            'link_path',
-            'title'
-        ];
-    }
 }

@@ -1,38 +1,8 @@
-html *{
-  font-family: Microsoft YaHei,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
-}
-body *{
-  font-family:"Microsoft YaHei","微软雅黑","MicrosoftJhengHei","华文细黑","STHeiti","MingLiu";
-}
-a:hover{
-  text-decoration: none;
-}
-html body .margin0{
-  margin: 0;
-}
 .no-warp{
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.margin-top0{
-  margin-top: 0 !important;
-}
-.margin-right0{
-  margin-right: 0 !important;
-}
-.overhidden{
-  overflow: hidden;
-}
-.red.price{
-  color: #E5363D;
-}
-.red{
-  color: #f6837d
-}
-.green{
-  color: #71a64b
 }
 .blue{
   color: #5fbff9
@@ -40,9 +10,8 @@ html body .margin0{
 .white{
   color: #fff
 }
-.center{
-  text-align: center;
-}
+
+
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: #fff; opacity:1;
 }
@@ -58,9 +27,7 @@ input:-ms-input-placeholder{
 input::-webkit-input-placeholder{
     color: #fff;opacity:1;
 }
-.search input::-webkit-input-placeholder{
-    color: #aaa;opacity:1;
-}
+
 .container.content{
   width: 1080px;
   padding: 0;
@@ -106,10 +73,8 @@ input::-webkit-input-placeholder{
 .tab.goods a:hover{
   color: #4fb6fb;
 }
-.tab a.selected{
-  color: #5fbff9
-}
-li.type .icon{
+
+li.type img{
   width: 26px;
   height: 26px;
 }
@@ -152,7 +117,7 @@ li{
 .navi-bar a{
   display: inline-block;
   margin-left: -4px;
-  width: 19%;
+  width: 216px;
   text-align: center;
   line-height: 40px;
   color: #ffffff;
@@ -163,7 +128,7 @@ li{
 /*navi结束*/
 .search{
   overflow: hidden;
-  padding-top: 17px;
+  padding-top: 25px;
   width: 1080px;
   height: 90px;
   margin: auto;
@@ -172,12 +137,11 @@ li{
   font-size: 16px;
   color: #ffffff;
 }
-.search .logo{
+.search img{
   height: 56px;
 }
 .search a{
   display: inline-block;
-  margin-top: 7px;
   padding: 0;
   width: 110px;
   line-height: 40px;
@@ -190,21 +154,14 @@ li{
   padding: 0;
   width: 110px;
   line-height: 40px;
-  color: #fff;
   background-color: #5fbff9;
   border: 0;
   border-radius: 0;
 }
 .search input{
-  margin-top: 7px;
   height: 40px;
-  color: #000;
-  text-align: center;
   border: 1px solid #5fbff9;
   border-right: 0;
-}
-.search .input{
-  text-align:left; padding-left: 14px;width: 173px;font-size: 14px
 }
 .tab, .slider, .login{
   display: inline-block;
@@ -215,7 +172,6 @@ li{
   padding: 0;
 }
 .tab{
-  overflow: hidden;
   width: 236px;
   background-color: #5fbff9;
 }
@@ -225,7 +181,7 @@ li{
   line-height: 26px;
 }
 .tab .type{
-  margin-left: 18px;
+  margin-left: 16px;
 }
 .tab-anchors a{
   display: inline-block;
@@ -234,10 +190,8 @@ li{
 }
 .tab-title{
   display: inline-block;
-  margin-bottom: 10px;
   width: 236px;
   line-height: 40px;
-  font-size: 16px;
   color: #ffffff;
   text-align: center;
   background-color: #0999f0;
@@ -254,7 +208,7 @@ li{
 }
 .tab .news.content{
   margin-left: 18px;
-  margin-right:18px;
+  margin-right:11px;
   font-size: 12px;
 }
 .slider{
@@ -354,7 +308,6 @@ li{
 }
 .detail-content{
   display: inline-block;
-  overflow: hidden;
   padding: 13px;
   width: 600px;
   height: 300px;
@@ -371,14 +324,6 @@ li{
   text-align: center;
   color: #333333;
   border-top: 1px solid #dfdfdf;
-}
-.detail .status.blue{
-  border-color: #5fbff9;
-}
-.detail .status img{
-  position: absolute;
-  margin-top: -5px;
-  margin-left: 15px;
 }
 .detail-content h5{/*详情标题*/
   font-size: 18px;
@@ -426,37 +371,25 @@ li{
   text-align: center;
   border-bottom: 1px solid #dfdfdf;
 }
-.content.news h6{
-  text-align: center;
-}
 .news .content{
-  padding-bottom: 55px;
-  min-height: 300px;
-  text-align: center !important;
+  text-align: center;
 }
 .news .content img{
   float: none;
-  width: initial;
-  height: initial;
-  display: block;
-  margin: auto;
+  text-align: center;
 }
 .news .content p{
-  width: inherit;
-  height: auto;
-  line-height: 21px;
   text-align: left;
 }
 /*资讯详情End*/
 .sub-title{
-  overflow: hidden;
+
 }
 .sub-title h5{
-  margin-top: 30px;
-  margin-bottom: 15px;
+  font-family:"Microsoft YaHei","微软雅黑","MicrosoftJhengHei","华文细黑","STHeiti","MingLiu";
   font-weight: bold;
   font-size: 24px;
-  /*line-height: 90px;*/
+  line-height: 90px;
 }
 .sub-title span{
   font-size: 16px;
@@ -465,13 +398,13 @@ li{
 }
 .sub-title a{
   line-height: 90px;
-  font-size: 22px;
+  font-size: 24px;
   color: #5fbff9;
 }
 
 .sub-title.for-steps{
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 36px;
+  margin-bottom: 15px;
 }
 .steps{
   width: 1080px;
@@ -479,13 +412,12 @@ li{
   padding-left: 60px;
   padding-top: 15px;
   height: 104px;
-  /*border: 1px solid #afdaf5;*/
+  border: 1px solid #afdaf5;
   background-color: #edf5fb;
   background-image: url("../images/Rectangle 10.png");
 }
 .step{
   display: inline-block;
-  *display: inline;
   /*height: 104px;*/
 }
 .step2{
@@ -499,53 +431,20 @@ li{
 }
 .step h6{
   font-size: 24px;
-  font-weight: bold;
   color: #666666;
 }
 .step p{
   font-size: 18px;
   color: #666666;
 }
-.container.content.gallery{
-  margin-top: 30px;
-  margin-bottom: 21px;
-}
 #gallery{
-  display: inline-block;
-  position: relative; text-align: center;overflow: hidden;
-  width: 910px;
+  position: relative; overflow: auto; text-align: center;
   height: 137px;
 }
-#gallery ul{
-  overflow: hidden;
-  position: relative;
-}
 #gallery li{
-  float: left;
-}
-.gallery li img{
-  width: 182px;
-  height: 134px;
-}
-.gallery button{
-  border: 0;
-  background: none;
-  margin-top: 60px;
-}
-.gallery button.pull-left{
-  margin-left: 47px;
-}
-.gallery button.pull-right{
-  margin-right: 47px;
-}
-.list.sub-title h5{
-  margin-top: 28px;
-  margin-left: 90px;
-  display: inline-block;
-  width: 300px;
+  float: right;
 }
 .information{
-      margin-bottom: 30px;
   position: relative;
   border: 1px solid #dfdfdf;
 }
@@ -578,9 +477,6 @@ li{
 li.head{
   border-bottom: 0;
 }
-li.item{
-  font-size: 20px;
-}
 li.last{
   border-bottom: 0;
 }
@@ -598,7 +494,6 @@ li.last{
   margin-right: 10px;
   width: 40px;
   height: 40px;
-  border-radius: 20px;
 }
 .goods .user span{
   line-height: 23px;
@@ -614,11 +509,9 @@ li.last{
   color: #666666;
 }
 .information li a:hover{
-  color: #5fbff9;
-  text-decoration: underline;
+  color: #5fbff9
 }
 .information.demand{
-  margin-top: 7px;
   margin-bottom: 50px;
 }
 .information.demand .head{
@@ -701,8 +594,7 @@ li.last{
   height: 188px;
 }
 .publish .select{
-  /*display: inline-block;*/
-  float: left;
+  display: inline-block;
   margin-right: 70px;
   margin-bottom: 20px;
   width: 120px;
@@ -754,14 +646,10 @@ li.last{
 
 .list-page.goods li{
   position: relative;
-  margin-bottom: 10px;
   width: 1080px;
   height: 140px;
   border: 1px solid #dfdfdf;
   background: none;
-}
-.list-page.goods li:hover{
-  box-shadow: 0px 2px  4px #999;
 }
 .list-page.goods li *{
   position: absolute;
@@ -779,17 +667,16 @@ li.last{
   left: 188px;
   width: 60px;
   height: 60px;
-  border-radius: 30px;
 }
 .list-page.goods .user-name{
   top: 30px;
-  left: 259px;
+  left: 250px;
   font-size: 20px;
   color: #333333;
 }
 .list-page.goods .created_at{
   top: 60px;
-  left: 259px;
+  left: 255px;
   color: #999999;
 }
 .list-page.goods .location{
@@ -800,7 +687,6 @@ li.last{
 .list-page.goods .comment{
   top: 100px;
   left: 188px;
-  width: 700px;
   color: #666666;
 }
 .list-page.goods .anchor{
@@ -814,15 +700,11 @@ li.last{
   border-radius: 3px;
   background-color: #5fbff9;
 }
-.list-page.goods .anchor.selled{
-  background-color: #aaaaaa;
-}
 .list-page.goods .anchor:hover{
   color: #ffffff;
 }
-.list-page.goods img.selled{
-  left: 976px;
-  top: 19px;
+.list-page.goods .anchor.outofdate{
+  background-color: #999999;
 }
 /*采购页End*/
 /*资讯列表Start*/
@@ -834,13 +716,9 @@ li.last{
 }
 .list-page .news p{
   float: left;
-  line-height: 20px;
 }
 .list-page .news a.pull-right{/*查看全文链接*/
-  position: relative;
-  top: -5px;
   font-size: 18px;
-  line-height: 30px;
   color: #0096e9
 }
 .news li{
@@ -849,14 +727,13 @@ li.last{
 }
 .news img{
   float: left;
-  margin-right: 28px;
+  margin-right: 30px;
   width: 326px;
   height: 124px;
 }
 .news h6{
   font-size: 32px;
   color: #333333;
-  text-align: left;
 }
 .news .created_at{
   display: inline-block;
@@ -881,10 +758,6 @@ li.last{
   color: #666666;
   text-align: center;
 }
-.demand li span.date{
-  font-size: 16px;
-  color: #aaa
-}
 /*foot开始*/
 .footer{
   padding-top: 100px;
@@ -895,7 +768,7 @@ li.last{
   width: 100%;
   max-width: 1080px;
   height: 200px;
-  color: #D8DDE0;
+  color: #ffffff;
 }
 .clear{
   clear: both;
@@ -904,15 +777,16 @@ li.last{
   float: right;
 }
 .footer .content h6{
-  font-size: 20px;
+  font-size: 28px;
   font-weight: normal;
+  color: #ffffff;
 }
 .footer .content img{
   width: 100px;
 }
 .footer .content a{
   margin-right: 70px;
-  color: #D8DDE0;
+  color: #ffffff;
 }
 .footer .content span{
   margin-right: 20px;
@@ -923,9 +797,6 @@ li.last{
   font-size: 12px;
   color: #666666;
 }
-.pager a.blue{
-  color:#5fbff9;
-}
 .pager a:hover{
   color:#4fb6fb;
 }
@@ -934,13 +805,13 @@ li.last{
   background-size: 100%;
 }
 .icon.purchase{
-  position: absolute;
+  float: left;
   width: 70px;
   height: 92px;
   background-image: url("../images/buy.png");
 }
 .icon.need{
-  position: absolute;
+  float: left;
   width: 78px;
   height: 78px;
   background-image: url("../images/shop.png");

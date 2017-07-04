@@ -45,25 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute'=>'ship_pic', 'format' => ['image',['width' => 300,]],'value'=>function($data){
                 return 'http://dev.image.alimmdn.com'.$data->ship_pic;
             }],
-            [
-                'attribute' => 'status',
-                'label'=>'认证状态',
-                'value'=>function($model){
-                    if($model->status == \common\util\Constants::AUTH_NO_CHECK){
-                        return '未认证';
-                    }else if($model->status == \common\util\Constants::AUTH_CHECKING){
-                        return '待审核';
-                    }else if($model->status == \common\util\Constants::AUTH_CHECKED){
-                        return '已认证';
-                    }else if($model->status == \common\util\Constants::AUTH_CHECK_REFUSED){
-                        return '认证拒绝';
-                    }
-
-                }
-            ],
-            [
-                'attribute' =>'saler',
-            ],
+            'status',
             'created_at',
             'updated_at',
         ],

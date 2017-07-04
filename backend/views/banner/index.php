@@ -7,12 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\BannerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '轮播图';
+$this->title = 'Banners';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="banner-index" style="overflow-x:auto">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <p>
-        <?= Html::a('创建一张轮播图', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建一张Banner图', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

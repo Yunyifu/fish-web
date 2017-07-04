@@ -14,21 +14,18 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
 <?= $this->render('/layouts/navi-bar')?>
 
 <div class="container content">
+  <br class="clear">
     <div class="tab">
       <span class="tab-title">热门分类</span>
       <a class="type pull-left" href="#">鱼类</a>
       <div class="index tab-anchors">
-        <?php
-          foreach ($categoryData as $key => $category) {
-            if ($key < 12) {
-               echo Html::a($category['name'], ['/goods/list', 'GoodsSearch[category_id]'=>$category['id']] );
-            }
-          }
-        ?>
+        <?php foreach ($categoryData as $key => $category): ?>
+          <?= Html::a($category['name'], ['/goods/list', 'GoodsSearch[category_id]'=>$category['id']] ) ?>
+        <?php endforeach; ?>
       </div>
       <h6 class="news title">交易最新动态</h6>
       <?php foreach ($lastOrders as $key => $order): ?>
-        <p class="news content"><?= date('Y-m-d', $order->updated_at).'&nbsp;&nbsp;'.$order->buyername. '已选购' .$order->sellername?>的海鲜<span class="pull-right red price">￥12450</span></p>
+        <p class="news content"><?= date('Y-m-d', $order->updated_at).'&nbsp;&nbsp;'.$order->buyername. '已选购' .$order->sellername?>的海鲜</p>
       <?php endforeach; ?>
     </div>
     <div class="slider" id="slider">
@@ -41,9 +38,9 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
       </ul>
     </div>
     <div class="login">
-      <?= Html::img('http://dev.image.alimmdn.com/'.$avatar) ?>
+      <img src="http://dev.image.alimmdn.com<?= $avatar ?>" alt="一个图">
       <span class="greet">
-        <?= Html::a($greet, ['/user-center'], ['class'=>'no-warp','style'=>'background:none;color:#666;width:120px;text-align:left']) ?>
+        <?= Html::a($greet, ['/user-center'], ['class'=>'no-warp','style'=>'background:none;color:#666;width:120px;']) ?>
       </span>
       <br>
       <span class="greet" style="margin-top: 0px;">欢迎来到渔鱼网</span>
@@ -69,7 +66,7 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
   <br class="clear">
   <div class="sub-title for-steps">
     <a href="#"></a>
-    <h5>交易流程<span>&nbsp;&nbsp;&nbsp;保障需求与供应方的权益 平台全程参与交易 确保信息真实 资金托管安全有保障</span></h5>
+    <h5>交易流程<span> 保障需求与供应方的权益 平台全程参与交易 确保信息真实 资金托管安全有保障</span></h5>
   </div>
   <div class="steps">
     <div class="step">
@@ -85,40 +82,32 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
       <p>交付定金，查看货品进行交易</p>
     </div>
   </div>
-  <div class="container content center gallery">
-    <button id="slide-left" class="pull-left"><?= Html::img('/images/left.png', ['alt' => 'gallery']) ?></button>
-    <div id="gallery" class="gallery">
-      <ul style="width: <?=count($gallery)*182*3 ?>px">
-        <?php foreach ($gallery as $key => $img): ?>
-          <li><?= Html::img('http://dev.image.alimmdn.com/'.$img->file_path, ['alt' => 'gallery']) ?></li>
-          <li><?= Html::img('http://dev.image.alimmdn.com/'.$img->file_path, ['alt' => 'gallery']) ?></li>
-          <li><?= Html::img('http://dev.image.alimmdn.com/'.$img->file_path, ['alt' => 'gallery']) ?></li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-    <button id="slide-right" class="pull-right"><?= Html::img('/images/right.png', ['alt' => 'gallery']) ?></button>
+  <div id="gallery" class="gallery">
+    <ul>
+      <li><img src="" alt="test1"></li>
+      <li><img src="" alt="test2"></li>
+    </ul>
   </div>
-  <div class="sub-title list">
+  <div class="sub-title">
     <?= Html::a('查看更多 >', ['/goods/list'], ['class'=>'pull-right'])?>
-  <span class="icon need"><h5 class="margin0"></span>供应信息  <!-- <span>保障需求与供应方的权益</span> --></h5>
+    <h5><span class="icon need"></span>供应信息<span>保障需求与供应方的权益</span></h5>
   </div>
     <ul class="information goods">
       <li class="left-shade"> </li>
       <?php foreach ($goodsData as $key => $goods): ?>
         <li class="<?= ($key+1)==count($goodsData)? 'last':''?>">
           <div class="user pull-right">
-            <?= Html::img('http://dev.image.alimmdn.com/'.$goods->user->avatar, ['class'=>'user-avatar']) ?>
-            <span class="user-name no-warp"><?= $goods->user->nickname?></span>
-            <span class="user-time no-warp"><?= $goods->pubtime?></span>
+            <img class="user-avatar" src="<?php echo $goods->user->avatar?>" alt="用户头像">
+              <span class="user-name no-warp"><?= $goods->user->nickname?></span>
+            <span class="user-time no-warp">5分钟前发布</span>
           </div>
           <?= Html::a($goods->title, ['/goods/detail', 'id'=>$goods->id])?>
         </li>
       <?php endforeach; ?>
     </ul>
-    <?= Html::a(Html::img('@web/images/mid_banner.png', ['alt' => 'LOGO', 'style'=>'margin-bottom: 15PX']), ['/site/publish']) ?>
-  <div class="sub-title list">
+  <div class="sub-title">
     <?= Html::a('查看更多 >', ['/demand/list'], ['class'=>'pull-right'])?>
-    <span class="icon purchase"></span><h5>采购信息</h5>
+    <h5><span class="icon purchase"></span>采购信息</h5>
   </div>
     <ul class="information demand">
       <li class="left-shade"> </li>
@@ -136,10 +125,10 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
           <span><?= $demand->title?></span>
           <span><?= $demand->price?></span>
           <span><?= $demand->num?></span>
-          <span><?= $demand->demandstatus?></span>
-          <span title="<?= $demand->desc?>" class="no-warp"><?= $demand->otherstatus?></span>
+          <span>新鲜</span>
+          <span title="<?= $demand->desc?>" class="no-warp"><?= $demand->desc?></span>
           <span><?= $demand->position?></span>
-          <span class="date"><?= date('Y.m.d', $demand->updated_at)?></span>
+          <span><?= date('Y.m.d', $demand->updated_at)?></span>
         </li>
       <?php endforeach; ?>
     </ul>
@@ -147,6 +136,3 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
 <?php
   echo $this->render('/layouts/footer');
 ?>
-<script type="text/javascript">
-  var gallery = <?php echo count($gallery) ?>;
-</script>

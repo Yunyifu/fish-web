@@ -13,38 +13,33 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="companyauth-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'id',
-            [
-                'attribute' => 'user_id',
-                'headerOptions' => ['width'=>70],
-            ],
-            [
-                'attribute' => 'name',
-                'headerOptions' => ['width'=>150],
-            ],
+            'id',
+            'user_id',
+            'name',
             [
                 'attribute'=>'gender',
                 'label'=>'性别',
-                'filter'=>[Constants::FEMALE=>'女性',Constants::MALE=>'男性'],
+                'filter'=>[Constants::GENDER_FEMALE=>'女性',Constants::GENDER_MALE=>'男性'],
                 'content'=>function($model){
-                    if($model->gender == Constants::MALE){
+                    if($model->gender == Constants::GENDER_MALE){
                         return '男性';
-                    }else if($model->gender == Constants::FEMALE){
+                    }else if($model->gender == Constants::GENDER_FEMALE){
                         return '女性';
                     }
-                },
-                'headerOptions' => ['width'=>80]
+                }
             ],
-            [
-                'attribute' => 'telphone',
-                'headerOptions' => ['width'=>190],
-            ],
+            'telphone',
             // 'id_hand_pic',
             // 'company_pic',
             // 'factory_pic',
@@ -63,21 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         return '认证拒绝';
                     }
 
-                },
-                'headerOptions' => ['width'=>100]
-            ],
-            [
-                'attribute' => 'saler',
-                'headerOptions' => ['width'=>120],
-            ],
-            [
-                'attribute' => 'created_at',
-                'label' => '申请时间',
-                'headerOptions' => ['width'=>140],
-                'content' => function($model){
-                    return date('Y-m-d H:i:s',$model->created_at);
                 }
             ],
+            // 'created_at',
             // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],

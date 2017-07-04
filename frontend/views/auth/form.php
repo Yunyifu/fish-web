@@ -16,7 +16,7 @@ $gender = ['0'=>'女', '1'=>'男'];
 <label class="for-file" style="display:inline-block" for="auth-ship_pic"><img id ="preview3" src="../images/plus.png"  style="margin-top:40px"></label>
 <br>
 <span>手持身份证</span>
-<span style="display:inline-block;margin-left:250px;margin-right:250px;">船舶证书</span>
+<span style="display:inline-block;margin-left:270px;margin-right:270px;">船舶证书</span>
 <span>船舶照片</span>
 <?= $form->field($fisher, 'id_hand_pic')->fileInput(['class'=>'hidden']) ?>
 

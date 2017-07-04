@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 $this->title = '公司认证';
 $this->registerJsFile("@web/js/preview3.js", ['depends' => ['frontend\assets\AppAsset']]);
 $gender = ['0'=>'女', '1'=>'男'];
-$redo = \Yii::$app->request->get('redo', 0);
 ?>
 
 
@@ -53,22 +52,35 @@ $redo = \Yii::$app->request->get('redo', 0);
         <p>资料提交成功</p>
         <p>3-5个工作日审核，请等待审核结果</p>
       </li>
-    <?php elseif($company->status === 2):?>
-      <li calss="authtodo" style="padding-top:100px;padding-bottom:100px;border-top:1px solid #dfdfdf">
-        <img src="../images/ok.png" alt="">
-        <br><br>
-        <p>您已认证成功</p>
-      </li>
-    <?php elseif($company->status === 4 && $redo === 0):?>
-      <li calss="authtodo" style="padding-top:100px;padding-bottom:100px;border-top:1px solid #dfdfdf">
-        <img src="../images/ok.png" alt="">
-        <p>审核不被通过，请重新认证</p>
-        <?= Html::a('点击重新认证', ['/auth/company', 'redo'=>1]) ?>
-      </li>
-    <?php else:?>
-      <li class="auth form">
-        <?= $this->render('company_form', ['company'=>$company]) ?>
-      </li>
+      <?php else: ?>
+        <li class="auth form">
+          <?php $form = ActiveForm::begin(); ?>
+
+          <?= $form->field($company, 'name')->textInput(['placeholder' => '法人代表名字']) ?>
+
+          <?= $form->field($company, 'gender')->dropDownlist($gender, ['prompt'=>'请选择性别']) ?>
+
+          <?= $form->field($company, 'telphone')->textInput(['placeholder' => '公司联系电话']) ?>
+
+          <?= $form->field($company, 'id_hand_pic')->fileInput(['class'=>'hidden']) ?>
+
+          <?= $form->field($company, 'factory_pic')->fileInput(['class'=>'hidden']) ?>
+
+          <?= $form->field($company, 'company_pic')->fileInput(['class'=>'hidden']) ?>
+
+          <label class="for-file" style="display:inline-block" for="companyauth-company_pic"><img id ="preview1" src="../images/plus.png" style="margin-top:40px"></label>
+          <label class="for-file" style="display:inline-block;margin-left:180px;margin-right:180px;" for="companyauth-id_hand_pic"><img id ="preview2" src="../images/plus.png" style="margin-top:40px"></label>
+          <label class="for-file" style="display:inline-block" for="companyauth-factory_pic"><img id ="preview3" src="../images/plus.png" style="margin-top:40px"></label>
+          <br>
+          <span>工厂照片</span>
+          <span style="display:inline-block;margin-left:260px;margin-right:260px;">手持身份证</span>
+          <span>营业执照</span>
+          <div class="form-group">
+              <?= Html::submitButton('提交', ['class' =>  'btn' ]) ?>
+          </div>
+
+          <?php ActiveForm::end(); ?>
+        </li>
     <?php endif; ?>
   </ul>
   <br class="clear"><br class="clear"><br class="clear">

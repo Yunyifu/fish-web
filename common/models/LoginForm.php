@@ -12,7 +12,6 @@ class LoginForm extends ActiveRecord
 {
     public $username;
     public $password;
-    public $validation;
     public $rememberMe = true;
 
     private $_user;
@@ -30,30 +29,12 @@ class LoginForm extends ActiveRecord
         return [
             // username and password are both required
             [['username', 'password'], 'required'],
-            [['username'], 'integer'],
-            //[['username'], 'islength11'],
             // rememberMe must be a boolean value
             //['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
     }
-    public function attributeLabels()
-    {
-        return [
-            'username' => '用户手机号',
-            'password' => '密码',
-            'validation' => '验证码',
-        ];
-    }
-/*    public function islength11(){
-        $data = $this->username;
-        if(strlen($data) == 11){
-            return true;
-        }else{
-            $this->addError('username', '手机号或密码错误');
-        }
-    }*/
 
     /**
      * Validates the password.
@@ -62,7 +43,7 @@ class LoginForm extends ActiveRecord
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
-    public function validatePassword($attribute, $params)
+    public function validatePassword($password)
     {
 
         //return Yii::$app->security->validatePassword($password, $this->password_hash);
@@ -72,18 +53,12 @@ class LoginForm extends ActiveRecord
             if(is_null($data)){
                 $this->addError("password","用户名或密码错误");
             }*/
-          /*  Yii::$app->security->validatePassword($password, $this->password_hash);
+            Yii::$app->security->validatePassword($password, $this->password_hash);
 
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($password, 'Incorrect username or password.');
-            }*/
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, '手机号或密码错误');
+                $this->addError($attribute, 'Incorrect username or password.');
             }
-        }
 
     }
 
@@ -92,17 +67,17 @@ class LoginForm extends ActiveRecord
      *
      * @return boolean whether the user is logged in successfully
      */
-    public function login()
+    public function login($data)
     {
-        /*$user = 'admin';
-        $password = '$2y$13$sg1ZbHqQq.He6MjaKJdfL.VumDY963aJc9mr3M9ZuRIGc3Kpr14Q2';
+        /*$user = '12345';
+        $password = '$2y$13$2MvuB2MiRuPoCop6r8r9ZOJkG6jRIx6scfBPmTGOWVfuFd5vBLSPa';
         if( empty( $user ) || !$this->validatePassword( $password ) ) {
             return false;
         } else {
             return true;
         }*/
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return true;
         } else {
             return false;
         }

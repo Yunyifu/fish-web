@@ -18,6 +18,6 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [ ] 
-        ] ,
-    ]
+        ] 
+    ] 
 ];
