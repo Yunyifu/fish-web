@@ -73,6 +73,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
             ],
             'rank',
+            [
+                    'attribute'=>'dealers',
+                    'value' => function($model){
+                        return isset($model->dealer)?$model->dealer:'';
+                    },
+
+            ],
         ],
     ]) ?>
 

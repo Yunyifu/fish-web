@@ -14,7 +14,7 @@ namespace common\util;
  */
 class YunPianManager {
 
-    private static $apikey = "*";
+    private static $apikey = "e5296557c7822143362aea54475dc8ad";
 
     /**
      * 发送短息
@@ -24,7 +24,7 @@ class YunPianManager {
      * @return boolean string
      */
     public static function sendSMS($mobile, $code) {
-        $text = "【XXX】您的验证码是{$code}";
+        $text = "【渔鱼网】您的验证码是{$code}";
         $data = json_decode( self::send_sms( self::$apikey, $text, $mobile ), true );
         if( $data ['code'] == 0 ) {
             return true;

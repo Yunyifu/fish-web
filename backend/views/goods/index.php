@@ -12,12 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 $parents = \common\models\Category::find()->where(['is not','parent_id',null])->select('name')->indexBy('id')->column();
 ?>
 <div class="goods-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-        <?= Html::a('创建商品', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('后台发布一个供应', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

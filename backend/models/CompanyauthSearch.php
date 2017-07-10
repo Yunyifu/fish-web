@@ -19,7 +19,7 @@ class CompanyauthSearch extends Companyauth
     {
         return [
             [['id', 'user_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'gender', 'telphone', 'id_hand_pic', 'company_pic', 'factory_pic'], 'safe'],
+            [['name', 'gender', 'telphone', 'saler','id_hand_pic', 'company_pic', 'factory_pic'], 'safe'],
         ];
     }
 
@@ -71,7 +71,8 @@ class CompanyauthSearch extends Companyauth
             ->andFilterWhere(['like', 'telphone', $this->telphone])
             ->andFilterWhere(['like', 'id_hand_pic', $this->id_hand_pic])
             ->andFilterWhere(['like', 'company_pic', $this->company_pic])
-            ->andFilterWhere(['like', 'factory_pic', $this->factory_pic]);
+            ->andFilterWhere(['like', 'factory_pic', $this->factory_pic])
+            ->andFilterWhere(['like', 'saler', $this->saler]);
 
         return $dataProvider;
     }

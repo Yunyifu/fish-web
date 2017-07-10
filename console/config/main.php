@@ -6,6 +6,7 @@ $params = array_merge(
     require(__DIR__ . '/params-local.php')
 );
 
+
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
@@ -20,6 +21,20 @@ return [
                 ],
             ],
         ],
-    ],
+        'authManager' => [
+            'class' => 'yii\rbac\Dbmanager',
+            'itemTable' => '{{%auth_item}}',
+            'itemChildTable' => '{{%auth_item_child}}',
+            'assignmentTable' => '{{%auth_assignment}}',
+            'ruleTable' => '{{%auth_rule}}'
+        ],
+//        'db' => [
+//            'class' => 'yii\db\Connection',
+//            'dsn' => 'mysql:host=localhost;dbname=fish',
+//            'username' => 'root',
+//            'password' => '65466007',
+//            'charset' => 'utf8mb4',
+//        ],
+        ],
     'params' => $params,
 ];

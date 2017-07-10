@@ -16,7 +16,7 @@ use backend\util\Utils;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gender')->dropDownList([ 1 => '1', 2 => '2', '' => '', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'gender')->dropDownList([ 1 => '男', 2 => '女', ]) ?>
 
     <?= $form->field($model, 'telphone')->textInput(['maxlength' => true]) ?>
 

@@ -10,6 +10,7 @@ class FreshOrder extends JobHandler
 {
     public function handle($job, $data)
     {
+
         $overTime = time()-1800;
         $orders = Order::find()->where(['status' => Constants::ORDER_STATUS_NOT_PAY])->andwhere(['<','created_at',$overTime])->all();
         foreach($orders as $order){

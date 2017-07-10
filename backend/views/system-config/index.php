@@ -44,6 +44,7 @@ $this->registerJs($js);
         <h3>基础配置</h3>
         <?= $form->field($model, 'param1')->textInput() ?>
         <?= $form->field($model, 'param2')->textInput() ?>
+        <?= $form->field($model, 'param3')->textInput() ?>
     </div>
 
     <div class="form-group">

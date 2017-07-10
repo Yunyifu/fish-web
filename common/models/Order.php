@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "order".
  *
@@ -28,13 +28,13 @@ use Yii;
  * @property integer $buyer_id
  * @property string $buyer_name
  * @property string $buyer_mobile
+ * @property string $seller_mobile
  * @property string $buyer_addr
  * @property string $message
  * @property integer $pay_time
  * @property integer $post_pay_time
  * @property integer $created_at
  * @property integer $updated_at
- *
  * @property Goods $goods
  * @property User $seller
  * @property User $buyer
@@ -45,6 +45,13 @@ class Order extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
+    }
     public static function tableName()
     {
         return 'order';
@@ -60,6 +67,8 @@ class Order extends \yii\db\ActiveRecord
             [['sn', 'goods_amount'], 'required'],
             [['refund_amount', 'refund_balance', 'refund_paid', 'goods_amount', 'goods_price'], 'number'],
             [['refund_reason'], 'string'],
+            [['buyersee'], 'integer'],
+            [['sellersee'], 'integer'],
             [['sn', 'buyer_name', 'buyer_mobile'], 'string', 'max' => 50],
             [['pay_trade_no'], 'string', 'max' => 100],
             [['goods_name', 'buyer_addr'], 'string', 'max' => 1000],
@@ -77,33 +86,94 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => 'Type',
-            'goods_id' => 'Goods ID',
-            'sn' => 'Sn',
-            'status' => 'Status',
-            'before_refund_status' => 'Before Refund Status',
-            'refund_status' => 'Refund Status',
-            'refund_amount' => 'Refund Amount',
-            'refund_balance' => 'Refund Balance',
-            'refund_paid' => 'Refund Paid',
-            'refund_reason' => 'Refund Reason',
-            'goods_amount' => 'Goods Amount',
-            'pay_type' => 'Pay Type',
-            'pay_platform' => 'Pay Platform',
-            'pay_trade_no' => 'Pay Trade No',
-            'goods_name' => 'Goods Name',
-            'goods_price' => 'Goods Price',
-            'seller_id' => 'Seller ID',
-            'buyer_id' => 'Buyer ID',
-            'buyer_name' => 'Buyer Name',
-            'buyer_mobile' => 'Buyer Mobile',
-            'buyer_addr' => 'Buyer Addr',
-            'message' => 'Message',
-            'pay_time' => 'Pay Time',
-            'post_pay_time' => 'Post Pay Time',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'type' => '种类',
+            'goods_id' => '商品 ID',
+            'sn' => '订单号',
+            'status' => '订单状态',
+            'before_refund_status' => '申请退款前订单状态',
+            'refund_status' => '退款状态',
+            'refund_amount' => '退款总金额',
+            'refund_balance' => '余额退款金额',
+            'refund_paid' => '第三方退款金额',
+            'refund_reason' => '退款理由',
+            'goods_amount' => '订单金额',
+            'pay_type' => '第三方支付类型',
+            'pay_platform' => '支付发起平台',
+            'pay_trade_no' => '第三方流水号',
+            'goods_name' => '商品名称',
+            'goods_price' => '价格',
+            'seller_id' => '卖家ID',
+            'buyer_id' => '买家ID',
+            'buyer_name' => '买家姓名',
+            'buyer_mobile' => '买家手机',
+            'buyer_addr' => '买家地址',
+            'message' => '买家留言',
+            'pay_time' => '支付成功时间',
+            'post_pay_time' => '尾款支付时间',
+            'created_at' => '生成于',
+            'updated_at' => '更新于',
+            'buyersee'=>'买家可见',
+            'sellersee'=>'卖家可见',
         ];
+    }
+
+    public function fields(){
+        return [
+            'id' => 'id',
+            'type' => 'type',
+            'goods_id' => 'goods_id',
+            'sn' => 'sn',
+            'status' => 'status',
+            'order_amount' => 'goods_amount',
+            'pay_trade_no' => 'pay_trade_no',
+//            'goods_name' => function(){
+//                return $this->goods->title;
+//            },
+            'goods_desc' => function(){
+                return $this->goods->desc;
+            },
+            'goods_price' => function(){
+                return $this->goods->price;
+            },
+            'goods_pic'=>function(){
+                return $this->goods->pic;
+            },
+            'buyer_name' => function(){
+                return $this->buyer->username;
+            },
+            'seller_name' => function(){
+                return $this->seller->username;
+            },
+            'nick_name' => function(){
+                return $this->seller->nickname;
+            },
+            'avatar' => function(){
+                return $this->seller->avatar;
+            },
+            'buyer_mobile' => function(){
+                return $this->buyer->username;
+                //return substr_replace($this->buyer->username,'****',3,6);
+            },
+            'seller_mobile' => function(){
+                return substr_replace($this->seller->mobile,'****',3,6);
+            },
+            'buyer_addr' => 'buyer_addr',
+            'message' => 'message',
+            'pay_time' => 'pay_time',
+            'created_at' => 'created_at',
+            'updated_at' => 'updated_at',
+
+        ];
+    }
+
+
+    public function getBuyerName()
+    {
+        return $this->buyer?substr_replace($this->buyer->username,'****',3,6):'用户已删除';
+    }
+    public function getSellerName()
+    {
+        return $this->seller?substr_replace($this->seller->username,'****',3,6):'用户已删除';
     }
 
     /**
@@ -113,6 +183,7 @@ class Order extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Goods::className(), ['id' => 'goods_id']);
     }
+
 
     /**
      * @return \yii\db\ActiveQuery
@@ -136,5 +207,68 @@ class Order extends \yii\db\ActiveRecord
     public function getOrderLogs()
     {
         return $this->hasMany(OrderLog::className(), ['order_id' => 'id']);
+    }
+
+    public function getStatusTextBuyer(){
+      switch ($this->status) {
+        case 0:
+          $text = '<span class="green">订单待支付</span>';
+          break;
+        case 1:
+          $text = '<span class="red">订单已取消</span>';
+          break;
+        case 2:
+          $text = '<span class="green">订单已支付</span>';
+          break;
+        case 3:
+          $text = '<span class="green">订单服务中</span>';
+          break;
+        case 4:
+          $text = '<span class="green">订单已发货</span>';
+          break;
+        case 5:
+          $text = '<span class="green">订单已完成</span>';
+          break;
+        case 6:
+          $text = '<span class="green">退货中</span>';
+          break;
+        default:
+          return '<span>状态异常</span>';
+          break;
+      }
+      return $text;
+    }
+    public function getStatusTextSeller(){
+      switch ($this->status) {
+        case 0:
+          $text = '<span class="green">订单待支付</span>';
+          break;
+        case 1:
+          $text = '<span class="red">订单已取消</span>';
+          break;
+        case 2:
+          $text = '<span class="green">订单已支付</span>';
+          break;
+        case 3:
+          $text = '<span class="green">订单服务中</span>';
+          break;
+        case 4:
+          $text = '<span class="green">订单已发货</span>';
+          break;
+        case 5:
+          $text = '<span class="green">订单已完成</span>';
+          break;
+        case 6:
+          $text = '<span class="green">退货中</span>';
+          break;
+        default:
+          return '<span class="red">状态异常</span>';
+          break;
+      }
+      return $text;
+    }
+
+    public function getAmount(){
+        return '<span class="red">'.$this->goods_amount.'</span>';
     }
 }

@@ -7,6 +7,7 @@ use common\models\Goods;
 use common\util\Constants;
 use console\jobs\FreshOrder;
 use Yii;
+use yii\base\UserException;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 
@@ -32,7 +33,9 @@ class OrderController extends BaseController
     {
         $post = Yii::$app->request->post();
         $post['user_id'] = \Yii::$app->getUser()->getId();
-        //return $post['user_id'];
+        if(!isset($post['user_id'])){
+            throw new UserException('您还未登陆');
+        }
         $post['sn'] = date("Ymdhis").$post['user_id'].rand(100,999);
         $goods = Goods::findOne($post['goods_id']);
         //return $goods->user_id;
@@ -54,6 +57,7 @@ class OrderController extends BaseController
             $order->goods_amount = $goods->price;
             $order->pay_type = Constants::PAY_TYPE_LL;
             $order->goods_name = $goods->title;
+            $order->goods_desc = $goods->desc;
             $order->goods_price = $goods->price;
             $order->seller_id = $goods->user_id;
             $order->buyer_id = $post['user_id'];
@@ -64,7 +68,7 @@ class OrderController extends BaseController
             $orderlog = new OrderLog();
             $orderlog->order_id = $order->getPrimaryKey();
             $orderlog->status = $order->status;
-            $goods->setStatus($post['goods_id']);
+            //$goods->setStatus($post['goods_id']);
             if(!$orderlog->save()){
                 throw new BadRequestHttpException('订单日志保存失败！');
             }
@@ -94,13 +98,19 @@ class OrderController extends BaseController
 
     public function actionConfirm()
     {
+        $order_id = $this->getParam('order_id');
+        $goods_amount = $this->getParam('goods_amount');
+        $user_id = Yii::$app->getUser()->getId();
+        if(!isset($order_id)||!isset($goods_amount)){
+            throw new BadRequestHttpException('订单或价格错误！');
+        }
+        if(!isset($user_id)){
+            throw new UserException('您还未登陆');
+        }
         try{
-            $order_id = $this->getParam('order_id');
-            $goods_amount = $this->getParam('goods_amount');
-            $user_id = Yii::$app->getUser()->getId();
             $order = Order::find()->where('id = :oid and buyer_id = :uid',[':oid' => $order_id,':uid' => $user_id])->one();
             if(empty($order)){
-                throw new BadRequestHttpException('订单错误！');
+                throw new BadRequestHttpException('订单未找到！');
             }
             $data = [];
             $data['goods_amount'] = $goods_amount;
@@ -114,7 +124,7 @@ class OrderController extends BaseController
             }
             if($order->load($data,'')&&$order->update($data))
             {
-                \Yii::$app->queue->pushOn(new FreshOrder(),[],'order_fresh');
+                //\Yii::$app->queue->pushOn(new FreshOrder(),[],'order_fresh');
                 return ['order_id' => $order_id,'success'=>'订单提交成功，等待支付...'];
             }else{
                     throw new BadRequestHttpException('订单提交失败，请检查后再试...');

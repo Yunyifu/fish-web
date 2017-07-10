@@ -90,7 +90,9 @@ class OrderSearch extends Order
             ->andFilterWhere(['like', 'buyer_name', $this->buyer_name])
             ->andFilterWhere(['like', 'buyer_mobile', $this->buyer_mobile])
             ->andFilterWhere(['like', 'buyer_addr', $this->buyer_addr])
-            ->andFilterWhere(['like', 'message', $this->message]);
+            ->andFilterWhere(['like', 'message', $this->message])
+            ->orderBy('created_at DESC');
+
 
         return $dataProvider;
     }

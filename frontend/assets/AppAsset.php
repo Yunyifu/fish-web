@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
         //'css/uploadfile.css',
     ];
     public $js = [
+      'js/meiqiaDefault.js'
         //'js/dropzone.js',
         //'js/uploadfile.js',
 //         'https://g.alicdn.com/aliww/??h5.imsdk/2.1.5/scripts/yw/wsdk.js,h5.openim.kit/0.4.0/scripts/kit.js'

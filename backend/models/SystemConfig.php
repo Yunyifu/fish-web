@@ -15,11 +15,13 @@ class SystemConfig extends Model
 {
     public $param1;
     public $param2;
+    public $param3;
 
     public function rules(){
         return [
             [['param1'], 'required'],
             [['param1'], 'integer', 'min' => 0],
+            [['param3'], 'string'],
             [['param2'], 'safe']
         ];
     }
@@ -27,8 +29,9 @@ class SystemConfig extends Model
     public function attributeLabels()
     {
         return [
-            'param1' => '测试参数1',
-            'param2' => '测试参数2',
+            'param1' => '保证金',
+            'param2' => '系统保留参数1',
+            'param3' => '系统保留参数2',
         ];
     }
 

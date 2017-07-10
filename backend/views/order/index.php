@@ -12,12 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -52,6 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'buyer_name',
                 'headerOptions' => ['width'=>150],
+                'value' => function($model){
+                    if($model->buyer_name){
+                        return $model->buyer_name;
+                    }else{
+                        return Html::tag('p','未填写',['style' => 'color:green']);
+                    }
+                },
+                'format' => 'raw'
             ],
             [
                 'attribute' => 'buyer_mobile',

@@ -273,7 +273,7 @@ class UserController extends BaseController {
 
             'password' => $this->getParam( 'password' ),
             'gender' => $this->getParam( 'gender', 0 ),
-            'avatar' => $this->getParam('avatar','http://dev.image.alimmdn.com/1/default.jpg@294w_196h_1l'),
+            'avatar' => $this->getParam('avatar','/1/default.jpg@294w_196h_1l'),
             'referee' => $referee,
         ];
 

@@ -16,7 +16,11 @@ $url = \Yii::$app->request->url;
   <h6>发布需求信息</h6>
   <?php $form = ActiveForm::begin(); ?>
 
-  <?= $form->field($demand, 'category_id')->dropDownlist([\Yii::$app->request->get('cataid') => \Yii::$app->request->get('cataname')], ['style'=>'border: 0;box-shadow: none;background: none;']) ?>
+  <?= $form->field($demand, 'category_id')->textInput( ['value'=> '品类：'.\Yii::$app->request->get('cataname'), 'disabled'=>'disabled']) ?>
+
+  <div class="hidden">
+    <?= $form->field($demand, 'category_id')->textInput( ['value'=>\Yii::$app->request->get('cataid')]) ?>
+  </div>
 
   <?= $form->field($demand, 'title')->textInput(['placeholder' => '可输入多种类']) ?>
 

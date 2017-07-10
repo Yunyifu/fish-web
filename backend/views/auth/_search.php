@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telphone') ?>
 
+    <?= $form->field($model, 'saler') ?>
+
     <?php // echo $form->field($model, 'id_hand_pic') ?>
 
     <?php // echo $form->field($model, 'ship_auth_pic') ?>

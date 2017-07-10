@@ -1,13 +1,12 @@
 <?php
 namespace common\models;
 
+use backend\models\AdminUser;
+use common\util\Constants;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-use common\util\Utils;
-use common\util\Constants;
 
 /**
  * 用户User model
@@ -31,6 +30,8 @@ use common\util\Constants;
  * @property string $mobile
  * @property UserDevice $lastActiveDevice
  * @property UserOauth[] $userOauths
+ * @property Auth[] $auth
+ * @property Companyauth[] $companyauth
  * @property UserDevice[] $userDevices
  * @property User $referee
  * @property User[] $subUsers
@@ -108,18 +109,26 @@ class User extends ActiveRecord implements IdentityInterface
             $this->addError($attribute, '已存在该' . $attribute);
         }
     }
-    
+
     public function fields() {
         $selfInfo = [];
         if(\Yii::$app->user->id == $this->id) {
-//             $imInfo = AliBcManager::getUserImInfo($this);
+//          $imInfo = AliBcManager::getUserImInfo($this);
             $selfInfo = ['oauths' => 'userOauths', 'devices' => 'userDevices', 'referee'];
         }
         $commonInfo = ['id' => function() {
             return $this->id;//Utils::encryptId($this->id, Constants::ENC_TYPE_USER);
-        }, 'nickname', 'avatar' => function() {
-            return $this->avatar ? $this->avatar : Constants::DEFAULT_AVATAR;
-        }, 'gender', 'birthday', 'reg_time' => 'created_at'];
+        }, 'nickname' => function() {
+            return $this->nickname ? $this->nickname : '用户';
+        }, 'gender', 'birthday', 'reg_time' => 'created_at',
+            'fisher' =>function(){
+            return empty($this->auth)?0:$this->auth->status;
+        }, 'factory' => function(){
+            return empty($this->companyauth)?0:$this->companyauth->status;
+        },
+        'avatar' => function(){
+            return isset($this->avatar)?$this->avatar: "/1/default.jpg@294w_196h_1l";
+        }];
         return array_merge($commonInfo, $selfInfo);
     }
     
@@ -135,7 +144,14 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return '';
     }
-    
+    /**
+     * 获取头像
+     * @return string
+     */
+//    public function getAvatar() {
+//        return '123.jpg';
+//        return isset($this->avatar)?$this->avatar:"/1/default.jpg@294w_196h_1l";
+//    }
     /**
      * 获取最后活动设备
      * @return UserDevice|NULL
@@ -175,6 +191,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function getSubUsers()
     {
         return $this->hasMany(User::className(), ['referee_id' => 'id']);
+    }
+
+    public function getAuth()
+    {
+        return $this->hasOne(Auth::className(), ['user_id' => 'id']);
+    }
+    public function getCompanyauth()
+    {
+        return $this->hasOne(Companyauth::className(), ['user_id' => 'id']);
     }
     
     /**
@@ -332,4 +357,16 @@ class User extends ActiveRecord implements IdentityInterface
     public static function generateAccessToken() {
         return uniqid() . '_' . time();
     }
+
+    /**
+     * 获取交易员
+     */
+    public function getDealer(){
+        //return 3333;
+        //$dealer = $this->hasOne(AdminUser::className(), ['dealer_id' => 'id']);
+        //return $this->dealer_id;
+        return $this->hasOne(AdminUser::className(), ['id' => 'dealer_id']);
+
+    }
+
 }

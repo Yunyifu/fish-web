@@ -7,6 +7,7 @@
 //
 // ///////////////////////////////////////////////////////////////////////////
 namespace common\util;
+use common\models\Order;
 
 /**
  * 连连支付回调
@@ -41,6 +42,11 @@ class LLPayNotifyCallBack {
             
             if( $result_pay == "SUCCESS" ) {
                 // 请在这里加上商户的业务逻辑程序代(更新订单状态、入账业务)
+                $order = Order::findOne(['sn' => $sn]);
+                $order->pay_trade_no = $trade_no;
+                $order->pay_time = time();
+                $order->status = Constants::ORDER_STATUS_PAID;
+                $order->update();
                 // ——请根据您的业务逻辑来编写程序——
                 // payAfter($llpayNotify->notifyResp);
                 if( !PayUtil::checkNotify( $sn, $fee, $remark, $trade_no, Constants::PAY_TYPE_LL, $platform ) ) {

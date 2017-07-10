@@ -1,7 +1,9 @@
 <?php
 namespace api\common\controllers;
 
+use backend\models\AdminUser;
 use common\models\Goods;
+use common\models\User;
 use common\models\UserDevice;
 use common\util\Constants;
 use yii\web\BadRequestHttpException;
@@ -119,37 +121,49 @@ class GoodsController extends BaseController
      *
      * @apiSuccessExample
      * {
-        "id": 1,
-        "title": "杭州湾鱿鱼1吨，欢迎采购！",
-        "thumb": "2/123.jpg",
-        "user_id": 4,
-        "category_id": 1,
-        "num": 1,
-        "price": "198.00",
-        "area": "杭州湾码头",
-        "position": "中国浙江杭州",
-        "status": 1,
-        "desc": "杭州湾有新鲜鱿鱼1吨，量大从优！",
-        "pic": "/2/1.jpg||/2/2.jpg",
-        "created_at": 1,
-        "updated_at": null,
-        "username": "15889897125",
-        "nickname": "用户1494929694644",
-        "avatat": "123456789",
-        "gender": 0,
-        "categoryId": 1,
-        "categoryName": "鱼类",
-        "categoryParent_id": null,
-        "api_code": 200
-       }
+            "good": {
+                    "id": 31,
+                    "title": "罗非鱼2吨",
+                    "thumb": null,
+                    "user_id": 10,
+                    "category_id": 4,
+                    "num": "",
+                    "price": "0.00",
+                    "area": "杭州滨江区",
+                    "position": "",
+                    "status": 0,
+                    "desc": "321",
+                    "pic": [
+                    "/2/14981871893824.jpg"
+                    ],
+                    "created_at": 1498187190,
+                    "updated_at": 1498711904,
+                    "rank": 5,
+                    "username": "15889892345",
+                    "nickname": "用户1497943476853",
+                    "avatat": "http://dev.image.alimmdn.com/1/default.jpg@294w_196h_1l",
+                    "gender": 0,
+                    "categoryId": 4,
+                    "categoryName": "罗非鱼",
+                    "categoryParent_id": 1,
+                    "dealer": "交易员1号"
+            },
+            "phone": "138123456",
+            "api_code": 200
+        }
      */
     public function actionDetail($goodsId)
     {
         $good = Goods::findone($goodsId);
+        $user = User::findOne($good->user_id);
+        $phone = AdminUser::findOne($user->dealer_id)->phone;
         if( empty( $good ) ) {
             throw new NotFoundHttpException("信息不存在");
         }
-        return $good;
+        return [
+            'good' => $good,
+            'phone' => $phone
+        ];
     }
 
     /**
@@ -233,4 +247,17 @@ class GoodsController extends BaseController
         }
     }
 
+    /**
+     * 设置为询价状态
+     */
+
+    public function actionInquiry($goods_id){
+        $goods = Goods::findOne(['id' => $goods_id]);
+        $goods->status = Constants::GOODS_INQUIRY;
+        if($goods->update()){
+            return '状态已变更为询价中';
+        }else{
+            return '状态更新失败';
+        }
+    }
 }

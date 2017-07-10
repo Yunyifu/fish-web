@@ -23,15 +23,16 @@ $this->registerJsFile("@web/js/delete.js", ['depends' => ['frontend\assets\AppAs
   <li class="demand">
     <?= Html::button('删除', ['onclick'=>'Delete('.$demand->id.')', 'class'=>'anchor pull-right delete']) ?>
     <?= Html::a('编辑', ['/site/publish-need/', 'id'=>$demand->id, 'cataid'=>$demand->category->id, 'cataname'=>$demand->category->name], ['class'=>'anchor pull-right']) ?>
-    <span class="no-warp"><?= $demand->title ?></span>
+    <span class="no-warp" title="<?= $demand->title ?>"><?= $demand->title ?></span>
     <span class="no-warp"><?= $demand->price ?></span>
     <span class="no-warp"><?= $demand->num ?></span>
     <span class="no-warp"><?= $demand->status ?></span>
+    <span class="no-warp" title="<?= $demand->otherstatus ?>"><?= $demand->otherstatus ?></span>
     <span class="no-warp"><?= $demand->area ?></span>
-    <span class="no-warp"><?= $demand->area ?></span>
-    <span class="created pull-right no-warp">发布时间：<?= date('Y-m-d', $demand->created_at)?></span>
+    <span class="created pull-right no-warp"><?= date('Y-m-d', $demand->created_at)?></span>
   </li>
 <?php endforeach; ?>
+<li><?= $this->render('/layouts/pager', ['pageCount' => $pageCount]);?></li>
 <script type="text/javascript">
   var url = '/demand/ajax-delete/'
 </script>

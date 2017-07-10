@@ -70,11 +70,14 @@ class PayController extends BaseController {
      * @param string $payType 支付渠道
      * @param string $platform 终端
      */
-    public function actionPay($orderId, $payType, $platform) {
+    public function actionPay($orderId, $payType = 'll', $platform = 'web') {
         // 检查支付信息
         $this->checkPayInfo( $payType, $platform );
         // 检查订单信息
         $user = \Yii::$app->getUser()->identity;
+        if(empty($user)){
+            throw new UserException( '您还未登陆' );
+        }
         /** @var  $order Order */
         $order = Order::findOne($orderId);
         if( empty( $order ) ) {
@@ -88,7 +91,7 @@ class PayController extends BaseController {
             /* @var $order Order */
             $riskItem = \LLPayConfig::buildRealGoodsRiskItem( $user->id, $user->mobile, $user->created_at, $order->buyer_mobile,
                 1, 1 );
-            return PayUtil::llOrder( $user->id, $riskItem, $platform, "订单" . $order->sn, $orderId . rand( 10, 99 ), $order->sn, $order->goods_amount );
+            return $this->redirect(PayUtil::llOrder( $user->id, $riskItem, $platform, "订单" . $order->sn, $orderId . rand( 10, 99 ), $order->sn, $order->goods_amount ));
         }
     }
 
@@ -125,10 +128,12 @@ class PayController extends BaseController {
      * @throws UnauthorizedHttpException
      * @throws UserException
      */
-    public function actionCharge($payType, $platform) {
+    public function actionCharge($payType = 'll', $platform = 'web') {
         $this->checkPayInfo( $payType, $platform );
 
-        $amount = \Yii::$app->request->post( 'amount', 0 );
+        $deposit = \Yii::$app->params['param2'];
+
+        $amount = \Yii::$app->request->post( 'amount', $deposit );
         if( $amount <= 0 ) {
             throw new UserException( '金额需大于0' );
         }

@@ -14,7 +14,13 @@ return [
     'modules' => [
         'admin' => [
             "class" => 'mdm\admin\Module',
-        ]
+        ],
+        'redactor' => [
+            'class' => 'backend\components\RedactorModule',
+            'uploadDir' => '../../frontend/web/uploads',  // 比如这里可以填写 ./uploads
+            //'uploadUrl' => 'http://frontend.fish-web.com/uploads',
+            'imageAllowExtensions'=>['jpg','png','gif']
+        ],
     ],
     'aliases' => [
         "@mdm/admin" => "@vendor/mdmsoft/yii2-admin",
@@ -29,7 +35,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'authManager' => [
-            'class' => 'yii\rbac\Dbmanager',
+            'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ["guest"],
         ]
     ],

@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\AdminUser;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -28,6 +29,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class Demand extends \yii\db\ActiveRecord
 {
+    public $dealers;
 
     public function behaviors()
     {
@@ -50,7 +52,8 @@ class Demand extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['user_id','title'], 'required'],
+            [['category_id', 'status', 'created_at', 'updated_at','dealer_id'], 'integer'],
             [['price'], 'string'],
             [['num'], 'string'],
             [['desc'], 'string'],
@@ -72,19 +75,22 @@ class Demand extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'thumb' => 'Thumb',
-            'user_id' => 'User ID',
-            'category_id' => 'Category ID',
-            'num' => 'Num',
-            'price' => 'Price',
-            'area' => 'Area',
-            'position' => 'Position',
-            'status' => 'Status',
-            'desc' => 'Desc',
+            'title' => '信息的标题',
+            'thumb' => '缩略图',
+            'user_id' => '用户ID',
+            'category_id' => '分类',
+            'num' => '采购数量',
+            'price' => '意向采购价格',
+            'area' => '地理位置',
+            'demandstatus' => '货物状态要求',
+            'otherstatus' => '其他要求',
+            'position' => '地址',
+            'status' => '状态',
+            'desc' => '描述',
             'pic' => 'Pic',
-            'created_at' => 'Created At',
+            'created_at' => '发布时间',
             'updated_at' => 'Updated At',
+            'dealers' => '交易员'
         ];
     }
 
@@ -127,7 +133,10 @@ class Demand extends \yii\db\ActiveRecord
             'categoryParent_id'=>function(){
                 return $this->category->parent_id;
             },
+            'dealer' => function(){
+                return $this->dealer;
 
+            }
         ];
     }
 
@@ -145,5 +154,31 @@ class Demand extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    /**
+     * 获取交易员的名称和电话
+     * @return string
+     *
+     */
+    public function getDealer(){
+        $dealer_id = $this->dealer_id;
+        $dealer = AdminUser::find()->where(['id' => $dealer_id])->one();
+        return isset($dealer->phone)?$dealer->phone:'';
+    }
+
+    public function getPubtime(){
+      if ($this->updated_at) {
+        if (time() - $this->updated_at < 3600) {
+          $minute = floor( (time() - $this->updated_at)/60 );
+          return  $minute . '分钟前发布';
+        }
+        if (time() - $this->updated_at < 86400) {
+          $hour = floor( (time() - $this->updated_at)/3600 );
+          return  $hour . '小时前发布';
+        }
+        $day = floor( (time() - $this->updated_at)/86400 );
+        return $day . '天前发布';
+      }
     }
 }

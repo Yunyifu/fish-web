@@ -8,6 +8,7 @@ use common\models\FileUploadForm;
 use common\models\Goods;
 use common\models\Order;
 use common\models\User;
+use common\util\Constants;
 use Yii;
 use common\models\LoginForm;
 use common\models\RegisterForm;
@@ -89,19 +90,22 @@ class SiteController extends BaseController
         //Yii::$app->response->format = Yii\web\Response::FORMAT_JSON;
         //取出所有鱼类的分类
         $categoryModel = new Category();
-        $categoryData = $categoryModel->find()->where(['parent_id' =>1])->all();
+        $categoryData = $categoryModel->find()->where(['parent_id' =>1])->andWhere(['status' => Constants::CATE_HOT])->all();
         //取出最新的4条大banner
         $bannerModel = new Banner();
         $bannerData = $bannerModel->find()->limit(4)->orderBy('rank DESC')->andWhere(['type' => 0])->all();
         $gallery = $bannerModel->find()->limit(10)->orderBy('rank DESC')->andWhere(['type' => 1])->all();
-        //取出最新的8条需求信息
+        $adv = $bannerModel->find()->where(['type' => 2])->orderBy('id DESC')->one();
+        $adv = isset($adv)?$adv:'';
+
+        //取出最新的6条需求信息
         $demandModel = new Demand();
-        $demandData = $demandModel->find()->limit(8)->orderBy('created_at DESC')->all();
-        //取出最新的8条供应信息
+        $demandData = $demandModel->find()->limit(6)->orderBy('created_at DESC')->all();
+        //取出最新的6条供应信息
         $goodsModel = new Goods();
-        $goodsData = $goodsModel->find()->limit(8)->orderBy('created_at DESC')->all();
-        //取出最新成交的订单3条
-        $lastOrders = Order::find()->limit(3)->orderBy('created_at DESC')->all();
+        $goodsData = $goodsModel->find()->limit(6)->orderBy('created_at DESC')->all();
+        //取出最新成交的订单6条
+        $lastOrders = Order::find()->limit(6)->orderBy('created_at DESC')->all();
         //var_dump($lastOrders[0]->test);exit;
         $buyerMobile = [];
         $sellerMobile = [];
@@ -111,7 +115,8 @@ class SiteController extends BaseController
             'demandData' => $demandData,
             'lastOrders' => $lastOrders,
             'goodsData' => $goodsData,
-            'gallery' => $gallery
+            'gallery' => $gallery,
+            'adv' => $adv
         ]);
     }
     /**
@@ -171,9 +176,11 @@ class SiteController extends BaseController
         }
         if(Yii::$app->request->post()){
             $goods->load(Yii::$app->request->post());
+            $temp = $goods->pic;
             $goods->pic = $this->actionUpload('Goods[pic]');
+            $goods->pic = isset($this->actionUpload('Goods[pic]')[0])?$goods->pic[0]:$temp;
             $goods->category_id = Yii::$app->request->get('cataid',1);
-            return var_dump(UploadedFile::getInstancesByName('Goods[pic]'));
+            //return var_dump($goods->pic);
             if ($goods->save()) {
                 echo "<script>alert('发布成功！')</script>";
                 return $this->redirect('/user-center/goods');
@@ -268,13 +275,13 @@ class SiteController extends BaseController
             $model->load(Yii::$app->request->post());
             $data = ['mobile'=>$model->username, 'code'=>$model->validation, 'password'=>$model->password];
             if ($reset = $this->callApi('user/reset-pwd', $data, 'post', 'v1')) {
-
-                if ($reset['api_code'] == 500) {
+                if ($reset['api_code'] == 200) {
+                  if( Yii::$app->user->login( User::findOne($reset['user']['id']),  3600 * 24 * 30 )){
+                      return $this->redirect('/site/index');
+                  }
+                }
+                else{
                     $model->addError('username', $reset['api_msg']);
-                }elseif($reset['api_code' == 401]){
-                $model->addError('username', $reset['api_msg']);
-                }elseif( Yii::$app->user->login( User::findOne($reset['user']['id']),  3600 * 24 * 30 )){
-                    return $this->redirect('/site/index');
                 }
             }
         }

@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => $model->status ? '激活' : '禁止',
             ],
+            'phone'
 //             'group',
 //             'created_at',
 //             'updated_at',

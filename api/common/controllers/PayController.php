@@ -43,7 +43,7 @@ class PayController extends BaseController {
             throw new UserException( '金额需大于0' );
         }
         $uid = $this->getUser()->id;
-        
+
         $log = new UserChargeLog();
         $log->user_id = $uid;
         $log->amount = $amount;
@@ -53,7 +53,7 @@ class PayController extends BaseController {
         if( !$log->save() ) {
             throw new UserException( '充值log失败' );
         }
-        
+
         $tradeNo = Utils::encryptId( $log->id, Constants::ENC_TYPE_CHARGE );
         $remark = Constants::CHARGE_EXTRA_FLAG;
         
@@ -76,6 +76,9 @@ class PayController extends BaseController {
         $this->checkPayInfo( $payType, $platform );
         // 检查订单信息
         $user = $this->getUser();
+        if(empty($user)){
+            throw new UserException( '您还未登陆' );
+        }
         /** @var  $order Order */
         $order = Order::findOne($orderId);
         if( empty( $order ) ) {

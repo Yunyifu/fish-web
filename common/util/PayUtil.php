@@ -29,7 +29,7 @@ class PayUtil {
      * @param int $amount 元
      * @return string
      */
-    public static function llOrder($userId, $riskItem, $platform, $title, $tradeNo, $remark, $amount, $tradeType = \LLPayConfig::TRADE_TYPE_REAL_GOODS) {
+    public static function llOrder($userId, $riskItem, $platform, $title, $tradeNo, $remark, $amount, $tradeType = \LLPayConfig::TRADE_TYPE_VIRTUAL_GOODS) {
         $llpay_config = \LLPayConfig::getConfig();
         // 通用参数
         $params = [ 

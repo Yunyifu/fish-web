@@ -54,6 +54,7 @@ class AdminUser extends ActiveRecord implements IdentityInterface
             [['username', 'nickname', 'password_hash'], 'required'],
             [['username', 'nickname'], 'string', 'max' => 50],
             [['username', 'nickname'], 'validateName'],
+            ['phone','string'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
@@ -67,6 +68,8 @@ class AdminUser extends ActiveRecord implements IdentityInterface
         return [
             'id' => 'ID',
             'username' => '登录名',
+            'password' => '密码',
+            'phone' => '手机号码',
             'password_hash' => '登录密码',
             'nickname' => '管理员昵称',
             'password_reset_token' => '重置密码',

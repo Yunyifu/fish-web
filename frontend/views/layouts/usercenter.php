@@ -33,12 +33,12 @@ $avatar = \Yii::$app->user->isGuest ? "http://dev.image.alimmdn.com/1/default.jp
 <div class="wrap">
   <div class="container content user-center">
     <div class="login">
-      <img src="<?= $avatar ?>" alt="一个图">
+      <img class="avatar" src="<?= 'http://dev.image.alimmdn.com/'.$avatar ?>" alt="头像">
       <span class="greet">
         <?= Html::a($greet, ['/user-center'], ['class'=>'no-warp','style'=>'background:none;color:#666;width:120px;']) ?>
       </span>
       <br>
-      <span class="greet" style="margin-top: 5px;">欢迎来到渔鱼网</span>
+      <span class="greet" style="margin-top: 5px;">欢迎来到鱼渔网</span>
       <br class="clear">
       <?php if (!\Yii::$app->user->isGuest): ?>
         <?= Html::a('退出', '/site/logout') ?>
@@ -47,7 +47,7 @@ $avatar = \Yii::$app->user->isGuest ? "http://dev.image.alimmdn.com/1/default.jp
           <?= Html::a('注册', '/site/reg') ?>
       <?php endif; ?>
       <br><br>
-      <div class="guarantee">
+      <!-- <div class="guarantee">
         <h6>平台保障</h6>
         <span class="icon infor"> </span>
         <span class="icon phone"> </span>
@@ -56,12 +56,22 @@ $avatar = \Yii::$app->user->isGuest ? "http://dev.image.alimmdn.com/1/default.jp
         <span>信息真实</span>
         <span>资金安全</span>
         <span>手机认证</span>
+      </div> -->
+      <div class="guarantee">
+        <h6><?= Html::img('/images/guard.png') ?></h6>
+        <span class="icon infor"> </span>
+        <span class="icon safe"> </span>
+        <span class="icon phone"> </span>
+        <br>
+        <span>信息真实</span>
+        <span>资金安全</span>
+        <span>手机认证</span>
       </div>
     </div>
     <ul class="menu">
       <li class="user-info">
-        <?= Html::img('@web/images/logo@2x.png', ['alt' => 'avatar', 'class'=>'avatar']) ?>
-        <span>用户名</span>
+        <?= Html::img('http://dev.image.alimmdn.com/'.$avatar, ['alt' => 'avatar', 'class'=>'avatar']) ?>
+        <span><?= $greet ?></span>
       </li>
       <li class="anchors">
         <?= Html::a('我的发布', ['/user-center/goods'], ['class'=>'anchor border0']) ?>

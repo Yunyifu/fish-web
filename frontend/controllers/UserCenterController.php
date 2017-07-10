@@ -4,7 +4,10 @@ namespace frontend\controllers;
 
 use backend\models\GoodsSearch;
 use backend\models\OrderSearch;
+use common\models\Demand;
 use common\models\DemandSearch;
+use common\models\Goods;
+use common\models\Order;
 use Yii;
 use common\models\User;
 use yii\filters\AccessControl;
@@ -48,7 +51,7 @@ class UserCenterController extends BaseController
 
     public function actionIndex()
     {
-
+        $this->layout = 'usercenter';
         $user = Yii::$app->getUser();
         return $this->render('index', [
             'user' =>$user
@@ -85,9 +88,13 @@ class UserCenterController extends BaseController
         $searchModel->search(['OrderSearch' =>['buyer_id'=>$userId,'buyersee'=>1]]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->defaultPageSize = 7;
+        $pageSize = 7;
+        $pageCount = (Order::find()->where(['buyer_id'=>$userId,'buyersee'=>1])->count())/$pageSize;
         //return '123';
         return $this->render('buy',[
             'dataProvider' => $dataProvider,
+            'pageSize' => $pageSize,
+            'pageCount' => $pageCount,
         ]);
 
     }
@@ -102,8 +109,12 @@ class UserCenterController extends BaseController
         $searchModel->search(['OrderSearch' =>['seller_id'=>$userId,'sellersee'=>1]]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->defaultPageSize = 7;
+        $pageSize = 7;
+        $pageCount = (Order::find()->where(['seller_id'=>$userId,'sellersee'=>1])->count())/$pageSize;
         return $this->render('sell',[
             'dataProvider' => $dataProvider,
+            'pageSize' => $pageSize,
+            'pageCount' => $pageCount,
         ]);
     }
 
@@ -118,8 +129,12 @@ class UserCenterController extends BaseController
         $searchModel->search(['DemandSearch' =>['user_id'=>$userId]]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->defaultPageSize = 7;
+        $pageSize = 7;
+        $pageCount = (Demand::find()->where(['user_id'=>$userId])->count())/$pageSize;
         return $this->render('demand',[
             'dataProvider' => $dataProvider,
+            'pageSize' => $pageSize,
+            'pageCount' => $pageCount,
         ]);
     }
 
@@ -135,8 +150,12 @@ class UserCenterController extends BaseController
         $searchModel->search(['GoodsSearch' =>['user_id'=>$userId]]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->defaultPageSize = 7;
+        $pageSize = 7;
+        $pageCount = (Goods::find()->where(['user_id'=>$userId])->count())/$pageSize;
         return $this->render('goods',[
             'dataProvider' => $dataProvider,
+            'pageSize' => $pageSize,
+            'pageCount' => $pageCount,
         ]);
     }
 }

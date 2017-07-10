@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use mdm\admin\models\User;
 use Yii;
 use common\models\Goods;
 use backend\models\GoodsSearch;
@@ -63,6 +64,7 @@ class GoodsController extends Controller
      */
     public function actionView($id)
     {
+        //return var_dump($this->findModel($id)->dealer);exit;
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,7 +78,6 @@ class GoodsController extends Controller
     public function actionCreate()
     {
         $model = new Goods();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -95,8 +96,14 @@ class GoodsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $post = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($post) && $model->save()) {
+            //return var_dump($post);
+//            $user = \common\models\User::findOne($model->user_id);
+//            $dealer_id = $post['Goods']['dealers'];
+//            $user->dealer_id = $dealer_id;
+//            $user->update();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

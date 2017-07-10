@@ -46,7 +46,17 @@ class DemandController extends BaseController
         $searchModel = new DemandSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $pageSize = 18;
-        $pageCount = (Demand::find()->count())/$pageSize;
+        $parent_id = Yii::$app->request->get('category_parent');
+        $demandsearch = Yii::$app->request->get('DemandSearch');
+        $category_id = $demandsearch['category_id'];
+        if($parent_id && !$category_id){
+            $categorys = Category::find()->where(['parent_id' => $parent_id])->select('id')->column();
+            $pageCount = ceil(Demand::find()->where(['category_id' => $categorys])->count()/$pageSize);
+        }elseif($category_id){
+            $pageCount = ceil(Demand::find()->where(['category_id' => $category_id])->count()/$pageSize);
+        }else{
+            $pageCount = ceil(Demand::find()->count()/$pageSize);
+        }
 
         return $this->render('list', [
             'searchModel' => $searchModel,

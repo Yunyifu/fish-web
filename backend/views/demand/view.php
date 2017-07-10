@@ -7,12 +7,10 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Demand */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Demands', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '需求信息', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="demand-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -30,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'thumb',
+            //'thumb',
             'user_id',
             'category_id',
             'num',
@@ -41,9 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'position',
             'status',
             'desc:ntext',
-            'pic',
+            //'pic',
             'created_at',
             'updated_at',
+            [
+                'attribute'=>'dealers',
+                'value' => $model->dealer,
+
+            ],
         ],
     ]) ?>
 

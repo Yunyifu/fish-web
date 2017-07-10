@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use backend\models\AdminUser;
+use common\models\User;
 use Yii;
 use common\models\Category;
 use common\models\Goods;
@@ -44,13 +46,29 @@ class GoodsController extends BaseController
         $searchModel = new GoodsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $pageSize = 18;
-        $pageCount = (Goods::find()->count())/$pageSize;
+        $parent_id = Yii::$app->request->get('category_parent');
+        $goodssearch = Yii::$app->request->get('GoodsSearch');
+        $title = isset($goodssearch['title'])?$goodssearch['title']:null;
+        $category_id = isset($goodssearch['category_id'])?$goodssearch['category_id']:null;
+        if($parent_id && !$category_id){
+            $categorys = Category::find()->where(['parent_id' => $parent_id])->select('id')->column();
+            $pageCount = ceil(Goods::find()->where(['category_id' => $categorys])->count()/$pageSize);
+        }elseif($category_id){
+            $pageCount = ceil(Goods::find()->where(['category_id' => $category_id])->count()/$pageSize);
+        }elseif(isset($title)){
+            $pageCount = ceil(Goods::find()->where(['title' => $title])->count()/$pageSize);
+        }
+        else{
+            $pageCount = ceil(Goods::find()->count()/$pageSize);
+        }
+
+        //return var_dump($goodssearch);
         return $this->render('list', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'categoryParent' => $categoryParent,
             'categoryData' => $categoryData,
-            'pageSize' => $pageSize,
+            //'pageSize' => $pageSize,
             'pageCount' => $pageCount,
         ]);
     }
@@ -88,8 +106,13 @@ class GoodsController extends BaseController
      */
     public function actionDetail($id)
     {
+        $goods = $this->findModel($id);
+        //$user = User::findOne($goods->user_id);
+        $phone = isset(AdminUser::findOne($goods->dealer_id)->phone)?AdminUser::findOne($goods->dealer_id)->phone:'';
+        //return var_dump($phone);
         return $this->render('detail', [
-            'goods' => $this->findModel($id),
+            'goods' => $goods,
+            'phone' => $phone
         ]);
     }
     /**

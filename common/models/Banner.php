@@ -54,12 +54,22 @@ class Banner extends \yii\db\ActiveRecord
         return [
             'id' => '图片ID',
             'file_path' => '图片路径',
-            'link_path' => '链接地址(主页大图banner需要)',
+            'link_path' => '链接地址',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
-            'rank' => '排序(从小到大)',
+            'rank' => '排序',
             'title' => '图片标题描述',
             'type' => '种类',
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'file_path',
+            'link_path',
+            'title'
         ];
     }
 }
