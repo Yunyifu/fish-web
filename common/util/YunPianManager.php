@@ -14,7 +14,7 @@ namespace common\util;
  */
 class YunPianManager {
 
-    private static $apikey = "67e47eeae296a954cbab963a5fdb5cfb";
+    private static $apikey = "*";
 
     /**
      * 发送短息
