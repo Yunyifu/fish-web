@@ -1,7 +1,10 @@
 <?php
 namespace api\common\controllers;
 
+use backend\models\AdminUser;
 use common\models\Demand;
+use common\models\User;
+use common\util\Constants;
 use yii\data\Pagination;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
@@ -62,17 +65,22 @@ class DemandController extends BaseController
         "categoryId": 1,
         "categoryName": "鱼类",
         "categoryParent_id": null,
+        "auth": "0",0代表渔民未认证，1代表渔民认证中，2代表已通过渔民认证，4代表渔民认证被拒绝
+        "companyauth": "0"，代表企业未认证，1代表企业认证中，2代表已通过企业认证，4代表企业认证被拒绝
+        "dealer_phone":"13800000000",
         "api_code": 200
      *}
      *
      */
     public function actionDetail($demandId)
     {
+
         $demand = Demand::findone($demandId);
         if( empty( $demand ) ) {
             throw new NotFoundHttpException("信息不存在");
         }
         return $demand;
+
     }
 
 
@@ -182,6 +190,7 @@ class DemandController extends BaseController
     {
         $post = Yii::$app->request->post();
         $post['user_id'] = \Yii::$app->getUser()->getId();
+        $post['status'] = Constants::GOODS_UNREVIEW;
         //$post['created_at'] =time();
         $model = new Demand();
         if($model->load($post,'')&&$model->save($post))

@@ -20,7 +20,7 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
       <div class="index tab-anchors">
         <?php
           foreach ($categoryData as $key => $category) {
-            if ($key < 12) {
+            if ($key < 16) {
                echo Html::a($category['name'], ['/goods/list', 'GoodsSearch[category_id]'=>$category['id']] );
                if ( ($key+1)%4 !== 0 ) {
                  echo "<span style=\"text-align:center;color: #333;\">| </span>";
@@ -89,7 +89,7 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
   </div>
   <div class="sub-title list">
     <?= Html::a('查看更多 >', ['/goods/list'], ['class'=>'pull-right'])?>
-  <span class="icon need"><h5 class="margin0"></span>最新供应信息  <!-- <span>保障需求与供应方的权益</span> --></h5>
+  <span class="icon need"><h5 class="margin0"></span>最新供应信息  <!-- <span>保障采购与供应方的权益</span> --></h5>
   </div>
     <?= Html::a(Html::img('/images/fisher.png'),['/site/publish'], ['class'=> 'pull-left']) ?>
     <ul class="information goods pull-left">
@@ -119,7 +119,7 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
         <span>采购数量</span>
         <span>状态要求</span>
         <span>其他要求</span>
-        <span>地理位置</span>
+        <span>海域</span>
         <span>交易顾问</span>
         <span>发布时间</span>
       </li>
@@ -130,7 +130,7 @@ $avatar = \Yii::$app->user->isGuest ? "/1/default.jpg@294w_196h_1l" : \Yii::$app
           <span class="no-warp"><?= $demand->num?></span>
           <span class="no-warp"><?= $demand->demandstatus?></span>
           <span title="<?= $demand->desc?>" class="no-warp"><?= $demand->otherstatus?></span>
-          <span class="no-warp"><?= $demand->position?></span>
+          <span class="no-warp"><?= $demand->area?></span>
           <span class="no-warp"><?= $demand->dealer?></span>
           <span class="date"><?= date('Y.m.d', $demand->updated_at)?></span>
           <!-- <p class="dealer">供货渔民请联系<?=  $demand->dealer?></p> -->

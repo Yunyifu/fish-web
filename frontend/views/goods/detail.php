@@ -41,7 +41,7 @@ $userId = \Yii::$app->user->id ? \Yii::$app->user->id : 'null';
       <a class=" anchor consult" href="#"><?= Html::img('/images/service-icon.png') ?>在线咨询</a>
       <br>
     </div>
-    <h5 style="margin-top:3px;">交易顾问：<?= $phone ?></h5>
+    <h5 style="margin-top:3px;">交易顾问：<?= $phone ?>(支付定金前请先联系交易顾问)</h5>
     <h5 style="line-height: 22px;"><?= $goods->title ?></h5>
     <span class="created_at"><?= date('Y-m-d', $goods->updated_at) ?></span>
     <span>所在海域：<?= $goods->area ?></span><br>
@@ -67,8 +67,14 @@ $userId = \Yii::$app->user->id ? \Yii::$app->user->id : 'null';
   <div id="pay">
     <h6>支付</h6>
     <form class="" action="/pay/pay" method="get">
-      <label for="">￥</label>
+      <label for="">&nbsp;&nbsp;￥&nbsp;&nbsp;</label>
       <input class="input" id="amount" type="text" name="amount" value="" placeholder="请与客服协商定金">
+      <br>
+      <label for="">开户姓名</label>
+      <input  class="input"type="text" name="acct_name" value="">
+      <br>
+      <label for="">身份证号</label>
+      <input  class="input"type="text" name="id_no" value="">
       <input type="hidden" id="order" name="orderId" value="">
       <br>
       <button class="btn pay" type="button" name="button">支付</button>

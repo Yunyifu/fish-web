@@ -70,7 +70,7 @@ class PayController extends BaseController {
      * @param string $payType 支付渠道
      * @param string $platform 终端
      */
-    public function actionPay($orderId, $payType = 'll', $platform = 'web') {
+    public function actionPay($orderId, $payType = 'll', $platform = 'web',$acct_name ,$id_no) {
         // 检查支付信息
         $this->checkPayInfo( $payType, $platform );
         // 检查订单信息
@@ -91,7 +91,7 @@ class PayController extends BaseController {
             /* @var $order Order */
             $riskItem = \LLPayConfig::buildRealGoodsRiskItem( $user->id, $user->mobile, $user->created_at, $order->buyer_mobile,
                 1, 1 );
-            return $this->redirect(PayUtil::llOrder( $user->id, $riskItem, $platform, "订单" . $order->sn, $orderId . rand( 10, 99 ), $order->sn, $order->goods_amount ));
+            return $this->redirect(PayUtil::llOrder( $user->id, $riskItem, $platform, "订单" . $order->sn, $orderId . rand( 10, 99 ), $order->sn, $order->goods_amount,$acct_name ,$id_no));
         }
     }
 
@@ -130,7 +130,7 @@ class PayController extends BaseController {
      */
     public function actionCharge($payType = 'll', $platform = 'web') {
         $this->checkPayInfo( $payType, $platform );
-
+        //保证金金额，从配置文件中拿，后台可以设置金额数目
         $deposit = \Yii::$app->params['param2'];
 
         $amount = \Yii::$app->request->post( 'amount', $deposit );
@@ -144,6 +144,7 @@ class PayController extends BaseController {
         $log->amount = $amount;
         $log->pay_type = $payType;
         $log->pay_platform = $platform;
+        $log->user_balance = 0 ;
         $log->status = Constants::CHARGE_STATUS_NOT_PAY;
         if( !$log->save() ) {
             throw new UserException( '充值log失败' );
@@ -154,7 +155,7 @@ class PayController extends BaseController {
 
         if( $payType == Constants::PAY_TYPE_LL ) {
             $riskItem = \LLPayConfig::buildChargeRiskItem( $user->id, $user->mobile, $user->created_at );
-            return PayUtil::llOrder( $user->id, $riskItem, $platform, "充值", $tradeNo, $remark, $amount, \LLPayConfig::TRADE_TYPE_CHARGE );
+            return $this->redirect(PayUtil::llOrder( $user->id, $riskItem, $platform, "充值", $tradeNo, $remark, $amount, \LLPayConfig::TRADE_TYPE_CHARGE ));
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\AdminUserSearch;
 use Yii;
 use backend\models\AdminUser;
 use yii\data\ActiveDataProvider;
@@ -44,12 +45,15 @@ class AdminUserController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => AdminUser::find(),
-        ]);
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => AdminUser::find(),
+//        ]);
 
+        $searchModel = new AdminUserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
         ]);
     }
 
@@ -106,7 +110,7 @@ class AdminUserController extends Controller
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
-            //$model->group = Yii::$app->request->post()['AdminUser']['group'];
+            $model->group = Yii::$app->request->post()['AdminUser']['group'];
             $data = Yii::$app->request->post('AdminUser');
             if(!empty($data['password'])) {
                 $model->setPassword($data['password']);

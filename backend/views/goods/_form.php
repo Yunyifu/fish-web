@@ -8,8 +8,12 @@ use common\models\Category;
 /* @var $model common\models\Goods */
 /* @var $form yii\widgets\ActiveForm */
 $category=Category::find()->select('name')->indexBy('id')->column();
-$dealers = \backend\models\AdminUser::find()->where(['like','nickname','交易'])->select('nickname')->indexBy('id')->column();
-//return var_dump($dealers);exit;
+$dealers = \backend\models\AdminUser::find()->where(['group' => 4])->select('nickname')->indexBy('id')->column();
+$phone = \backend\models\AdminUser::find()->where(['group' => 4])->select('phone')->indexBy('id')->column();
+$dealers2 = array();
+foreach($dealers as $k=>$value){
+    $dealers2[$k] = $value.'：'.$phone[$k];
+}
 $this->registerJsFile("@web/js/goods.js", ['depends' => ['backend\assets\AppAsset'], 'position' => \yii\web\View::POS_END]);
 ?>
 
@@ -54,7 +58,7 @@ $this->registerJsFile("@web/js/goods.js", ['depends' => ['backend\assets\AppAsse
 
     <?= $form->field($model, 'rank')->textInput() ?>
 
-    <?= $form->field($model, 'dealer_id')->dropDownList($dealers) ?>
+    <?= $form->field($model, 'dealer_id')->dropDownList($dealers2) ?>
 
 
     <div class="form-group">

@@ -4,7 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Category;
 $category=Category::find()->select('name')->indexBy('id')->column();
-$dealers = \backend\models\AdminUser::find()->where(['like','nickname','交易'])->select('nickname')->indexBy('id')->column();
+$dealers = \backend\models\AdminUser::find()->where(['group' => 4])->select('nickname')->indexBy('id')->column();
+$phone = \backend\models\AdminUser::find()->where(['group' => 4])->select('phone')->indexBy('id')->column();
+$dealers2 = array();
+foreach($dealers as $k=>$value){
+    $dealers2[$k] = $value.'：'.$phone[$k];
+}
+//return var_dump($dealers2);
 /* @var $this yii\web\View */
 /* @var $model common\models\Demand */
 /* @var $form yii\widgets\ActiveForm */
@@ -36,10 +42,10 @@ $dealers = \backend\models\AdminUser::find()->where(['like','nickname','交易']
 
     <?= $form->field($model, 'desc')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'dealer_id')->dropDownList($dealers) ?>
+    <?= $form->field($model, 'dealer_id')->dropDownList($dealers2) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

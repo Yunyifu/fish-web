@@ -7,19 +7,18 @@ use backend\models\AdminUser;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', '管理员');
+$this->title = Yii::t('app', '后台用户');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a(Yii::t('app', '创建管理员'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', '创建后台用户'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -37,7 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->status ? "激活" : "禁用";
                 }
             ],
-            // 'group',
+            [
+                'attribute'=>'group',
+                'label'=>'类型',
+                'filter'=>\common\util\Constants::$admin,
+                'content'=>function($model){
+                    return \common\util\Constants::$admin[$model->group];
+                }
+            ],
             // 'created_at',
             // 'updated_at',
 

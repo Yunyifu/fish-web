@@ -11,6 +11,8 @@ $gender = ['0'=>'女', '1'=>'男'];
 
 <?= $form->field($company, 'telphone')->textInput(['placeholder' => '联系电话']) ?>
 
+<?= $form->field($company, 'saler')->textInput(['placeholder' => '推荐人（选填）']) ?>
+
 <label class="for-file" style="display:inline-block" for="companyauth-id_hand_pic"><img id ="preview1" src="../images/plus.png" style="margin-top:40px"></label>
 <label class="for-file" style="display:inline-block;margin-left:180px;margin-right:180px;" for="companyauth-company_pic"><img id ="preview2" src="../images/plus.png" style="margin-top:40px"></label>
 <label class="for-file" style="display:inline-block" for="companyauth-factory_pic"><img id ="preview3" src="../images/plus.png"  style="margin-top:40px"></label>

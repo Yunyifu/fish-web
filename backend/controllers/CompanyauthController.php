@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\service\RecordService;
 use Yii;
 use common\models\Companyauth;
 use backend\models\CompanyauthSearch;
@@ -78,6 +79,7 @@ class CompanyauthController extends Controller
         $model = new Companyauth();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -97,6 +99,7 @@ class CompanyauthController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -114,7 +117,7 @@ class CompanyauthController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        RecordService::record();
         return $this->redirect(['index']);
     }
 

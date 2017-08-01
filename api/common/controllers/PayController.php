@@ -30,15 +30,17 @@ class PayController extends BaseController {
      * @apiVersion 0.1.0
      * @apiGroup pay
      *
-     * @param string $payType 支付渠道
-     * @param string $platform 终端
+     * @apiParam {string} payType 支付渠道 默认连连支付，可不填此参数
+     * @apiParam {string} platform 终端 platform="ios" 或者android 或者web
      * @throws UnauthorizedHttpException
      * @throws UserException
      */
-    public function actionCharge($payType, $platform) {
+    public function actionCharge($payType = 'll', $platform) {
         $this->checkPayInfo( $payType, $platform );
-        
-        $amount = \Yii::$app->request->post( 'amount', 0 );
+        //从配置中获取默认保证金金额
+        $deposit = \Yii::$app->params['param2'];
+
+        $amount = \Yii::$app->request->post( 'amount', $deposit );
         if( $amount <= 0 ) {
             throw new UserException( '金额需大于0' );
         }
@@ -67,11 +69,13 @@ class PayController extends BaseController {
      * @api {get} /pay/pay 支付
      * @apiVersion 0.1.0
      * @apiGroup pay
-     * @param string $orderId 交易订单id
-     * @param string $payType 支付渠道
-     * @param string $platform 终端
+     * @apiParam {string} orderId 交易订单id
+     * @apiParam {string} payType 支付渠道,不传此参数的话，默认是连连支付 payType="ll"
+     * @apiParam {string} platform 终端 platform="ios" 或者android
+     * @apiParam {string} acct_name 开户姓名
+     * @apiParam {string} id_no 身份证号
      */
-    public function actionPay($orderId, $payType, $platform) {
+    public function actionPay($orderId, $payType='ll', $platform,$acct_name ,$id_no) {
         // 检查支付信息
         $this->checkPayInfo( $payType, $platform );
         // 检查订单信息
@@ -92,15 +96,15 @@ class PayController extends BaseController {
             /* @var $order Order */
             $riskItem = \LLPayConfig::buildRealGoodsRiskItem( $user->id, $user->mobile, $user->created_at, $order->buyer_mobile, 
                     1, 1 );
-            return PayUtil::llOrder( $user->id, $riskItem, $platform, "订单" . $order->sn, $orderId . rand( 10, 99 ), $order->sn, $order->goods_amount );
+            return PayUtil::llOrder( $user->id, $riskItem, $platform, "订单" . $order->sn, $orderId . rand( 10, 99 ), $order->sn, $order->goods_amount,$acct_name ,$id_no );
         }
     }
 
     /**
      * 检查pay info是否正确
      *
-     * @param string $payType 支付渠道
-     * @param string $platform 终端
+     * @apiParam {string} payType 支付渠道
+     * @apiParam {string} platform 终端
      * @throws UnauthorizedHttpException
      */
     private function checkPayInfo(&$payType, &$platform) {

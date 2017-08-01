@@ -10,5 +10,5 @@ $this->registerJsFile("@web/js/search.js", ['depends' => ['frontend\assets\AppAs
   <?= Html::img('@web/images/logotext.png', ['alt' => 'LOGO']) ?>
   <?= Html::a($icon.'发布', ['/site/publish'], ['class'=>'pull-right'])?>
   <input class="pull-right btn" type="submit" name="" value="搜索">
-  <input id="search" class="pull-right" type="text" name="GoodsSearch[title]" placeholder="请输入关键字...">
+  <input id="search" class="pull-right" type="text" name="DemandSearch[title]" placeholder="请输入关键字...">
 </form>

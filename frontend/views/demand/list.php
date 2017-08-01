@@ -2,14 +2,14 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = '需求信息';
+$this->title = '采购信息';
 $isSecond = \Yii::$app->request->get('category_parent', false);
 $this->registerJsFile("@web/js/demand.js", ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 <?= $this->render('/layouts/search-demand')?>
 <?= $this->render('/layouts/navi-bar')?>
 
-<h6 class="notice">您当前的位置：<a href="/">首页</a>>需求信息</h6>
+<h6 class="notice">您当前的位置：<a href="/">首页</a>>采购信息</h6>
 <div class="container content list-page">
   <ul class="tab goods">
     <li class="type" >
@@ -49,7 +49,7 @@ $this->registerJsFile("@web/js/demand.js", ['depends' => ['frontend\assets\AppAs
       <span>采购数量</span>
       <span>状态要求</span>
       <span>其他要求</span>
-      <span>地理位置</span>
+      <span>海域</span>
       <span>交易顾问</span>
       <span>发布时间</span>
     </li>
@@ -61,7 +61,7 @@ $this->registerJsFile("@web/js/demand.js", ['depends' => ['frontend\assets\AppAs
         <span class="no-warp"><?= $demand->num?></span>
         <span class="no-warp"><?= $demand->demandstatus?></span>
         <span title="<?= $demand->desc?>" class="no-warp"><?= $demand->otherstatus?></span>
-        <span class="no-warp"><?= $demand->position?></span>
+        <span class="no-warp"><?= $demand->area?></span>
         <span class="no-warp"><?= $demand->dealer?></span>
         <span class="date no-warp"><?= date('Y.m.d', $demand->updated_at)?></span>
         <!-- <p class="dealer">供货渔民请联系<?=  $demand->dealer?></p>

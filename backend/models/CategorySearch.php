@@ -68,6 +68,9 @@ class CategorySearch extends Category
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+        //根据更新时间排序
+        $query->orderBy('created_at DESC');
+
 
         return $dataProvider;
     }

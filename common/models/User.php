@@ -26,7 +26,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
- * 
+ * @property integer $deposit
  * @property string $mobile
  * @property UserDevice $lastActiveDevice
  * @property UserOauth[] $userOauths
@@ -42,6 +42,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     public $access_token='';
+
     /**
      * @inheritdoc
      */
@@ -69,6 +70,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['username', 'nickname', 'password_hash'], 'required','message'=>'账号密码不能为空'],
             [['username', 'nickname'], 'string', 'max' => 50],
             ['username', 'validateName'],
+            ['deposit', 'string'],
             [['avatar'], 'string', 'max' => 1000],
             //[['block_until', 'gender', 'birthday', 'referee_id', 'created_at', 'updated_at'], 'integer'],
             //['status', 'default', 'value' => self::STATUS_ACTIVE],
@@ -97,6 +99,7 @@ class User extends ActiveRecord implements IdentityInterface
             'referee_id' => '推荐人',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
+            'deposit' => '保证金'
         ];
     }
     
@@ -128,7 +131,8 @@ class User extends ActiveRecord implements IdentityInterface
         },
         'avatar' => function(){
             return isset($this->avatar)?$this->avatar: "/1/default.jpg@294w_196h_1l";
-        }];
+        },
+        'deposit' => 'deposit'];
         return array_merge($commonInfo, $selfInfo);
     }
     
@@ -144,6 +148,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return '';
     }
+    
     /**
      * 获取头像
      * @return string

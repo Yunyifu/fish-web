@@ -50,6 +50,7 @@ class AuthController extends BaseController
 
     public function actionFisher()
     {
+        $this->layout = 'usercenter';
         $model = Auth::findOne(['user_id'=>Yii::$app->getUser()->getId()])?
             Auth::findOne(['user_id'=>Yii::$app->getUser()->getId()]):
             new Auth();
@@ -83,6 +84,7 @@ class AuthController extends BaseController
      */
     public function actionCompany()
     {
+        $this->layout = 'usercenter';
         $model = Companyauth::findOne(['user_id'=>Yii::$app->getUser()->getId()])?
             Companyauth::findOne(['user_id'=>Yii::$app->getUser()->getId()]):
             new Companyauth();

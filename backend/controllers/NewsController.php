@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\service\RecordService;
 use Yii;
 use common\models\News;
 use common\models\NewsSearch;
@@ -66,6 +67,7 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -85,6 +87,7 @@ class NewsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -102,7 +105,7 @@ class NewsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        RecordService::record();
         return $this->redirect(['index']);
     }
 

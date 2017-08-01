@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\util\Constants;
 use Yii;
 use common\models\Category;
 use common\models\Demand;
@@ -48,7 +49,7 @@ class DemandController extends BaseController
         $pageSize = 18;
         $parent_id = Yii::$app->request->get('category_parent');
         $demandsearch = Yii::$app->request->get('DemandSearch');
-        $category_id = $demandsearch['category_id'];
+        $category_id = isset($demandsearch['category_id'])?$demandsearch['category_id']:null;
         if($parent_id && !$category_id){
             $categorys = Category::find()->where(['parent_id' => $parent_id])->select('id')->column();
             $pageCount = ceil(Demand::find()->where(['category_id' => $categorys])->count()/$pageSize);
@@ -90,6 +91,8 @@ class DemandController extends BaseController
         $model = new demand();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->status = Constants::GOODS_UNREVIEW;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\service\RecordService;
 use Yii;
 use common\models\Auth;
 use backend\models\AuthSearch;
@@ -78,6 +79,7 @@ class AuthController extends Controller
         $model = new Auth();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -97,6 +99,7 @@ class AuthController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -114,7 +117,7 @@ class AuthController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        RecordService::record();
         return $this->redirect(['index']);
     }
 

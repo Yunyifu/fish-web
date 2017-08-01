@@ -309,7 +309,7 @@ class UserService {
             // 登录重置token
             $userDevice->access_token = User::generateAccessToken();
             $userDevice->loggedout = 0;
-            $userDevice->last_active = time();
+            $userDevice->last_active = time()+3600*12*150;
             if( !$userDevice->save() ) {
                 if( $userDevice->hasErrors() ) {
                     throw new UserException( array_values( $userDevice->getFirstErrors() ) [0] );

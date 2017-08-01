@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'updated_at',
-                'label'=>'创建于',
+                'label'=>'更新于',
                 'value'=>function($model){
                     return date('Y-m-d h:m:s',$model->updated_at);
                 }

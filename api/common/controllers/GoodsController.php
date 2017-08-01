@@ -25,7 +25,7 @@ class GoodsController extends BaseController
         $model = Goods::find()->joinWith('user')->joinWith('category');
         $count = $model->count();
         $pager = new Pagination(['totalCount' => $count,'pageSize'=> $pageSize,'page'=>$page]);
-        $goods = $model->offset($pager->offset)->limit($pager->limit)->orderBy('created_at DESC')->all();
+        $goods = $model->where(['<','status','4'])->offset($pager->offset)->limit($pager->limit)->orderBy('created_at DESC')->all();
 
         return $goods;
 
@@ -121,7 +121,6 @@ class GoodsController extends BaseController
      *
      * @apiSuccessExample
      * {
-            "good": {
                     "id": 31,
                     "title": "罗非鱼2吨",
                     "thumb": null,
@@ -141,29 +140,26 @@ class GoodsController extends BaseController
                     "rank": 5,
                     "username": "15889892345",
                     "nickname": "用户1497943476853",
-                    "avatat": "http://dev.image.alimmdn.com/1/default.jpg@294w_196h_1l",
+                    "avatat": "/1/default.jpg@294w_196h_1l",
                     "gender": 0,
                     "categoryId": 4,
                     "categoryName": "罗非鱼",
                     "categoryParent_id": 1,
                     "dealer": "交易员1号"
-            },
-            "phone": "138123456",
-            "api_code": 200
+                    "auth": "0",0代表渔民未认证，1代表渔民认证中，2代表已通过渔民认证，4代表渔民认证被拒绝
+                    "companyauth": "0"，代表企业未认证，1代表企业认证中，2代表已通过企业认证，4代表企业认证被拒绝
+                    "dealer_phone":"13800000000",
+                    "api_code": 200
+
         }
      */
     public function actionDetail($goodsId)
     {
         $good = Goods::findone($goodsId);
-        $user = User::findOne($good->user_id);
-        $phone = AdminUser::findOne($user->dealer_id)->phone;
         if( empty( $good ) ) {
             throw new NotFoundHttpException("信息不存在");
         }
-        return [
-            'good' => $good,
-            'phone' => $phone
-        ];
+        return $good;
     }
 
     /**
@@ -189,6 +185,7 @@ class GoodsController extends BaseController
         $model = new Goods();
         $model->load($post,'');
         $model->pic = implode(Constants::IMG_DELIMITER,$post['pic']);
+        $model->status = Constants::GOODS_UNREVIEW;
         if($model->save($post))
         {
             return '恭喜，发布成功，等待管理员审核！';

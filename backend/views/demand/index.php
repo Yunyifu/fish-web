@@ -7,13 +7,13 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\DemandSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '需求管理';
+$this->title = '采购管理';
 $this->params['breadcrumbs'][] = $this->title;
 $parents = \common\models\Category::find()->where(['is not','parent_id',null])->select('name')->indexBy('id')->column();
 ?>
 <div class="demand-index">
     <p>
-        <?= Html::a('后台发布一个需求', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('后台发布一个', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

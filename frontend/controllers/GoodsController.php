@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use backend\models\AdminUser;
 use common\models\User;
+use common\util\Constants;
 use Yii;
 use common\models\Category;
 use common\models\Goods;
@@ -125,6 +126,8 @@ class GoodsController extends BaseController
         $model = new Goods();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          $model->status = Constants::GOODS_UNREVIEW;
+          $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

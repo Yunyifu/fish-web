@@ -101,7 +101,7 @@ class Order extends \yii\db\ActiveRecord
             'pay_platform' => '支付发起平台',
             'pay_trade_no' => '第三方流水号',
             'goods_name' => '商品名称',
-            'goods_price' => '价格',
+            'goods_price' => '商品价格',
             'seller_id' => '卖家ID',
             'buyer_id' => '买家ID',
             'buyer_name' => '买家姓名',
@@ -119,16 +119,18 @@ class Order extends \yii\db\ActiveRecord
 
     public function fields(){
         return [
-            'id' => 'id',
+            'id' => function(){
+                return isset($this->id)?$this->id:'';
+            },
             'type' => 'type',
             'goods_id' => 'goods_id',
             'sn' => 'sn',
             'status' => 'status',
             'order_amount' => 'goods_amount',
             'pay_trade_no' => 'pay_trade_no',
-//            'goods_name' => function(){
-//                return $this->goods->title;
-//            },
+            'goods_name' => function(){
+                return isset($this->goods->title)?$this->goods->title:'';
+            },
             'goods_desc' => function(){
                 return $this->goods->desc;
             },

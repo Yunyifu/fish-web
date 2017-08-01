@@ -3,12 +3,12 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = '我发布的需求';
+$this->title = '我发布的采购';
 $this->registerJsFile("@web/js/delete.js", ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 <li class="anchors published">
   <?= Html::a('供应信息', ['/user-center/goods'], ['class'=>'anchor']) ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <?= Html::a('需求信息', ['/user-center/demand'], ['class'=>'anchor']) ?>
+  <?= Html::a('采购信息', ['/user-center/demand'], ['class'=>'anchor']) ?>
 </li>
 <li class="headers">
   <span>采购种类</span>
@@ -26,9 +26,9 @@ $this->registerJsFile("@web/js/delete.js", ['depends' => ['frontend\assets\AppAs
     <span class="no-warp" title="<?= $demand->title ?>"><?= $demand->title ?></span>
     <span class="no-warp"><?= $demand->price ?></span>
     <span class="no-warp"><?= $demand->num ?></span>
-    <span class="no-warp"><?= $demand->status ?></span>
-    <span class="no-warp" title="<?= $demand->otherstatus ?>"><?= $demand->otherstatus ?></span>
-    <span class="no-warp"><?= $demand->area ?></span>
+    <span class="no-warp"> <?= $demand->status ?>&nbsp;</span>
+    <span class="no-warp" title="<?= $demand->otherstatus ?>"><?= $demand->otherstatus ?>&nbsp;</span>
+    <span class="no-warp"> <?= $demand->area ?>&nbsp;</span>
     <span class="created pull-right no-warp"><?= date('Y-m-d', $demand->created_at)?></span>
   </li>
 <?php endforeach; ?>

@@ -20,7 +20,11 @@ class UserCenterController extends BaseController
 {
     /**
      * @inheritdoc
+     *
+     *
      */
+    public $enableCsrfValidation = false;
+
     public function behaviors()
     {
         return [
@@ -91,10 +95,12 @@ class UserCenterController extends BaseController
         $pageSize = 7;
         $pageCount = (Order::find()->where(['buyer_id'=>$userId,'buyersee'=>1])->count())/$pageSize;
         //return '123';
+
         return $this->render('buy',[
             'dataProvider' => $dataProvider,
             'pageSize' => $pageSize,
             'pageCount' => $pageCount,
+            'payResult' => $payResult = Yii::$app->request->post()
         ]);
 
     }

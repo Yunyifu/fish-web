@@ -1,5 +1,34 @@
 define({ "api": [
   {
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "payType",
+            "description": "<p>支付渠道</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "platform",
+            "description": "<p>终端</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "../../api/common/controllers/PayController.php",
+    "group": "C__wamp64_www_fish_web_api_common_controllers_PayController_php",
+    "groupTitle": "C__wamp64_www_fish_web_api_common_controllers_PayController_php",
+    "name": ""
+  },
+  {
     "type": "get",
     "url": "/category/firstcate",
     "title": "获取一级分类",
@@ -92,7 +121,7 @@ define({ "api": [
       "examples": [
         {
           "title": "{",
-          "content": "{\n            \"good\": {\n                    \"id\": 31,\n                    \"title\": \"罗非鱼2吨\",\n                    \"thumb\": null,\n                    \"user_id\": 10,\n                    \"category_id\": 4,\n                    \"num\": \"\",\n                    \"price\": \"0.00\",\n                    \"area\": \"杭州滨江区\",\n                    \"position\": \"\",\n                    \"status\": 0,\n                    \"desc\": \"321\",\n                    \"pic\": [\n                    \"/2/14981871893824.jpg\"\n                    ],\n                    \"created_at\": 1498187190,\n                    \"updated_at\": 1498711904,\n                    \"rank\": 5,\n                    \"username\": \"15889892345\",\n                    \"nickname\": \"用户1497943476853\",\n                    \"avatat\": \"http://dev.image.alimmdn.com/1/default.jpg@294w_196h_1l\",\n                    \"gender\": 0,\n                    \"categoryId\": 4,\n                    \"categoryName\": \"罗非鱼\",\n                    \"categoryParent_id\": 1,\n                    \"dealer\": \"交易员1号\"\n            },\n            \"phone\": \"138123456\",\n            \"api_code\": 200\n        }",
+          "content": "{\n                    \"id\": 31,\n                    \"title\": \"罗非鱼2吨\",\n                    \"thumb\": null,\n                    \"user_id\": 10,\n                    \"category_id\": 4,\n                    \"num\": \"\",\n                    \"price\": \"0.00\",\n                    \"area\": \"杭州滨江区\",\n                    \"position\": \"\",\n                    \"status\": 0,\n                    \"desc\": \"321\",\n                    \"pic\": [\n                    \"/2/14981871893824.jpg\"\n                    ],\n                    \"created_at\": 1498187190,\n                    \"updated_at\": 1498711904,\n                    \"rank\": 5,\n                    \"username\": \"15889892345\",\n                    \"nickname\": \"用户1497943476853\",\n                    \"avatat\": \"/1/default.jpg@294w_196h_1l\",\n                    \"gender\": 0,\n                    \"categoryId\": 4,\n                    \"categoryName\": \"罗非鱼\",\n                    \"categoryParent_id\": 1,\n                    \"dealer\": \"交易员1号\"\n                    \"auth\": \"0\",0代表渔民未认证，1代表渔民认证中，2代表已通过渔民认证，4代表渔民认证被拒绝\n                    \"companyauth\": \"0\"，代表企业未认证，1代表企业认证中，2代表已通过企业认证，4代表企业认证被拒绝\n                    \"dealer_phone\":\"13800000000\",\n                    \"api_code\": 200\n\n        }",
           "type": "json"
         }
       ]
@@ -526,7 +555,7 @@ define({ "api": [
       "examples": [
         {
           "title": "{",
-          "content": "\n{\n        \"id\": 1,\n        \"title\": \"杭州湾鱿鱼1吨，欢迎采购！\",\n        \"thumb\": \"2/123.jpg\",\n        \"user_id\": 4,\n        \"category_id\": 1,\n        \"num\": 1,\n        \"price\": \"198.00\",\n        \"area\": \"杭州湾码头\",\n        \"position\": \"中国浙江杭州\",\n        \"status\": 1,\n        \"desc\": \"杭州湾有新鲜鱿鱼1吨，量大从优！\",\n        \"pic\": \"/2/1.jpg||/2/2.jpg\",\n        \"created_at\": 1,\n        \"updated_at\": null,\n        \"demandstatus\": \"要新鲜\",\n        \"otherstatus\": \"我其它需求是尽快发货\",\n        \"username\": \"15889897125\",\n        \"nickname\": \"用户1494929694644\",\n        \"avatat\": \"123456789\",\n        \"gender\": 0,\n        \"categoryId\": 1,\n        \"categoryName\": \"鱼类\",\n        \"categoryParent_id\": null,\n        \"api_code\": 200\n}",
+          "content": "\n{\n        \"id\": 1,\n        \"title\": \"杭州湾鱿鱼1吨，欢迎采购！\",\n        \"thumb\": \"2/123.jpg\",\n        \"user_id\": 4,\n        \"category_id\": 1,\n        \"num\": 1,\n        \"price\": \"198.00\",\n        \"area\": \"杭州湾码头\",\n        \"position\": \"中国浙江杭州\",\n        \"status\": 1,\n        \"desc\": \"杭州湾有新鲜鱿鱼1吨，量大从优！\",\n        \"pic\": \"/2/1.jpg||/2/2.jpg\",\n        \"created_at\": 1,\n        \"updated_at\": null,\n        \"demandstatus\": \"要新鲜\",\n        \"otherstatus\": \"我其它需求是尽快发货\",\n        \"username\": \"15889897125\",\n        \"nickname\": \"用户1494929694644\",\n        \"avatat\": \"123456789\",\n        \"gender\": 0,\n        \"categoryId\": 1,\n        \"categoryName\": \"鱼类\",\n        \"categoryParent_id\": null,\n        \"auth\": \"0\",0代表渔民未认证，1代表渔民认证中，2代表已通过渔民认证，4代表渔民认证被拒绝\n        \"companyauth\": \"0\"，代表企业未认证，1代表企业认证中，2代表已通过企业认证，4代表企业认证被拒绝\n        \"dealer_phone\":\"13800000000\",\n        \"api_code\": 200\n}",
           "type": "json"
         }
       ]
@@ -949,6 +978,26 @@ define({ "api": [
     "title": "充值",
     "version": "0.1.0",
     "group": "pay",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "payType",
+            "description": "<p>支付渠道 默认连连支付，可不填此参数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "platform",
+            "description": "<p>终端 platform=&quot;ios&quot; 或者android 或者web</p>"
+          }
+        ]
+      }
+    },
     "filename": "../../api/common/controllers/PayController.php",
     "groupTitle": "pay",
     "name": "GetPayCharge"
@@ -959,6 +1008,47 @@ define({ "api": [
     "title": "支付",
     "version": "0.1.0",
     "group": "pay",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "orderId",
+            "description": "<p>交易订单id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "payType",
+            "description": "<p>支付渠道,不传此参数的话，默认是连连支付 payType=&quot;ll&quot;</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "platform",
+            "description": "<p>终端 platform=&quot;ios&quot; 或者android</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "acct_name",
+            "description": "<p>开户姓名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id_no",
+            "description": "<p>身份证号</p>"
+          }
+        ]
+      }
+    },
     "filename": "../../api/common/controllers/PayController.php",
     "groupTitle": "pay",
     "name": "GetPayPay"
@@ -1400,71 +1490,6 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/users",
-    "title": "更新当前登录用户资料",
-    "version": "0.1.0",
-    "group": "user",
-    "permission": [
-      {
-        "name": "token"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "nickname",
-            "description": "<p>昵称</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "avatar",
-            "description": "<p>头像</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "push_cid",
-            "description": "<p>推送cid（如个推cid）</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "int",
-            "optional": false,
-            "field": "gender",
-            "description": "<p>性别（0为女，1为男）</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "birthday",
-            "description": "<p>生日（字符串如1985-12-26）</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "范例（注：更新哪些字段就传哪些字段）",
-          "content": "同获取当前登录用户信息",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "../../api/common/controllers/UserController.php",
-    "groupTitle": "user",
-    "name": "PostUsers"
-  },
-  {
-    "type": "post",
     "url": "/users/bind",
     "title": "绑定（换绑）手机号、微信",
     "version": "0.1.0",
@@ -1768,5 +1793,70 @@ define({ "api": [
     "filename": "../../api/common/controllers/UserController.php",
     "groupTitle": "user",
     "name": "PostUsersResetPwd"
+  },
+  {
+    "type": "post",
+    "url": "/users/update",
+    "title": "更新当前登录用户资料",
+    "version": "0.1.0",
+    "group": "user",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "nickname",
+            "description": "<p>昵称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "avatar",
+            "description": "<p>头像</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "push_cid",
+            "description": "<p>推送cid（如个推cid）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "gender",
+            "description": "<p>性别（0为女，1为男）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "birthday",
+            "description": "<p>生日（字符串如1985-12-26）</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "范例（注：更新哪些字段就传哪些字段）",
+          "content": "同获取当前登录用户信息",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "../../api/common/controllers/UserController.php",
+    "groupTitle": "user",
+    "name": "PostUsersUpdate"
   }
 ] });

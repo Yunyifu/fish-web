@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\service\RecordService;
 use mdm\admin\models\User;
 use Yii;
 use common\models\Goods;
@@ -104,6 +105,7 @@ class GoodsController extends Controller
 //            $dealer_id = $post['Goods']['dealers'];
 //            $user->dealer_id = $dealer_id;
 //            $user->update();
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -121,7 +123,7 @@ class GoodsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        RecordService::record();
         return $this->redirect(['index']);
     }
 

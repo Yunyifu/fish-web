@@ -1,6 +1,7 @@
 <?php
 namespace api\common\controllers;
 
+use common\models\Companyauth;
 use common\models\Order;
 use common\models\OrderLog;
 use common\models\Goods;
@@ -33,6 +34,8 @@ class OrderController extends BaseController
     {
         $post = Yii::$app->request->post();
         $post['user_id'] = \Yii::$app->getUser()->getId();
+        $post['buyer_mobile'] = \Yii::$app->user->identity->username;
+        $post['buyer_name'] = isset(Companyauth::findOne(['user_id' => $post['user_id']])->name)?Companyauth::findOne(['user_id' => $post['user_id']])->name:'';
         if(!isset($post['user_id'])){
             throw new UserException('您还未登陆');
         }
@@ -53,6 +56,7 @@ class OrderController extends BaseController
             $order->goods_id = $goods->id;
             $order->sn = $post['sn'];
             $order->status = Constants::ORDER_STATUS_NOT_PAY;
+            $order->time = time();
             //$order->goods_amount = $post['goods_amount'];
             $order->goods_amount = $goods->price;
             $order->pay_type = Constants::PAY_TYPE_LL;
@@ -61,6 +65,8 @@ class OrderController extends BaseController
             $order->goods_price = $goods->price;
             $order->seller_id = $goods->user_id;
             $order->buyer_id = $post['user_id'];
+            $order->buyer_mobile = $post['buyer_mobile'];
+            $order->buyer_name = $post['buyer_name'];
             if( !$order->save() ) {
                 throw new BadRequestHttpException( '订单存储失败' . var_export( $order->errors, true ) );
             }

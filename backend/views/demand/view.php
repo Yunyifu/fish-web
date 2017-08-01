@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Demand */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => '需求信息', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '采购信息', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="demand-view">
@@ -44,7 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             [
                 'attribute'=>'dealers',
-                'value' => $model->dealer,
+                'value' => function($model){
+                    return isset($model->dealer)?$model->dealername.'：'.$model->dealer:'';
+                },
 
             ],
         ],

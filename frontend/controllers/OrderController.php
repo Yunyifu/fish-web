@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Companyauth;
 use common\models\Order;
 use common\models\OrderLog;
 use common\models\Goods;
@@ -33,18 +34,24 @@ class OrderController extends BaseController
     {
         $post = Yii::$app->request->post();
         $post['user_id'] = \Yii::$app->getUser()->getId();
+        $post['buyer_mobile'] = \Yii::$app->user->identity->username;
+        $post['buyer_name'] = isset(Companyauth::findOne(['user_id' => $post['user_id']])->name)?Companyauth::findOne(['user_id' => $post['user_id']])->name:'';
         if(!isset($post['user_id'])){
-            throw new UserException('您还未登陆');
+            return ['api_code' => 403,'api_msg'=>'您还未登陆'];
         }
         $post['sn'] = date("Ymdhis").$post['user_id'].rand(100,999);
         $goods = Goods::findOne($post['goods_id']);
         //return $goods->user_id;
         if( empty($goods)){
-            throw new NotFoundHttpException('商品不存在');
+            Yii::$app->response->format = Yii\web\Response::FORMAT_JSON;
+            return  ['api_code' => 301,'api_msg'=>'商品已下架或不存在'];
         }else if($post['user_id'] == $goods->user_id){
-            throw new BadRequestHttpException('不能购买自己发布的商品哦！');
+            Yii::$app->response->format = Yii\web\Response::FORMAT_JSON;
+            return  ['api_code' => 302,'api_msg'=>'不能购买自己发布的商品哦！'];
         }else if($goods->status == 0){
-            throw new BadRequestHttpException('这个商品已被别人买走，您可以挑选其它商品...');
+            Yii::$app->response->format = Yii\web\Response::FORMAT_JSON;
+            return  ['api_code' => 303,'api_msg'=>'这个商品已被别人买走，您可以挑选其它商品...！'];
+
         }
 
         $transaction = \Yii::$app->db->beginTransaction();
@@ -62,6 +69,8 @@ class OrderController extends BaseController
             $order->goods_price = $goods->price;
             $order->seller_id = $goods->user_id;
             $order->buyer_id = $post['user_id'];
+            $order->buyer_mobile = $post['buyer_mobile'];
+            $order->buyer_name = $post['buyer_name'];
             if( !$order->save() ) {
                 throw new BadRequestHttpException( '订单存储失败' . var_export( $order->errors, true ) );
             }

@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="goods-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('删除', ['delete', 'id' => $model->id], [
@@ -76,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                     'attribute'=>'dealers',
                     'value' => function($model){
-                        return isset($model->dealer)?$model->dealer:'';
+                        return isset($model->dealer)?$model->dealername.'：'.$model->dealer:'';
                     },
 
             ],

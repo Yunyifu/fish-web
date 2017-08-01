@@ -59,15 +59,18 @@ if ( $("#amount").val() > 0 ) {
                   $("input.pay-btn").click()
               }
               else{
-                alert( 456 + result['api_msg'])
+                alert(result['api_msg'])
               }
             }
           }
         )
       }
       else{
-        alert(123 + result['api_msg'])
+        alert(result['api_msg'])
       }
+    },
+    error: function(){
+      alert('发生错误，请稍后再试')
     }
   })
 }else{

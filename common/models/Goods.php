@@ -88,7 +88,7 @@ class Goods extends \yii\db\ActiveRecord
             'pic' => '图片',
             'created_at' => '创建于',
             'updated_at' => '更新于',
-            'rank' => '排序号(从小到大 默认9999)',
+            'rank' => '排序号(从小到大 默认9999为非精选)',
             'dealers' => '交易员',
         ];
     }
@@ -112,7 +112,6 @@ class Goods extends \yii\db\ActiveRecord
             },
             'created_at' => 'created_at',
             'updated_at' => 'updated_at',
-            'rank' => '排序号(从小到大 默认9999)',
             'username'=>function(){
                 return $this->user->username;
             },
@@ -134,12 +133,22 @@ class Goods extends \yii\db\ActiveRecord
             'categoryParent_id'=>function(){
                 return $this->category->parent_id;
             },
-            'rank'=>function(){
-                return $this->rank;
-            },
             'dealer' => function(){
                 return $this->dealer;
-        }
+            },
+            'auth' => function(){
+                return isset($this->auth->status)?$this->auth->status:'0';
+            },
+            'companyauth' => function(){
+                return isset($this->companyauth->status)?$this->companyauth->status:'0';
+            },
+            'dealer_phone' => function(){
+                return isset($this->dealer)?$this->dealer:'';
+            },
+            'dealer_name' => function(){
+                return isset($this->dealername)?$this->dealername:'';
+            }
+
         ];
     }
 
@@ -171,7 +180,7 @@ class Goods extends \yii\db\ActiveRecord
     }
 
     /**
-     * 获取交易员的名称和电话
+     * 获取交易员的电话
      * @return string
      *
      */
@@ -179,6 +188,17 @@ class Goods extends \yii\db\ActiveRecord
         $dealer_id = $this->dealer_id;
         $dealer = AdminUser::find()->where(['id' => $dealer_id])->one();
         return isset($dealer->phone)?$dealer->phone:'';
+    }
+
+    /**
+     * 获取交易员的名字
+     * @return string
+     *
+     */
+    public function getDealername(){
+        $dealer_id = $this->dealer_id;
+        $dealer = AdminUser::find()->where(['id' => $dealer_id])->one();
+        return isset($dealer->nickname)?$dealer->nickname:'';
     }
 
     /**
@@ -201,6 +221,18 @@ class Goods extends \yii\db\ActiveRecord
         $day = floor( (time() - $this->updated_at)/86400 );
         return $day . '天前发布';
       }
+    }
+
+    /**
+     * 获取认证信息
+     */
+    public function getAuth()
+    {
+        return $this->hasOne(Auth::className(), ['user_id' => 'user_id']);
+    }
+    public function getCompanyauth()
+    {
+        return $this->hasOne(Companyauth::className(), ['user_id' => 'user_id']);
     }
 
 }

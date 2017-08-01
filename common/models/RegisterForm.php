@@ -37,7 +37,7 @@ class RegisterForm extends ActiveRecord
                 if(preg_match("/^1[34578]{1}\d{9}$/",$attr)){
                     return true;
                 }else{
-                    $this->addError('username','请填写正确的手机号');
+                    //$this->addError('username','请填写正确的手机号');
                 }
             }],
             [['username','validation'], 'integer'],
@@ -55,14 +55,13 @@ class RegisterForm extends ActiveRecord
         ];
     }
 
-    public function check(){
-      return 123;
-    }
+
+
     public function register(){
       $ocode = CacheUtil::getCache( Constants::CACHE_USER_MOBILE_CODE, [
           'mobile' => $this->username,
       ] );
-      return $ocode;
+      //return $ocode;
         $datas = [
             'type' => 1 ,
             'externalUid' => $this->username,
@@ -77,7 +76,7 @@ class RegisterForm extends ActiveRecord
             'referee' => null,
         ];
 
-        return $user = UserService::register($datas);
+        $user = UserService::register($datas);
         //$user = $this->createUser(['username'=>$this->username, 'password'=>$this->password, 'validation'=>$this->validation]);
         //$user->save(false);
         return Yii::$app->user->login($user,  3600 * 24 * 30 );

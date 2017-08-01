@@ -35,6 +35,8 @@ $this->registerJs($js, View::POS_END);
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'group')->dropDownList(\common\util\Constants::$admin) ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', '创建') : Yii::t('app', '更新'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?php /*if(!$model->isNewRecord) { echo Html::button(Yii::t('app', 'Reset password'), ['class' => 'btn btn-warning']); }*/?>

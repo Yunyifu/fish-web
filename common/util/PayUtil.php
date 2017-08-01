@@ -8,6 +8,7 @@
 // ///////////////////////////////////////////////////////////////////////////
 namespace common\util;
 
+use common\models\Order;
 use yii\base\UserException;
 
 /**
@@ -29,7 +30,7 @@ class PayUtil {
      * @param int $amount 元
      * @return string
      */
-    public static function llOrder($userId, $riskItem, $platform, $title, $tradeNo, $remark, $amount, $tradeType = \LLPayConfig::TRADE_TYPE_VIRTUAL_GOODS) {
+    public static function llOrder($userId, $riskItem, $platform, $title, $tradeNo, $remark, $amount, $acct_name,$id_no,$tradeType = \LLPayConfig::TRADE_TYPE_REAL_GOODS) {
         $llpay_config = \LLPayConfig::getConfig();
         // 通用参数
         $params = [ 
@@ -46,7 +47,9 @@ class PayUtil {
             "info_order" => $remark,
             "money_order" => $amount,
             "notify_url" => \Yii::$app->params ['frontUrl'] . "/pay/notify/" . Constants::PAY_TYPE_LL . "/" . $platform,
-            "risk_item" => $riskItem 
+            "risk_item" => $riskItem ,
+            "acct_name" => $acct_name,
+            "id_no" => $id_no,
         ];
         // 不同支付平台的特定参数
         // 请求应用标识 app_request 1-Android 2-ios 3-WAP
@@ -54,7 +57,7 @@ class PayUtil {
             $params ["app_request"] = "3";
             $params ["risk_item"] = preg_replace( '/"/', '\"', $riskItem );
             // 支付完成回调地址
-            $params ["url_return"] = \Yii::$app->params ['frontUrl'] . '/h5/me_order.html';
+            $params ["url_return"] = \Yii::$app->params ['frontUrl'] . '/user-center/buy';
         } else {
             $params ["app_request"] = $platform == Constants::PLATFORM_ANDROID ? "1" : "2";
         }
@@ -82,8 +85,14 @@ class PayUtil {
     public static function checkNotify($sn, $fee, $extraInfo, $payTradeNo, $payType, $payPlatform) {
         // 是否充值 CHARGE_EXTRA_FLAG
         if( $extraInfo === Constants::CHARGE_EXTRA_FLAG ) {
+
         }         // 订单支付
         else {
+            $order = Order::findOne(['sn' => $extraInfo]);
+            $order->pay_trade_no = $payTradeNo;
+            $order->pay_time = time();
+            $order->status = Constants::ORDER_STATUS_PAID;
+            $order->update();
         }
         return true;
     }

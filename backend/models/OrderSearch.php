@@ -69,6 +69,7 @@ class OrderSearch extends Order
             'refund_amount' => $this->refund_amount,
             'refund_balance' => $this->refund_balance,
             'refund_paid' => $this->refund_paid,
+            'goods_name' => $this->goods_name,
             'goods_amount' => $this->goods_amount,
             'pay_type' => $this->pay_type,
             'pay_platform' => $this->pay_platform,

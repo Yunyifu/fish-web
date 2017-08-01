@@ -52,7 +52,7 @@ class Demand extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id','title'], 'required'],
+            [['user_id','title','num','price'], 'required'],
             [['category_id', 'status', 'created_at', 'updated_at','dealer_id'], 'integer'],
             [['price'], 'string'],
             [['num'], 'string'],
@@ -98,7 +98,7 @@ class Demand extends \yii\db\ActiveRecord
         return [
             'id' => 'id',
             'title' => 'title',
-            'thumb' => 'thumb',
+            //'thumb' => 'thumb',
             'user_id' => 'user_id',
             'category_id' => 'category_id',
             'num' => 'num',
@@ -107,7 +107,7 @@ class Demand extends \yii\db\ActiveRecord
             'position' => 'position',
             'status' => 'status',
             'desc' => 'desc',
-            'pic' => 'pic',
+            //'pic' => 'pic',
             'created_at' => 'created_at',
             'updated_at' => 'updated_at',
             'demandstatus' => 'demandstatus',
@@ -118,7 +118,7 @@ class Demand extends \yii\db\ActiveRecord
             'nickname'=>function(){
                 return $this->user->nickname;
             },
-            'avatat'=>function(){
+            'avatar'=>function(){
                 return $this->user->avatar;
             },
             'gender'=>function(){
@@ -134,8 +134,19 @@ class Demand extends \yii\db\ActiveRecord
                 return $this->category->parent_id;
             },
             'dealer' => function(){
-                return $this->dealer;
-
+                return isset($this->dealer)?$this->dealer:'';
+            },
+            'auth' => function(){
+                return isset($this->auth->status)?$this->auth->status:'0';
+            },
+            'companyauth' => function(){
+                return isset($this->companyauth->status)?$this->companyauth->status:'0';
+            },
+            'dealer_phone' => function(){
+                return isset($this->dealer)?$this->dealer:'';
+            },
+            'dealer_name' => function(){
+                return isset($this->dealername)?$this->dealername:'';
             }
         ];
     }
@@ -167,6 +178,17 @@ class Demand extends \yii\db\ActiveRecord
         return isset($dealer->phone)?$dealer->phone:'';
     }
 
+    /**
+     * 获取交易员的名字
+     * @return string
+     *
+     */
+    public function getDealername(){
+        $dealer_id = $this->dealer_id;
+        $dealer = AdminUser::find()->where(['id' => $dealer_id])->one();
+        return isset($dealer->nickname)?$dealer->nickname:'';
+    }
+
     public function getPubtime(){
       if ($this->updated_at) {
         if (time() - $this->updated_at < 3600) {
@@ -181,4 +203,17 @@ class Demand extends \yii\db\ActiveRecord
         return $day . '天前发布';
       }
     }
+
+    /**
+     * 获取认证信息
+     */
+    public function getAuth()
+    {
+        return $this->hasOne(Auth::className(), ['user_id' => 'user_id']);
+    }
+    public function getCompanyauth()
+    {
+        return $this->hasOne(Companyauth::className(), ['user_id' => 'user_id']);
+    }
+
 }

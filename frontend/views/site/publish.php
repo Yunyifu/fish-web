@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = '渔鱼网';
+$this->title = '鱼渔网';
 $url = \Yii::$app->request->url;
 $this->registerJsFile("@web/js/publish.js", ['depends' => ['frontend\assets\AppAsset']]);
 ?>
@@ -28,9 +28,9 @@ $this->registerJsFile("@web/js/publish.js", ['depends' => ['frontend\assets\AppA
 <div class="anchors publish">
   <?= Html::a('发布供应信息', ['publish-supply', 'cataid'=>\Yii::$app->request->get('cata'), 'cataname'=>\Yii::$app->request->get('cataname')], ['class'=>'anchor'])?>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <?= Html::a('发布需求信息', ['publish-need', 'cataid'=>\Yii::$app->request->get('cata'), 'cataname'=>\Yii::$app->request->get('cataname')], ['class'=>'anchor'])?>
+  <?= Html::a('发布采购信息', ['publish-need', 'cataid'=>\Yii::$app->request->get('cata'), 'cataname'=>\Yii::$app->request->get('cataname')], ['class'=>'anchor'])?>
   <br>
-  <span>发布即同意 <a href="#">《渔鱼网交易规则》</a></span>
+  <span>发布即同意 <a href="/rule.html" target="_blank">《鱼渔网交易规则》</a></span>
 </div>
 
 <?php

@@ -34,9 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'avatar', 'content' => function($model){
                 return Utils::renderPreviewImg($model->avatar ? $model->avatar : Constants::DEFAULT_AVATAR, true);            
             }],
-            ['attribute' => 'gender', 'content' => function($model){
-                return $model->gender == Constants::GENDER_FEMALE ? '女' : '男';
-            }],
+//            ['attribute' => 'gender', 'content' => function($model){
+//                return $model->gender == Constants::GENDER_FEMALE ? '女' : '男';
+//            }],
             // 'birthday',
             // 'created_at',
             // 'updated_at',
@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->status ? "激活" : "禁用";
                 }
             ],
+            'deposit',
             ['class' => 'yii\grid\ActionColumn', 'template' => "{view}{update}"],
         ],
     ]); ?>

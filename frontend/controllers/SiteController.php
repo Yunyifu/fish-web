@@ -93,17 +93,17 @@ class SiteController extends BaseController
         $categoryData = $categoryModel->find()->where(['parent_id' =>1])->andWhere(['status' => Constants::CATE_HOT])->all();
         //取出最新的4条大banner
         $bannerModel = new Banner();
-        $bannerData = $bannerModel->find()->limit(4)->orderBy('rank DESC')->andWhere(['type' => 0])->all();
-        $gallery = $bannerModel->find()->limit(10)->orderBy('rank DESC')->andWhere(['type' => 1])->all();
+        $bannerData = $bannerModel->find()->limit(4)->orderBy('rank asc')->andWhere(['type' => 0])->all();
+        $gallery = $bannerModel->find()->limit(10)->orderBy('rank asc')->andWhere(['type' => 1])->all();
         $adv = $bannerModel->find()->where(['type' => 2])->orderBy('id DESC')->one();
         $adv = isset($adv)?$adv:'';
 
         //取出最新的6条需求信息
         $demandModel = new Demand();
-        $demandData = $demandModel->find()->limit(6)->orderBy('created_at DESC')->all();
+        $demandData = $demandModel->find()->andWhere(['<' ,'status','4'])->limit(6)->orderBy('created_at DESC')->all();
         //取出最新的6条供应信息
         $goodsModel = new Goods();
-        $goodsData = $goodsModel->find()->limit(6)->orderBy('created_at DESC')->all();
+        $goodsData = $goodsModel->find()->andWhere(['<' ,'status','4'])->limit(6)->orderBy('created_at DESC')->all();
         //取出最新成交的订单6条
         $lastOrders = Order::find()->limit(6)->orderBy('created_at DESC')->all();
         //var_dump($lastOrders[0]->test);exit;
@@ -127,7 +127,8 @@ class SiteController extends BaseController
 
     public function actionPublish()
     {
-        $dataArray = Category::find()->where(['status' => 1])->andWhere(['not',['parent_id'=>NULL]])->all();
+        $dataArray = Category::find()->where(['>', 'status', 1])->andWhere(['>','parent_id', 0])->all();
+        //return var_dump($dataArray);
         return $this->render('publish',[
             'dataArray' => $dataArray,
         ]);
@@ -150,6 +151,7 @@ class SiteController extends BaseController
         }
         if(Yii::$app->request->post()){
             $demand->category_id = Yii::$app->request->get('cataid',1);
+            $demand->status = 4;//Constants::GOODS_UNREVIEW;
             $demand->load(Yii::$app->request->post());
             if ($demand->save()) {
                 echo "<script>alert('发布成功！')</script>";
@@ -180,6 +182,7 @@ class SiteController extends BaseController
             $goods->pic = $this->actionUpload('Goods[pic]');
             $goods->pic = isset($this->actionUpload('Goods[pic]')[0])?$goods->pic[0]:$temp;
             $goods->category_id = Yii::$app->request->get('cataid',1);
+            $goods->status = 4;//Constants::GOODS_UNREVIEW;
             //return var_dump($goods->pic);
             if ($goods->save()) {
                 echo "<script>alert('发布成功！')</script>";
@@ -251,7 +254,7 @@ class SiteController extends BaseController
         $model = new RegisterForm();
         if (Yii::$app->request->isPost) {
             $model->load(Yii::$app->request->post());
-            if ($model->check()) {
+            if ($model->validate()) {
                 $data = ['type'=>1, 'external_uid'=>$model->username, 'external_name'=>$model->username, 'token'=>$model->validation, 'password'=>$model->password];
                 $register = $this->callApi('users/oauth', $data, 'post', 'v1');
                 if ($register['api_code'] == 500) {
@@ -487,5 +490,19 @@ class SiteController extends BaseController
             }
         }
         return $path;
+    }
+
+    /**
+     * 支付结果
+     *
+     */
+    public function actionPayResult(){
+        $data = Yii::$app->request->post();
+        if($data['res_data']->result_pay == "SUCCESS"){
+            return $this->render('');
+        }else{
+            return $this->render('');
+        }
+
     }
 }

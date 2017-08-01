@@ -78,7 +78,9 @@ class DemandSearch extends Demand
             ->andFilterWhere(['like', 'desc', $this->desc])
             ->andFilterWhere(['like', 'pic', $this->pic]);
         $query->orderBy('updated_at DESC');
-        $query->andWhere(['>' ,'status','0']);
+        $query->andWhere(['<' ,'status','4']);
+        $query->andFilterWhere(['<', 'status', '4']);
+        //TODO make this better
 
         return $dataProvider;
     }

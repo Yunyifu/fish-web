@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['width'=>100],
                 'filter' => \common\util\Constants::$ORDER_STATUSES,
                 'content' => function($model){
-                    return \common\util\Constants::$ORDER_STATUSES[$model->type];
+                    return \common\util\Constants::$ORDER_STATUSES[$model->status];
                 }
             ],
             [

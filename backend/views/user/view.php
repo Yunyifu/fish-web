@@ -9,7 +9,7 @@ use common\models\User;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = "用户：" . $model->id;
+$this->title = "用户：" . $model->username;
 $this->params['breadcrumbs'][] = ['label' => '用户管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'updated_at',
                 'value' => date( 'Y-m-d H:i:s', $model->updated_at )
             ],
+            'deposit',
         ],
     ]) ?>
 

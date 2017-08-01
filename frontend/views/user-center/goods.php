@@ -9,7 +9,7 @@ $this->registerJsFile("@web/js/delete.js", ['depends' => ['frontend\assets\AppAs
 
 <li class="anchors published">
   <?= Html::a('供应信息', ['/user-center/goods'], ['class'=>'anchor']) ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <?= Html::a('需求信息', ['/user-center/demand'], ['class'=>'anchor']) ?>
+  <?= Html::a('采购信息', ['/user-center/demand'], ['class'=>'anchor']) ?>
 </li>
 <?php foreach ($dataProvider->models as $key => $goods): ?>
   <li class="goods">

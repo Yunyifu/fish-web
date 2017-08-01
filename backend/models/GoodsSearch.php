@@ -48,6 +48,9 @@ class GoodsSearch extends Goods
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 7,
+            ]
         ]);
 
         $this->load($params);

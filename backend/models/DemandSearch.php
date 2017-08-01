@@ -47,6 +47,9 @@ class DemandSearch extends Demand
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 7,
+            ]
         ]);
 
         $this->load($params);
@@ -77,6 +80,7 @@ class DemandSearch extends Demand
             ->andFilterWhere(['like', 'position', $this->position])
             ->andFilterWhere(['like', 'desc', $this->desc])
             ->andFilterWhere(['like', 'pic', $this->pic]);
+            $query->orderBy('created_at DESC');
 
         return $dataProvider;
     }

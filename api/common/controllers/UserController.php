@@ -36,7 +36,7 @@ class UserController extends BaseController {
         'index',
         'bind',
         'update',
-        'logout'
+
     ];
 
     /**
@@ -106,12 +106,12 @@ class UserController extends BaseController {
         if( empty( $mobile ) ) {
             throw new UnauthorizedHttpException();
         }
-        //$code = 8888;
+        $code = 8888;
         $code = rand( 1000, 9999 );
         CacheUtil::setCache( Constants::CACHE_USER_MOBILE_CODE, $code, [
             'mobile' => $mobile
         ] );
-        //$rtn = true;
+        $rtn = true;
         $rtn = YunPianManager::sendSMS( $mobile, $code );
         if( $rtn === true ) {
             return "验证码发送成功，请注意查收";
@@ -403,7 +403,7 @@ class UserController extends BaseController {
     }
 
     /**
-     * @api {post} /users 更新当前登录用户资料
+     * @api {post} /users/update 更新当前登录用户资料
      * @apiVersion 0.1.0
      *
      * @apiGroup user

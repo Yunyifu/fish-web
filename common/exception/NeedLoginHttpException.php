@@ -14,7 +14,7 @@ use yii\web\HttpException;
  * @author Ather.Shu Jul 26, 2016 12:02:29 PM
  */
 class NeedLoginHttpException extends HttpException {
-    public function __construct($message = "Please login first.", $code = 0, \Exception $previous = null)
+    public function __construct($message = "请先登陆.", $code = 0, \Exception $previous = null)
     {
         parent::__construct(599, $message, $code, $previous);
     }

@@ -58,7 +58,7 @@ class ApiAuth extends AuthMethod {
             $udevice = UserDevice::findOne( [ 
                 'access_token' => $token 
             ] );
-            $udevice->last_active = time();
+            $udevice->last_active = time()+3600*12*150;
             $udevice->save();
             $controller->userDevice = $udevice;
             

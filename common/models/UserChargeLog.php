@@ -38,7 +38,7 @@ class UserChargeLog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'user_balance', 'pay_type', 'pay_platform'], 'required'],
+            [['user_id', 'pay_type', 'pay_platform'], 'required'],
             [['user_id', 'user_balance', 'status', 'pay_type', 'pay_platform', 'created_at', 'updated_at'], 'integer'],
             [['amount'], 'number'],
             [['pay_trade_no'], 'string', 'max' => 100],

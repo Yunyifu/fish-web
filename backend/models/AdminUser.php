@@ -55,6 +55,7 @@ class AdminUser extends ActiveRecord implements IdentityInterface
             [['username', 'nickname'], 'string', 'max' => 50],
             [['username', 'nickname'], 'validateName'],
             ['phone','string'],
+            ['group','integer'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
@@ -75,7 +76,7 @@ class AdminUser extends ActiveRecord implements IdentityInterface
             'password_reset_token' => '重置密码',
             'auth_key' => 'cookie auth',
             'status' => '状态',
-            'group' => '管理员分组',
+            'group' => '类型分组',
             'created_at' => '创建于',
             'updated_at' => '更新于',
         ];

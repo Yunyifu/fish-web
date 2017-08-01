@@ -105,7 +105,7 @@ class CategoryController extends BaseController
      **/
     public function actionSecondall()
     {
-        $model = Category::find()->where(['status' => 1])->andWhere(['not',['parent_id'=>NULL]])->all();
+        $model = Category::find()->where(['>','status','0'])->andWhere(['not',['parent_id'=>NULL]])->all();
         return $model;
     }
 

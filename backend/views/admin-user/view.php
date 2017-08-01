@@ -39,8 +39,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => $model->status ? '激活' : '禁止',
             ],
-            'phone'
-//             'group',
+            'phone',
+            [
+                'attribute'=>'group',
+                'label'=>'类型',
+                'filter'=>\common\util\Constants::$admin,
+                'value'=>function($model){
+                    return \common\util\Constants::$admin[$model->group];
+                }
+            ],
 //             'created_at',
 //             'updated_at',
         ],

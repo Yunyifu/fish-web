@@ -52,7 +52,8 @@ use backend\util\Utils;
 	<?= $form->field($model, 'created_at')->hiddenInput(['disabled' => true])->hint(date('Y-m-d H:i:s' , $model->created_at)) ?>
 
     <?= $form->field($model, 'updated_at')->hiddenInput(['disabled' => true])->hint(date('Y-m-d H:i:s' , $model->updated_at)) ?>
-    
+
+    <?= $form->field($model, 'deposit')->textInput(['maxlength' => true]) ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '新建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?php

@@ -14,6 +14,7 @@ use yii\helpers\Html;
     <?= Html::a('采购信息',['/demand/list']) ?>
     <?= Html::a('用户中心',['/user-center']) ?>
     <?= Html::a('实时资讯',['/news/list']) ?>
+    <p style="text-align:right">浙备ICP17024055-1</p>
   </div>
 </div>
 <ul class="gotop" style="display: block;">

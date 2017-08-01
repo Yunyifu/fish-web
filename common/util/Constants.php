@@ -96,7 +96,7 @@ class Constants {
     public static $ORDER_STATUSES = [
         self::ORDER_STATUS_NOT_PAY => '待支付',
         self::ORDER_STATUS_CANCEL => '已取消',
-        self::ORDER_STATUS_PAID => '已支付，待接单',
+        self::ORDER_STATUS_PAID => '已支付',
         self::ORDER_STATUS_CONFIRMED => '已接单，待发货',
         self::ORDER_STATUS_DELIVERED => '已接单，已发货',
         self::ORDER_STATUS_FINISHED => '已完成',
@@ -184,9 +184,22 @@ class Constants {
     const CATE_SHOW = 1;
     const CATE_HOT = 2;
     public static $cateStatus = [
+        self::CATE_HOT=>'热门分类',
         self::CATE_DOWN=>'下架',
         self::CATE_SHOW=>'上架',
-        self::CATE_HOT=>'热门分类',
+    ];
+    //后台用户类型
+    const ADMIN_DEFAULT = 0;
+    const ADMIN_SUPER = 1;
+    const ADMIN_ADMIN = 2;
+    const ADMIN_SERVICE = 3;
+    const ADMIN_DEAL = 4;
+    public static $admin = [
+        self::ADMIN_DEFAULT => '默认用户',
+        self::ADMIN_SUPER => '超级管理员',
+        self::ADMIN_ADMIN => '管理员',
+        self::ADMIN_SERVICE => '客服',
+        self::ADMIN_DEAL => '交易顾问',
     ];
     // 充值状态
     const CHARGE_STATUS_NOT_PAY = 0;

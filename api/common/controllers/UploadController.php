@@ -45,7 +45,7 @@ class UploadController extends BaseController{
                 foreach($paths as $path){
                     FileUploadForm::deleteUploadedFile($path);
                 }
-                return $fileForm;
+                //return $fileForm;
             }
 
         }

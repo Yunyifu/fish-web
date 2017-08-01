@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\service\RecordService;
 use Yii;
 use common\models\Order;
 use backend\models\OrderSearch;
@@ -78,6 +79,7 @@ class OrderController extends Controller
         $model = new Order();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -97,6 +99,7 @@ class OrderController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            RecordService::record();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -114,7 +117,7 @@ class OrderController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        RecordService::record();
         return $this->redirect(['index']);
     }
 

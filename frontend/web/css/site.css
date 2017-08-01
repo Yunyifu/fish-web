@@ -458,7 +458,7 @@ li.news{
   text-align: center;
 }
 #pay h6{
-  margin-bottom: 56px;
+  margin-bottom: 35px;
   font-size: 20px;
   line-height: 60px;
   color: #666;
@@ -1262,6 +1262,7 @@ li.last{
 }
 .user-center li.headers{
   overflow: hidden;
+  padding-left:10px;
   border-top: 1px solid #dfdfdf;
 }
 .user-center .demand span{
